@@ -1,18 +1,23 @@
 import React, { Component } from "react";
-import { Grid, Row, Col } from "react-bootstrap";
-import { Button, Form as FormField } from "semantic-ui-react";
+import { Button, Grid, Form, Segment } from "semantic-ui-react";
 import { withAPI } from "../API";
+import { FormStyle } from "./style";
 
-class Form extends Component {
+class FormComponent extends Component {
   state = {
     UIN: ""
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.api.getUserByUIN(this.state.UIN).then(res => {
-      this.props.setUser(res.data);
-    });
+    this.props.api
+      .getUserByUIN(this.state.UIN)
+      .then(res => {
+        this.props.setUser(res.data);
+      })
+      .catch(e => {
+        console.error(e.message);
+      });
   };
 
   handleChange = e => {
@@ -23,25 +28,30 @@ class Form extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col>
-            <FormField size="big" onSubmit={this.handleSubmit}>
-              <FormField.Field>
-                <label>ИИН</label>
-                <input
-                  name="UIN"
-                  onChange={this.handleChange}
-                  placeholder="Введите ИИН"
-                />
-              </FormField.Field>
-              <Button type="submit">Submit</Button>
-            </FormField>
-          </Col>
-        </Row>
-      </Grid>
+      <FormStyle>
+        <Grid container>
+          <Grid.Row centered>
+            <Grid.Column width={8}>
+              <h1 className="title">oqu dorm</h1>
+              <Segment inverted>
+                <Form inverted size="big" onSubmit={this.handleSubmit}>
+                  <Form.Field>
+                    <label>ИИН</label>
+                    <input
+                      name="UIN"
+                      onChange={this.handleChange}
+                      placeholder="Введите ИИН"
+                    />
+                  </Form.Field>
+                  <Button type="submit">Submit</Button>
+                </Form>
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </FormStyle>
     );
   }
 }
 
-export default withAPI(Form);
+export default withAPI(FormComponent);

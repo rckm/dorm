@@ -13,7 +13,7 @@ class API {
   }
 
   getUserByUIN = UIN => {
-    return this.api.get(`auth?iin=${UIN}`);
+    return this.api.get(`auth?uin=${UIN}`);
   };
 
   getDormInfo = () => {

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Grid, Row, Col } from "react-bootstrap";
-import { Button, Form as FormField } from "semantic-ui-react";
+import { Button, Form as MainForm } from "semantic-ui-react";
 import { withAPI } from "../API";
+import RoomScheme from "./roomScheme";
 
 class BookingForm extends Component {
   state = {
@@ -32,17 +33,20 @@ class BookingForm extends Component {
       <Grid>
         <Row>
           <Col>
-            <FormField onSubmit={this.handleSubmit} size="big">
-              <FormField.Field>
+            <MainForm onSubmit={this.handleSubmit} size="big">
+              <MainForm.Field>
                 <label>E-mail</label>
                 <input
                   name="email"
                   onChange={this.handleChange}
                   placeholder="Введите почту"
                 />
-              </FormField.Field>
+              </MainForm.Field>
+              <MainForm.Field>
+                <RoomScheme />
+              </MainForm.Field>
               <Button type="submit">Submit</Button>
-            </FormField>
+            </MainForm>
           </Col>
         </Row>
       </Grid>

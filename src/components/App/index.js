@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Form from "../Form";
+import FormComponent from "../Form";
 import BookingForm from "../BookingForm";
 
 class App extends Component {
@@ -15,9 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.authorizedUser ? (
-          <BookingForm />
+          <BookingForm authorizedUser={this.state.authorizedUser} />
         ) : (
-          <Form setUser={this.setUser} />
+          <FormComponent setUser={this.setUser} />
         )}
       </div>
     );

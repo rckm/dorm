@@ -1,17 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import FormComponent from "../Form";
-import Dorms from "../Dorms";
 import { AppWrapper } from "./style";
 
-class App extends Component {
-  render() {
-    return (
-      <AppWrapper>
-        <FormComponent />
-        <Dorms />
-      </AppWrapper>
-    );
-  }
-}
+const App = () => {
+  return (
+    <AppWrapper>
+      <FormComponent />
+    </AppWrapper>
+  );
+};
 
 export default App;

@@ -6,17 +6,6 @@ import { Grid, Card, Image } from "semantic-ui-react";
 class Dorms extends Component {
   state = {};
 
-  // componentDidMount = () => {
-  //   this.props.api
-  //     .getRoom(1)
-  //     .then(res => {
-  //       console.log(res.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
-
   render() {
     return (
       <RoomWrapper>

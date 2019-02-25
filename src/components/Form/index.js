@@ -13,7 +13,7 @@ const FormComponent = props => {
             <h1 className="title">Form</h1>
             <Segment inverted>
               <Form inverted size="big" onSubmit={props.handleSubmit}>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Фамилия</label>
                   <input
                     required
@@ -24,7 +24,7 @@ const FormComponent = props => {
                     placeholder="Введите фамилию"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Имя</label>
                   <input
                     required
@@ -45,7 +45,7 @@ const FormComponent = props => {
                     placeholder="Введите отчество"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">ИИН</label>
                   <input
                     required
@@ -57,7 +57,7 @@ const FormComponent = props => {
                     placeholder="Введите ИИН"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Группа</label>
                   <input
                     required
@@ -68,7 +68,7 @@ const FormComponent = props => {
                     placeholder="Введите группу"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Адрес проживания</label>
                   <input
                     required
@@ -79,7 +79,7 @@ const FormComponent = props => {
                     placeholder="Улица, дом, квартира"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Номер телефона</label>
                   <input
                     required
@@ -91,7 +91,7 @@ const FormComponent = props => {
                     placeholder="87081231212"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Количество детей в семье</label>
                   <input
                     required
@@ -102,7 +102,7 @@ const FormComponent = props => {
                     placeholder="Введите количество детей в семье"
                   />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Номер комнаты</label>
                   <input
                     required
@@ -114,17 +114,18 @@ const FormComponent = props => {
                   />
                 </Form.Field>
                 <Form.Field
+                  className="gender"
                   onChange={props.handleSelect}
                   value={props.state.gender_id}
                   label="Пол"
-                  placeholder="Выберите пол"
                   control="select"
+                  required
                 >
-                  <option disabled value="" />
+                  <option disabled />
                   <option value="1">Мужской</option>
                   <option value="2">Женский</option>
                 </Form.Field>
-                <Form.Field>
+                <Form.Field required>
                   <label className="form-label">Дата заселения</label>
                   <input
                     required

@@ -7,7 +7,8 @@ export const FormStyle = styled.div`
     text-align: center;
     padding: 30px;
   }
-  .form-label {
+  .form-label,
+  .gender label {
     padding: 10px 10px 10px 0px;
   }
   .button {

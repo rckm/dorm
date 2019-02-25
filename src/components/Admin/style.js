@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const AdminPanel = styled.div`
+export const AdminComponent = styled.div`
   background-color: #fff;
 `;

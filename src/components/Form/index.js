@@ -5,19 +5,18 @@ import { FormStyle } from "./style";
 
 class FormComponent extends Component {
   state = {
-    UIN: ""
+    firstName: "",
+    secondName: "",
+    patronymic: "",
+    group: ""
   };
 
   handleSubmit = e => {
+    const { firstName, secondName, patronymic, group } = this.state;
+    alert(
+      `The user is ${secondName} ${firstName} ${patronymic} from ${group} group`
+    );
     e.preventDefault();
-    this.props.api
-      .getUserByUIN(this.state.UIN)
-      .then(res => {
-        this.props.setUser(res.data);
-      })
-      .catch(e => {
-        console.error(e.message);
-      });
   };
 
   handleChange = e => {
@@ -27,23 +26,65 @@ class FormComponent extends Component {
   };
 
   render() {
+    const { firstName, secondName, group } = this.state;
+    const validate =
+      firstName.length > 0 && secondName.length > 0 && group.length > 0;
+    const formReset = { type: "reset" };
     return (
       <FormStyle>
         <Grid container>
           <Grid.Row centered>
             <Grid.Column width={8}>
-              <h1 className="title">oqu dorm</h1>
+              <h1 className="title">Form</h1>
               <Segment inverted>
                 <Form inverted size="big" onSubmit={this.handleSubmit}>
                   <Form.Field>
-                    <label>ИИН</label>
+                    <label>Фамилия</label>
                     <input
-                      name="UIN"
+                      required
+                      value={this.state.secondName}
+                      type="text"
+                      name="secondName"
                       onChange={this.handleChange}
-                      placeholder="Введите ИИН"
+                      placeholder="Введите фамилию"
                     />
                   </Form.Field>
-                  <Button type="submit">Submit</Button>
+                  <Form.Field>
+                    <label>Имя</label>
+                    <input
+                      required
+                      value={this.state.firstName}
+                      type="text"
+                      name="firstName"
+                      onChange={this.handleChange}
+                      placeholder="Введите имя"
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Отчество</label>
+                    <input
+                      required
+                      value={this.state.patronymic}
+                      type="text"
+                      name="patronymic"
+                      onChange={this.handleChange}
+                      placeholder="Введите отчество"
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Группа</label>
+                    <input
+                      required
+                      value={this.state.group}
+                      type="text"
+                      name="group"
+                      onChange={this.handleChange}
+                      placeholder="Введите группу"
+                    />
+                  </Form.Field>
+                  <Button type="submit" disabled={!validate} {...formReset}>
+                    Отправить заявление
+                  </Button>
                 </Form>
               </Segment>
             </Grid.Column>

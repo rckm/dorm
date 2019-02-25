@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://oqu-dorm.herokuapp.com/api/",
+  baseURL: "",
   headers: {
     "Content-Type": "application/json"
   }
@@ -12,13 +12,13 @@ class API {
     this.api = instance;
   }
 
-  getUserByUIN = UIN => {
-    return this.api.get(`auth?uin=${UIN}`);
-  };
+  // getUserByUIN = UIN => {
+  //   return this.api.get(`auth?uin=${UIN}`);
+  // };
 
-  getDormInfo = () => {
-    return this.api.get(`db`);
-  };
+  // getDormInfo = () => {
+  //   return this.api.get(`db`);
+  // };
 }
 
 export default API;

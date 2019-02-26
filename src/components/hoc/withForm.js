@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAPI } from "../API";
+import { withoutFields } from "../../utils/util";
 
 const WithForm = WrappedComponent => {
   class WithForm extends Component {
@@ -14,23 +15,52 @@ const WithForm = WrappedComponent => {
       children: "",
       room_id: "",
       gender_id: "",
-      date_residence: ""
+      date_residence: "",
+      status_id: "",
+      dormDb: {}
     };
 
+    //* get from the api the dorm database info
+    componentDidMount() {
+      if (this.state.dormDb.length) return;
+
+      this.props.api
+        .getDormDb()
+        .then(res => {
+          this.setState({
+            dormDb: res.data
+          });
+        })
+        .catch(error => {
+          throw error;
+        });
+    }
+
+    //* handling for postring requests
     handleSubmit = () => {
-      this.props.api.postRequest(this.state);
+      const state = { ...this.state };
+      const values = withoutFields(state, "status_id", "dormDb");
+      this.props.api.postRequest(values);
     };
 
-    // handling for inputs
+    //* handling for posting reports
+    handleSubmitReport = () => {
+      const state = { ...this.state };
+      const values = withoutFields(state, "group", "dormDb");
+      this.props.api.postReport(values);
+    };
+
+    //* handling for inputs
     handleChange = e => {
       this.setState({
         [e.target.name]: e.target.value
       });
     };
-    // handling for select and options
+
+    //* handling for select and options
     handleSelect = e => {
       this.setState({
-        gender_id: e.target.value
+        [e.target.name]: e.target.value
       });
     };
 
@@ -41,6 +71,7 @@ const WithForm = WrappedComponent => {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           handleSelect={this.handleSelect}
+          handleSubmitReport={this.handleSubmitReport}
           {...this.props}
         />
       );

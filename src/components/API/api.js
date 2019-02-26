@@ -8,33 +8,49 @@ const instance = axios.create({
   }
 });
 
+instance.interceptors.request.use(config => {
+  const token = localStorage.getItem("sesstionUser");
+
+  if (!token) return config;
+  const newConfig = { ...config };
+  newConfig.headers.Token = token;
+  return newConfig;
+});
+
 class API {
   constructor() {
     this.api = instance;
   }
 
   //* get login and password of administrator
-
-  /**
-   * @param login
-   * @param password
-   */
   getAuth = (login, password) => {
     return this.api.get(`auth?login=${login}&password=${password}`);
   };
 
-  postRequest = values => {
-    const options = {
+  //* posting request to the server
+  postRequest = reqValues => {
+    const reqOptions = {
       headers: { "content-type": "application/x-www-form-urlencoded" }
     };
 
-    return this.api.post("/request", qs.stringify(values), options);
+    return this.api.post("/request", qs.stringify(reqValues), reqOptions);
+  };
+
+  //* posting reports to the server
+  postReport = repValues => {
+    const repOptions = {
+      headers: { "content-type": "application/x-www-form-urlencoded" }
+    };
+
+    return this.api.post("/report", qs.stringify(repValues), repOptions);
+  };
+
+  //* get dorm database
+  getDormDb = () => {
+    return this.api.get("/db");
   };
 
   //* get rooms of dorm
-  /**
-   * @param id
-   */
   getRoom = id => {
     return this.api.get(`room?id=${id}`);
   };

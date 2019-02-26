@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FormStyle = styled.div`
+  color: #000000;
   .title {
     font-size: 42px;
     text-transform: uppercase;
@@ -15,4 +16,16 @@ export const FormStyle = styled.div`
     margin: 10px 10px 10px 0px;
     padding: 15px;
   }
+  .ui.raised.segment,
+  .ui.raised.segments {
+    box-shadow: 0 10px 14px 0 rgba(34, 36, 38, 0.5),
+      0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  }
+  .ui.primary.button,
+  .ui.primary.buttons .button {
+    padding: 15px;
+  }
+  /* .ui.segment {
+    background: #e1e1e1;
+  } */
 `;

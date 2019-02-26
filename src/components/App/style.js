@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import bgImage from "../../static/Image13.jpg";
 
 export const AppWrapper = styled.div`
-  background-color: #b1b1b1;
-  height: 100%;
+  background: url(${bgImage}) no-repeat center;
+  background-size: cover;
+  min-height: 100%;
 `;

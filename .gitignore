@@ -5,8 +5,15 @@
 /.pnp
 .pnp.js
 
+public/
+src/
+
+.package.json
+
 # testing
 /coverage
+
+
 
 # misc
 .DS_Store

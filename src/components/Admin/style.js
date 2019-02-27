@@ -26,3 +26,15 @@ export const AdminPanelStyle = styled.div`
     padding: 15px;
   }
 `;
+
+export const AdminReportsStyle = styled.div`
+  background-color: inherit;
+`;
+
+export const AdminRequestsStyle = styled.div`
+  background-color: inherit;
+`;
+
+export const AdminDirectionStyle = styled.div`
+  background-color: inherit;
+`;

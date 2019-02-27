@@ -50,6 +50,16 @@ class API {
     return this.api.get("/db");
   };
 
+  //* get all reports
+  getReports = () => {
+    return this.api.get("/report");
+  };
+
+  //*get all request
+  getRequests = () => {
+    return this.api.get("/request");
+  };
+
   //* get rooms of dorm
   getRoom = id => {
     return this.api.get(`room?id=${id}`);

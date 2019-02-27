@@ -10,3 +10,17 @@ export function withoutFields(values, ...fields) {
 
   return newValues;
 }
+
+export const gender = {
+  1: "Мужской",
+  2: "Женский"
+};
+
+export function sortByKeys(obj) {
+  const keys = Object.keys(obj).sort();
+
+  return keys.reduce((acc, key) => {
+    acc[key] = obj[key];
+    return acc;
+  }, {});
+}

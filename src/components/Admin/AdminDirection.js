@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Segment, Form } from "semantic-ui-react";
+import { Button, Segment, Form, Icon } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import { findName } from "../../utils/util";
 import { AdminDirectionStyle } from "./style";
@@ -94,7 +94,7 @@ const AdminDirection = props => {
                 placeholder="87081231212"
               />
             </Form.Field>
-            <Form.Field required>
+            {/* <Form.Field required>
               <label className="form-label">Количество детей в семье</label>
               <input
                 required
@@ -104,7 +104,7 @@ const AdminDirection = props => {
                 onChange={props.handleChange}
                 placeholder="Введите количество детей в семье"
               />
-            </Form.Field>
+            </Form.Field> */}
             <Form.Field required>
               <label className="form-label">Номер комнаты</label>
               <input
@@ -141,17 +141,17 @@ const AdminDirection = props => {
                   })}
               </>
             </Form.Field>
-            <Form.Field required>
-              <label className="form-label">Дата заселения</label>
-              <input
-                required
-                value={props.state.date_residence}
-                type="date"
-                name="date_residence"
-                onChange={props.handleChange}
-              />
-            </Form.Field>
           </Form.Group>
+          <Form.Field required>
+            <label className="form-label">Дата заселения</label>
+            <input
+              required
+              value={props.state.date_residence}
+              type="date"
+              name="date_residence"
+              onChange={props.handleChange}
+            />
+          </Form.Field>
           <Form.Field required>
             <label className="form-label">Адрес проживания</label>
             <input
@@ -163,11 +163,22 @@ const AdminDirection = props => {
               placeholder="Улица, дом, квартира"
             />
           </Form.Field>
-          <Button primary type="submit">
-            Создать направление
+          <Button animated="fade" primary type="submit">
+            <Button.Content visible>Создать направление</Button.Content>
+            <Button.Content hidden>
+              <Icon name="upload" />
+            </Button.Content>
           </Button>
-          <Button secondary floated="right" onClick={props.handleLogout}>
-            Выйти
+          <Button
+            floated="right"
+            animated="fade"
+            secondary
+            onClick={props.handleLogout}
+          >
+            <Button.Content visible>Выйти</Button.Content>
+            <Button.Content hidden>
+              <Icon name="sign-out" />
+            </Button.Content>
           </Button>
         </Form>
       </Segment>

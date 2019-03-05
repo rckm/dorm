@@ -7,6 +7,10 @@ export const FormStyle = styled.div`
     text-transform: uppercase;
     text-align: center;
     padding: 30px;
+    border-bottom: 5px solid #ffffff;
+  }
+  .ui.grid > .row {
+    padding-bottom: 0px;
   }
   .form-label,
   .gender label {

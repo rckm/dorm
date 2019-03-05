@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid, Form, Segment, Icon } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
-import Dorms from "../Dorms";
+// import Dorms from "../Dorms";
 import { FormStyle } from "./style";
 
 const FormComponent = props => {
@@ -9,8 +9,8 @@ const FormComponent = props => {
     <FormStyle>
       <Grid>
         <Grid.Row centered>
-          <Grid.Column width={14}>
-            <h1 className="title">Form</h1>
+          <Grid.Column width={12}>
+            <h1 className="title">E-Dar</h1>
             <Segment raised>
               <Form size="big" onSubmit={props.handleSubmit}>
                 <Form.Group widths="equal">
@@ -59,7 +59,9 @@ const FormComponent = props => {
                       placeholder="Введите ИИН"
                     />
                   </Form.Field>
-                  <Form.Field required>
+                </Form.Group>
+                <Form.Group widths="equal">
+                  {/* <Form.Field required>
                     <label className="form-label">Группа</label>
                     <input
                       required
@@ -69,9 +71,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       placeholder="Введите группу"
                     />
-                  </Form.Field>
-                </Form.Group>
-                <Form.Group widths="equal">
+                  </Form.Field> */}
                   <Form.Field required>
                     <label className="form-label">Номер телефона</label>
                     <input
@@ -85,7 +85,7 @@ const FormComponent = props => {
                       placeholder="87081231212"
                     />
                   </Form.Field>
-                  <Form.Field required>
+                  {/* <Form.Field required>
                     <label className="form-label">
                       Количество детей в семье
                     </label>
@@ -97,7 +97,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       placeholder="Введите количество детей в семье"
                     />
-                  </Form.Field>
+                  </Form.Field> */}
                   <Form.Field required>
                     <label className="form-label">Номер комнаты</label>
                     <input
@@ -147,18 +147,18 @@ const FormComponent = props => {
                 <Button animated="fade" primary type="submit">
                   <Button.Content visible>Отправить заявление</Button.Content>
                   <Button.Content hidden>
-                    <Icon name="arrow right" />
+                    <Icon name="file alternate" />
                   </Button.Content>
                 </Button>
               </Form>
             </Segment>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        {/* <Grid.Row>
           <Grid.Column>
             <Dorms />
           </Grid.Column>
-        </Grid.Row>
+        </Grid.Row> */}
       </Grid>
     </FormStyle>
   );

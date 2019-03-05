@@ -5,7 +5,7 @@ import AdminDirections from "./AdminDirection";
 import { Grid } from "semantic-ui-react";
 import { AdminPanelStyle } from "./style";
 
-const AdminPanel = () => {
+const AdminPanel = props => {
   return (
     <AdminPanelStyle>
       <Grid>
@@ -26,8 +26,8 @@ const AdminPanel = () => {
         </Grid.Row>
         <Grid.Row centered>
           <Grid.Column width={14}>
-            <h1>Send direction</h1>
-            <AdminDirections />
+            <h1>Создать направление</h1>
+            <AdminDirections handleLogout={props.handleLogout} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

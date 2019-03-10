@@ -7,8 +7,8 @@ const WithAdmin = WrappedComponent => {
       login: "",
       password: "",
       user:
-        localStorage.getItem("sesstionUser") &&
-        localStorage.getItem("sesstionUser")
+        localStorage.getItem("sessionUser") &&
+        localStorage.getItem("sessionUser")
     };
 
     //*get password and login for administrator
@@ -19,7 +19,7 @@ const WithAdmin = WrappedComponent => {
           this.setState({
             user: res.data.token
           });
-          localStorage.setItem("sesstionUser", res.data.token);
+          localStorage.setItem("sessionUser", res.data.token);
         })
         .catch(error => {
           console.log(error);
@@ -28,7 +28,7 @@ const WithAdmin = WrappedComponent => {
 
     //* function of logout administrator
     handleLogout = () => {
-      localStorage.removeItem("sesstionUser");
+      localStorage.removeItem("sessionUser");
       this.setState({
         user: null
       });

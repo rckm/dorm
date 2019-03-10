@@ -24,7 +24,7 @@ class AdminReports extends Component {
       <AdminReportsStyle>
         <Grid.Row centered>
           <Grid.Column>
-            <h1>Reports</h1>
+            <h1>Направления</h1>
             <Segment loading={loaded}>
               <Table sortable size="large" celled>
                 <Table.Header fullWidth>

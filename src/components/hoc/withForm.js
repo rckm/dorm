@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 import { withAPI } from "../API";
 import { withoutFields } from "../../utils/util";
-
+const fields = {
+  name_f: "",
+  name_l: "",
+  patronymic: "",
+  uin: "",
+  group: "",
+  address: "",
+  phone: "",
+  children: "",
+  room_id: "",
+  gender_id: "",
+  date_residence: "",
+  status_id: ""
+};
 const WithForm = WrappedComponent => {
   class WithForm extends Component {
     state = {
@@ -18,6 +31,11 @@ const WithForm = WrappedComponent => {
       date_residence: "",
       status_id: "",
       dormDb: {}
+    };
+
+    //* reset form fields
+    resetForm = () => {
+      this.setState({ ...fields });
     };
 
     //* get from the api the dorm database info
@@ -41,6 +59,7 @@ const WithForm = WrappedComponent => {
       const state = { ...this.state };
       const values = withoutFields(state, "status_id", "dormDb");
       this.props.api.postRequest(values);
+      this.resetForm();
     };
 
     //* handling for posting reports
@@ -48,6 +67,7 @@ const WithForm = WrappedComponent => {
       const state = { ...this.state };
       const values = withoutFields(state, "group", "dormDb");
       this.props.api.postReport(values);
+      this.resetForm();
     };
 
     //* handling for inputs

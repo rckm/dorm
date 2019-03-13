@@ -1,10 +1,10 @@
 {
   "main.css": "/dorm/static/css/main.80006acb.chunk.css",
-  "main.js": "/dorm/static/js/main.8cfd0a96.chunk.js",
-  "main.js.map": "/dorm/static/js/main.8cfd0a96.chunk.js.map",
+  "main.js": "/dorm/static/js/main.2b053e24.chunk.js",
+  "main.js.map": "/dorm/static/js/main.2b053e24.chunk.js.map",
   "static/css/1.85fc6917.chunk.css": "/dorm/static/css/1.85fc6917.chunk.css",
-  "static/js/1.2974abdc.chunk.js": "/dorm/static/js/1.2974abdc.chunk.js",
-  "static/js/1.2974abdc.chunk.js.map": "/dorm/static/js/1.2974abdc.chunk.js.map",
+  "static/js/1.3b23e6fa.chunk.js": "/dorm/static/js/1.3b23e6fa.chunk.js",
+  "static/js/1.3b23e6fa.chunk.js.map": "/dorm/static/js/1.3b23e6fa.chunk.js.map",
   "runtime~main.js": "/dorm/static/js/runtime~main.47ba6fab.js",
   "runtime~main.js.map": "/dorm/static/js/runtime~main.47ba6fab.js.map",
   "static/media/semantic.min.css": "/dorm/static/media/brand-icons.a1a749e8.svg",
@@ -12,6 +12,6 @@
   "static/css/main.80006acb.chunk.css.map": "/dorm/static/css/main.80006acb.chunk.css.map",
   "static/css/1.85fc6917.chunk.css.map": "/dorm/static/css/1.85fc6917.chunk.css.map",
   "index.html": "/dorm/index.html",
-  "precache-manifest.f8ca7807b226a67af30a451ffe057801.js": "/dorm/precache-manifest.f8ca7807b226a67af30a451ffe057801.js",
+  "precache-manifest.fc01cc9ef0d0eebf73b9be7033df55fc.js": "/dorm/precache-manifest.fc01cc9ef0d0eebf73b9be7033df55fc.js",
   "service-worker.js": "/dorm/service-worker.js"
 }

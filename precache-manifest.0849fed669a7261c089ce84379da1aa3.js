@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "2b053e24c3faa8c41ceb",
-    "url": "/dorm/static/css/main.80006acb.chunk.css"
+    "revision": "81ff6354de8b50238a50",
+    "url": "/dorm/static/css/main.86178467.chunk.css"
   },
   {
     "revision": "a1a749e89f578a49306ec2b055c073da",
     "url": "/dorm/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "3b23e6fab6a64c4614c6",
-    "url": "/dorm/static/js/1.3b23e6fa.chunk.js"
+    "revision": "53ec15758a3ada5952bc",
+    "url": "/dorm/static/js/1.53ec1575.chunk.js"
   },
   {
     "revision": "47ba6fab703354e846c3",
@@ -32,10 +32,6 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/dorm/static/media/flags.9c74e172.png"
-  },
-  {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
     "url": "/dorm/static/media/outline-icons.701ae6ab.eot"
   },
@@ -44,8 +40,12 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "2b053e24c3faa8c41ceb",
-    "url": "/dorm/static/js/main.2b053e24.chunk.js"
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/dorm/static/media/flags.9c74e172.png"
+  },
+  {
+    "revision": "81ff6354de8b50238a50",
+    "url": "/dorm/static/js/main.81ff6354.chunk.js"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -84,11 +84,11 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "3b23e6fab6a64c4614c6",
-    "url": "/dorm/static/css/1.85fc6917.chunk.css"
+    "revision": "53ec15758a3ada5952bc",
+    "url": "/dorm/static/css/1.48f409ab.chunk.css"
   },
   {
-    "revision": "395cbdd2a92054cfa970d3ac0444b156",
+    "revision": "4f2958505d646d6170a9c6e884099b67",
     "url": "/dorm/index.html"
   }
 ];

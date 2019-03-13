@@ -9,7 +9,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(config => {
-  const token = localStorage.getItem("sesstionUser");
+  const token = localStorage.getItem("sessionUser");
 
   if (!token) return config;
   const newConfig = { ...config };

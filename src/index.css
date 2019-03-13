@@ -8,8 +8,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body,
+.ui.fullscreen.modal {
+  left: auto !important;
+}
+
+/* body,
 html,
 #root {
   height: 100%;
-}
+} */

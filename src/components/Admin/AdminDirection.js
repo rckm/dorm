@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Segment, Form } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import { findName } from "../../utils/util";
 import { AdminDirectionStyle } from "./style";
 
 const AdminDirection = props => {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
   return (
     <AdminDirectionStyle>
       <Segment raised>
@@ -163,12 +165,12 @@ const AdminDirection = props => {
               placeholder="Улица, дом, квартира"
             />
           </Form.Field>
-          <Button primary type="submit">
+          <Button onClick={close} primary type="submit">
             Создать направление
           </Button>
-          <Button secondary floated="right" onClick={props.handleLogout}>
+          {/* <Button secondary floated="right" onClick={props.handleLogout}>
             Выйти
-          </Button>
+          </Button> */}
         </Form>
       </Segment>
     </AdminDirectionStyle>

@@ -1,7 +1,6 @@
 import React from "react";
 import AdminReports from "./AdminReports";
 import AdminRequests from "./AdminRequests";
-import AdminDirections from "./AdminDirection";
 import { Grid } from "semantic-ui-react";
 import { AdminPanelStyle } from "./style";
 
@@ -11,7 +10,7 @@ const AdminPanel = props => {
       <Grid>
         <Grid.Row centered>
           <Grid.Column width={6}>
-            <h1 className="title">Admin panel</h1>
+            <h1 className="title">Панель Администратора</h1>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered>
@@ -21,13 +20,7 @@ const AdminPanel = props => {
         </Grid.Row>
         <Grid.Row centered>
           <Grid.Column width={14}>
-            <AdminRequests />
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row centered>
-          <Grid.Column width={14}>
-            <h1>Send direction</h1>
-            <AdminDirections handleLogout={props.handleLogout} />
+            <AdminRequests handleLogout={props.handleLogout} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

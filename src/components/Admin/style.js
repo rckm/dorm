@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const AdminComponent = styled.div`
   background-color: #b1b1b1;
-  height: 101.5vh;
+  height: 100vh;
   .form {
     padding-top: 50%;
   }
 `;
 
 export const AdminPanelStyle = styled.div`
-  height: 100%;
+  height: 100vh;
   .title {
     font-size: 42px;
     text-transform: uppercase;

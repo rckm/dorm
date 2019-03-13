@@ -1,50 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Grid, Form, Segment, Icon } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
+import FirstDorm from "../Dorms/FirstDorm";
 import { FormStyle } from "./style";
 
 const FormComponent = props => {
+  const [currentDorm, setCurrentDorm] = useState(null);
   return (
     <FormStyle>
       <Grid>
         <Grid.Row centered>
           <Grid.Column width={14}>
-            <h1 className="title">Form</h1>
+            <h1 className="title">Dorm</h1>
             <Segment raised>
               <Form size="big" onSubmit={props.handleSubmit}>
                 <Form.Group widths="equal">
                   <Form.Field required>
                     <label className="form-label">Фамилия</label>
                     <input
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
                       variant="outlined"
                       required
                       value={props.state.name_l}
                       type="text"
                       name="name_l"
                       onChange={props.handleChange}
-                      placeholder="Введите фамилию"
+                      placeholder="Заглавная буква,кириллица"
                     />
                   </Form.Field>
                   <Form.Field required>
                     <label className="form-label">Имя</label>
                     <input
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
                       required
                       value={props.state.name_f}
                       type="text"
                       name="name_f"
                       onChange={props.handleChange}
-                      placeholder="Введите имя"
+                      placeholder="Заглавная буква,кириллица"
                     />
                   </Form.Field>
                   <Form.Field>
                     <label className="form-label">Отчество</label>
                     <input
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
                       value={props.state.patronymic}
                       type="text"
                       name="patronymic"
                       onChange={props.handleChange}
-                      placeholder="Введите отчество"
+                      placeholder="Заглавная буква,кириллица"
                     />
                   </Form.Field>
                   <Form.Field required>
@@ -56,18 +61,19 @@ const FormComponent = props => {
                       name="uin"
                       maxLength="12"
                       onChange={props.handleChange}
-                      placeholder="Введите ИИН"
+                      placeholder="Только цифры"
                     />
                   </Form.Field>
                   <Form.Field required>
                     <label className="form-label">Группа</label>
                     <input
+                      pattern="[\-А-ЯЁ0-9 ]{2,12}$"
                       required
                       value={props.state.group}
                       type="text"
                       name="group"
                       onChange={props.handleChange}
-                      placeholder="Введите группу"
+                      placeholder="С заглавной буквы, кириллица"
                     />
                   </Form.Field>
                 </Form.Group>
@@ -82,7 +88,7 @@ const FormComponent = props => {
                       name="phone"
                       maxLength="11"
                       onChange={props.handleChange}
-                      placeholder="87081231212"
+                      placeholder="Начиная с 8"
                     />
                   </Form.Field>
                   <Form.Field required>
@@ -95,7 +101,6 @@ const FormComponent = props => {
                       type="number"
                       name="children"
                       onChange={props.handleChange}
-                      placeholder="Введите количество детей в семье"
                     />
                   </Form.Field>
                   <Form.Field required>
@@ -156,7 +161,11 @@ const FormComponent = props => {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <Dorms />
+            {currentDorm ? (
+              <FirstDorm setCurrentDorm={setCurrentDorm} />
+            ) : (
+              <Dorms setCurrentDorm={setCurrentDorm} />
+            )}
           </Grid.Column>
         </Grid.Row>
       </Grid>

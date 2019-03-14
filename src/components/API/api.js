@@ -30,7 +30,9 @@ class API {
   //* posting request to the server
   postRequest = reqValues => {
     const reqOptions = {
-      headers: { "content-type": "application/x-www-form-urlencoded" }
+      headers: {
+        "content-type": "application/x-www-form-urlencoded"
+      }
     };
 
     return this.api.post("/request", qs.stringify(reqValues), reqOptions);

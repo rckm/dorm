@@ -14,12 +14,12 @@ const AdminPanel = props => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered>
-          <Grid.Column width={14}>
+          <Grid.Column width={15}>
             <AdminReports />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered>
-          <Grid.Column width={14}>
+          <Grid.Column computer={15}>
             <AdminRequests handleLogout={props.handleLogout} />
           </Grid.Column>
         </Grid.Row>

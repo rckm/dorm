@@ -27,8 +27,8 @@ class AdminReports extends Component {
             <h1>Направления</h1>
             {!loaded ? (
               <Segment loading={loaded}>
-                <Table sortable size="large" celled>
-                  <Table.Header fullWidth>
+                <Table size="large" celled>
+                  <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell>Фамилия</Table.HeaderCell>
                       <Table.HeaderCell>Имя</Table.HeaderCell>
@@ -69,14 +69,27 @@ class AdminReports extends Component {
                 </Table>
               </Segment>
             ) : (
-              <div
-                style={{
-                  textAlign: "center",
-                  fontSize: "26px"
-                }}
-              >
-                Пусто.
-              </div>
+              <Segment loading={loaded}>
+                <Table>
+                  <Table.Header>
+                    <Table.Row>
+                      <Table.HeaderCell>Фамилия</Table.HeaderCell>
+                      <Table.HeaderCell>Имя</Table.HeaderCell>
+                      <Table.HeaderCell>Отчество</Table.HeaderCell>
+                      <Table.HeaderCell>Пол</Table.HeaderCell>
+                      <Table.HeaderCell>ИИН</Table.HeaderCell>
+                      <Table.HeaderCell>Адрес проживания</Table.HeaderCell>
+                      <Table.HeaderCell>Телефон</Table.HeaderCell>
+                      <Table.HeaderCell>Сколько детей в семье</Table.HeaderCell>
+                      <Table.HeaderCell>
+                        Дата начала проживания
+                      </Table.HeaderCell>
+                      <Table.HeaderCell>Номер комнаты</Table.HeaderCell>
+                      <Table.HeaderCell>Статус</Table.HeaderCell>
+                    </Table.Row>
+                  </Table.Header>
+                </Table>
+              </Segment>
             )}
           </Grid.Column>
         </Grid.Row>

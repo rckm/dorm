@@ -30,6 +30,19 @@ const WithForm = WrappedComponent => {
       gender_id: "",
       date_residence: "",
       status_id: "",
+      parents: "",
+      mother: {
+        name_l: "",
+        name_f: "",
+        patronymic: "",
+        phone: ""
+      },
+      father: {
+        name_l: "",
+        name_f: "",
+        patronymic: "",
+        phone: ""
+      },
       dormDb: {}
     };
 
@@ -77,6 +90,11 @@ const WithForm = WrappedComponent => {
       });
     };
 
+    //* handling for mother and father inputs
+    handleParentsChange = callback => {
+      this.setState(callback);
+    };
+
     //* handling for select and options
     handleSelect = e => {
       this.setState({
@@ -91,6 +109,7 @@ const WithForm = WrappedComponent => {
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           handleSelect={this.handleSelect}
+          handleParentsChange={this.handleParentsChange}
           handleSubmitReport={this.handleSubmitReport}
           {...this.props}
         />

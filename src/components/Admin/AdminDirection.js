@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Segment, Form } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import { findName } from "../../utils/util";
 import { AdminDirectionStyle } from "./style";
 
 const AdminDirection = props => {
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
   return (
     <AdminDirectionStyle>
       <Segment raised>
@@ -16,7 +14,7 @@ const AdminDirection = props => {
               <label className="form-label">Фамилия</label>
               <input
                 required
-                value={props.state.name_l}
+                value={props.openCurrentField.name_l}
                 type="text"
                 name="name_l"
                 onChange={props.handleChange}
@@ -27,7 +25,7 @@ const AdminDirection = props => {
               <label className="form-label">Имя</label>
               <input
                 required
-                value={props.state.name_f}
+                value={props.openCurrentField.name_f}
                 type="text"
                 name="name_f"
                 onChange={props.handleChange}
@@ -37,18 +35,19 @@ const AdminDirection = props => {
             <Form.Field>
               <label className="form-label">Отчество</label>
               <input
-                value={props.state.patronymic}
+                value={props.openCurrentField.patronymic}
                 type="text"
                 name="patronymic"
                 onChange={props.handleChange}
                 placeholder="Введите отчество"
               />
             </Form.Field>
+
             <Form.Field required>
               <label className="form-label">ИИН</label>
               <input
                 required
-                value={props.state.uin}
+                value={props.openCurrentField.uin}
                 type="text"
                 name="uin"
                 maxLength="12"
@@ -165,7 +164,7 @@ const AdminDirection = props => {
               placeholder="Улица, дом, квартира"
             />
           </Form.Field>
-          <Button onClick={close} primary type="submit">
+          <Button primary type="submit">
             Создать направление
           </Button>
           {/* <Button secondary floated="right" onClick={props.handleLogout}>

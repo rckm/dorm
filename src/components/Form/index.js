@@ -7,14 +7,25 @@ import { FormStyle } from "./style";
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
+
+  function handleParentsChange(e) {
+    const { value } = e.target;
+    props.handleParentsChange(state => ({
+      ...state,
+      mother: {
+        ...state.mother,
+        name_l: value
+      }
+    }));
+  }
   return (
     <FormStyle>
       <Grid>
         <Grid.Row centered>
-          <Grid.Column width={14}>
+          <Grid.Column computer={14} mobile={10}>
             <h1 className="title">Dorm</h1>
             <Segment raised>
-              <Form size="big" onSubmit={props.handleSubmit}>
+              <Form size="large" onSubmit={props.handleSubmit}>
                 <Form.Group widths="equal">
                   <Form.Field required>
                     <label className="form-label">Фамилия</label>
@@ -149,6 +160,109 @@ const FormComponent = props => {
                     placeholder="Улица, дом, квартира"
                   />
                 </Form.Field>
+                <Form.Field
+                  name="parents"
+                  onChange={props.handleChange}
+                  value={props.state.parents}
+                  label="Родители"
+                  control="select"
+                >
+                  <option value="">Нет</option>
+                  <option value="both">Оба</option>
+                  <option value="mother">Мама</option>
+                  <option value="father">Папа</option>
+                </Form.Field>
+                <Form.Group>
+                  {(props.state.parents === "mother" ||
+                    props.state.parents === "both") && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Фамилия</label>
+                        <input
+                          name="mother.name_l"
+                          value={props.state.mother.name_l || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Фамилия матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
+                        <input
+                          name="mother.name_f"
+                          value={props.state.mother.name_f || ""}
+                          onChange={e =>
+                            props.handleParentsChange(state => ({
+                              ...state,
+                              mother: {
+                                ...state.mother,
+                                name_f: e.target.value
+                              }
+                            }))
+                          }
+                          placeholder="Имя матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Отчество</label>
+                        <input
+                          name="mother.patronymic"
+                          value={props.state.mother.patronymic || ""}
+                          onChange={e =>
+                            props.handleParentsChange(state => ({
+                              ...state,
+                              mother: {
+                                ...state.mother,
+                                patronymic: e.target.value
+                              }
+                            }))
+                          }
+                          placeholder="Отчество матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Номер телефона</label>
+                        <input
+                          name="mother.phone"
+                          value={props.state.mother.phone || ""}
+                          onChange={e =>
+                            props.handleParentsChange(state => ({
+                              ...state,
+                              mother: { ...state.mother, phone: e.target.value }
+                            }))
+                          }
+                          placeholder="Номер телефона матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
+                </Form.Group>
+                <Form.Group>
+                  {(props.state.parents === "father" ||
+                    props.state.parents === "both") && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Фамилия</label>
+                        <input placeholder="Фамилия отца" type="text" />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
+                        <input placeholder="Имя отца" type="text" />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Отчество</label>
+                        <input placeholder="Отчество отца" type="text" />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Номер телефона</label>
+                        <input placeholder="Номер телефона отца" type="text" />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
+                </Form.Group>
                 <Button animated="fade" primary type="submit">
                   <Button.Content visible>Отправить заявление</Button.Content>
                   <Button.Content hidden>

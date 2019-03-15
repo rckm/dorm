@@ -10,11 +10,12 @@ const FormComponent = props => {
 
   function handleParentsChange(e) {
     const { value } = e.target;
+    const [parentType, name] = e.target.name.split(".");
     props.handleParentsChange(state => ({
       ...state,
-      mother: {
-        ...state.mother,
-        name_l: value
+      [parentType]: {
+        ...state[parentType],
+        [name]: value
       }
     }));
   }
@@ -191,15 +192,7 @@ const FormComponent = props => {
                         <input
                           name="mother.name_f"
                           value={props.state.mother.name_f || ""}
-                          onChange={e =>
-                            props.handleParentsChange(state => ({
-                              ...state,
-                              mother: {
-                                ...state.mother,
-                                name_f: e.target.value
-                              }
-                            }))
-                          }
+                          onChange={handleParentsChange}
                           placeholder="Имя матери"
                           type="text"
                         />
@@ -209,15 +202,7 @@ const FormComponent = props => {
                         <input
                           name="mother.patronymic"
                           value={props.state.mother.patronymic || ""}
-                          onChange={e =>
-                            props.handleParentsChange(state => ({
-                              ...state,
-                              mother: {
-                                ...state.mother,
-                                patronymic: e.target.value
-                              }
-                            }))
-                          }
+                          onChange={handleParentsChange}
                           placeholder="Отчество матери"
                           type="text"
                         />
@@ -227,12 +212,7 @@ const FormComponent = props => {
                         <input
                           name="mother.phone"
                           value={props.state.mother.phone || ""}
-                          onChange={e =>
-                            props.handleParentsChange(state => ({
-                              ...state,
-                              mother: { ...state.mother, phone: e.target.value }
-                            }))
-                          }
+                          onChange={handleParentsChange}
                           placeholder="Номер телефона матери"
                           type="text"
                         />
@@ -246,19 +226,42 @@ const FormComponent = props => {
                     <React.Fragment>
                       <Form.Field>
                         <label>Фамилия</label>
-                        <input placeholder="Фамилия отца" type="text" />
+                        <input 
+                        name="father.name_l"
+                        value={props.state.father.name_l || ""}
+                        onChange={handleParentsChange}
+                        placeholder="Фамилия отца"
+                        type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label>Имя</label>
-                        <input placeholder="Имя отца" type="text" />
+                        <input 
+                          name="father.name_f"
+                          value={props.state.father.name_f || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Имя отца"
+                          type="text"
+                          />
                       </Form.Field>
                       <Form.Field>
                         <label>Отчество</label>
-                        <input placeholder="Отчество отца" type="text" />
+                        <input 
+                          name="father.patronymic"
+                          value={props.state.father.patronymic || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Отчество отца"
+                          type="text"
+                          />
                       </Form.Field>
                       <Form.Field>
                         <label>Номер телефона</label>
-                        <input placeholder="Номер телефона отца" type="text" />
+                        <input 
+                          name="father.phone"
+                          value={props.state.father.phone || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Номер телефона отца"
+                          type="text"
+                          />
                       </Form.Field>
                     </React.Fragment>
                   )}

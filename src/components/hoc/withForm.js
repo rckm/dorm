@@ -12,6 +12,19 @@ const fields = {
   children: "",
   room_id: "",
   gender_id: "",
+  parents: "",
+  mother: {
+    name_l: "",
+    name_f: "",
+    patronymic: "",
+    phone: ""
+  },
+  father: {
+    name_l: "",
+    name_f: "",
+    patronymic: "",
+    phone: ""
+  },
   date_residence: "",
   status_id: ""
 };
@@ -67,10 +80,17 @@ const WithForm = WrappedComponent => {
         });
     }
 
-    //* handling for postring requests
+    //* handling for posting requests
     handleSubmit = () => {
       const state = { ...this.state };
-      const values = withoutFields(state, "status_id", "dormDb");
+      const values = withoutFields(
+        state,
+        "status_id",
+        "dormDb",
+        "parents"
+        // "mother",
+        // "father"
+      );
       this.props.api.postRequest(values);
       this.resetForm();
     };
@@ -78,7 +98,14 @@ const WithForm = WrappedComponent => {
     //* handling for posting reports
     handleSubmitReport = () => {
       const state = { ...this.state };
-      const values = withoutFields(state, "group", "dormDb");
+      const values = withoutFields(
+        state,
+        "group",
+        "dormDb",
+        "parents",
+        "mother",
+        "father"
+      );
       this.props.api.postReport(values);
       this.resetForm();
     };

@@ -87,7 +87,7 @@ const AdminDirection = props => {
               <input
                 required
                 pattern="((\+7)|[8])7[0-9]{9}$"
-                value={props.state.phone}
+                value={props.openCurrentField.phone}
                 type="text"
                 name="phone"
                 maxLength="11"
@@ -99,7 +99,7 @@ const AdminDirection = props => {
               <label className="form-label">Количество детей в семье</label>
               <input
                 required
-                value={props.state.children}
+                value={props.openCurrentField.children}
                 type="number"
                 name="children"
                 onChange={props.handleChange}
@@ -110,7 +110,7 @@ const AdminDirection = props => {
               <label className="form-label">Номер комнаты</label>
               <input
                 required
-                value={props.state.room_id}
+                value={props.openCurrentField.room_id}
                 type="number"
                 name="room_id"
                 onChange={props.handleChange}
@@ -121,7 +121,7 @@ const AdminDirection = props => {
               className="gender"
               name="gender_id"
               onChange={props.handleSelect}
-              value={props.state.gender_id}
+              value={props.openCurrentField.gender_id}
               label="Пол"
               control="select"
               required
@@ -146,7 +146,7 @@ const AdminDirection = props => {
               <label className="form-label">Дата заселения</label>
               <input
                 required
-                value={props.state.date_residence}
+                value={props.openCurrentField.date_residence}
                 type="date"
                 name="date_residence"
                 onChange={props.handleChange}
@@ -157,7 +157,7 @@ const AdminDirection = props => {
             <label className="form-label">Адрес проживания</label>
             <input
               required
-              value={props.state.address}
+              value={props.openCurrentField.address}
               type="text"
               name="address"
               onChange={props.handleChange}

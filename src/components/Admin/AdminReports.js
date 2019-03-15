@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Grid, Table, Checkbox, Segment } from "semantic-ui-react";
 import { withAPI } from "../API";
-import { AdminReportsStyle } from "./style";
 import { gender } from "../../utils/util";
+
+import { AdminReportsStyle } from "./style";
 
 class AdminReports extends Component {
   state = {

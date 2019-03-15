@@ -2,6 +2,7 @@ import React from "react";
 import AdminReports from "./AdminReports";
 import AdminRequests from "./AdminRequests";
 import { Grid } from "semantic-ui-react";
+
 import { AdminPanelStyle } from "./style";
 
 const AdminPanel = props => {

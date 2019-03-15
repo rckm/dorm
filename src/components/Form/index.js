@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Grid, Form, Segment, Icon } from "semantic-ui-react";
+import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm";
@@ -7,7 +7,7 @@ import { FormStyle } from "./style";
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
-
+  
   function handleParentsChange(e) {
     const { value } = e.target;
     const [parentType, name] = e.target.name.split(".");
@@ -26,7 +26,7 @@ const FormComponent = props => {
           <Grid.Column computer={14} mobile={10}>
             <h1 className="title">Dorm</h1>
             <Segment raised>
-              <Form size="large" onSubmit={props.handleSubmit}>
+              <Form success={props.state.responseStatus === 200 || props.state.responseStatus === 201} error={props.state.responseStatus === 400 || props.state.responseStatus === 401} size="large" onSubmit={props.handleSubmit}>
                 <Form.Group widths="equal">
                   <Form.Field required>
                     <label className="form-label">Фамилия</label>
@@ -266,6 +266,7 @@ const FormComponent = props => {
                     </React.Fragment>
                   )}
                 </Form.Group>
+                <Message success header="Форма отправлена успешно"/>
                 <Button animated="fade" primary type="submit">
                   <Button.Content visible>Отправить заявление</Button.Content>
                   <Button.Content hidden>

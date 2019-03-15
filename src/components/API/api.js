@@ -67,9 +67,19 @@ class API {
     return this.api.get("/request");
   };
 
-  //* get rooms of dorm
-  getRoom = id => {
-    return this.api.get(`room?id=${id}`);
+  //* get autocompleted word document of request
+  getRequestDocument = ( name_f, name_l, patronymic, gender_id, address, phone, room_id, children, date_residence, group) => {
+    return this.props.get(`/doc/request?
+    name_f=${name_f}
+    &name_l=${name_l}
+    &patronymic=${patronymic}
+    &gender_id=${gender_id}
+    &address=${address}
+    &phone=${phone}
+    &room_id=${room_id}
+    &children=${children}
+    &date_residence=${date_residence}
+    &group=${group}`);
   };
 }
 

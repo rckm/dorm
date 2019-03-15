@@ -43,6 +43,7 @@ const WithForm = WrappedComponent => {
       gender_id: "",
       date_residence: "",
       status_id: "",
+      responseStatus: "",
       parents: "",
       mother: {
         name_l: "",
@@ -88,10 +89,13 @@ const WithForm = WrappedComponent => {
         "status_id",
         "dormDb",
         "parents"
-        // "mother",
-        // "father"
       );
-      this.props.api.postRequest(values);
+      this.props.api.postRequest(values)
+      .then(res => {
+        this.setState({
+          responseStatus: res.status
+        })
+      })
       this.resetForm();
     };
 
@@ -103,8 +107,6 @@ const WithForm = WrappedComponent => {
         "group",
         "dormDb",
         "parents",
-        "mother",
-        "father"
       );
       this.props.api.postReport(values);
       this.resetForm();

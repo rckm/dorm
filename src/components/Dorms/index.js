@@ -28,14 +28,14 @@ class Dorms extends Component {
                   raised
                   color="yellow"
                   image="https://react.semantic-ui.com/images/wireframe/image.png"
-                  href="#"
+                  onClick={() => this.props.setCurrentDorm(2)}
                   meta="г. Караганда, ул. Академическая 5"
                 />
                 <Card
                   raised
                   color="yellow"
                   image="https://react.semantic-ui.com/images/wireframe/image.png"
-                  href="#"
+                  onClick={() => this.props.setCurrentDorm(3)}
                   meta="г. Караганда, ул. Академическая 5"
                 />
               </Card.Group>

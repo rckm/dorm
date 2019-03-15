@@ -1,15 +1,32 @@
 import React, { Component } from "react";
 import { Grid, Table, Segment, Modal, Button, Header } from "semantic-ui-react";
 import { withAPI } from "../API";
-import AdminDirection from "./AdminDirection";
-import { AdminRequestsStyle } from "./style";
 import { gender } from "../../utils/util";
+import AdminDirection from "./AdminDirection";
+
+import { AdminRequestsStyle } from "./style";
 
 class AdminRequests extends Component {
   state = {
     requests: [],
-    openCurrentField: null
+    openCurrentField: null,
+    currentDataToDocument: null
   };
+
+  getRequestDocument = () => {
+    return this.props.api.getRequestDocument(
+      this.state.currentDataToDocument.name_f,
+      this.state.currentDataToDocument.name_l,
+      this.state.currentDataToDocument.patronymic,
+      this.state.currentDataToDocument.gender_id,
+      this.state.currentDataToDocument.address,
+      this.state.currentDataToDocument.phone,
+      this.state.currentDataToDocument.room_id,
+      this.state.currentDataToDocument.children,
+      this.state.currentDataToDocument.date_residence,
+      this.state.currentDataToDocument.group,
+    )
+  }
 
   componentDidMount = () => {
     this.props.api
@@ -57,6 +74,7 @@ class AdminRequests extends Component {
                       </Table.HeaderCell>
                       <Table.HeaderCell>Номер комнаты</Table.HeaderCell>
                       <Table.HeaderCell>Направление</Table.HeaderCell>
+                      <Table.HeaderCell>Скачать</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
@@ -101,6 +119,9 @@ class AdminRequests extends Component {
                                 />
                               </Modal.Content>
                             </Modal>
+                          </Table.Cell>
+                          <Table.Cell>
+                            <Button onClick={this.getRequestDocument}>Скачать направление</Button>
                           </Table.Cell>
                         </Table.Row>
                       );

@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, Segment, Form } from "semantic-ui-react";
-import WithForm from "../hoc/withForm";
 import { findName } from "../../utils/util";
+import WithForm from "../hoc/withForm";
+
 import { AdminDirectionStyle } from "./style";
 
 const AdminDirection = props => {

@@ -100,13 +100,7 @@ class API {
     group
   ) => {
     return this.api.get(
-      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`,
-      {
-        headers: {
-          mother: "213",
-          father: "12312"
-        }
-      }
+      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`
     );
   };
 }

@@ -111,7 +111,7 @@ const AdminDirection = props => {
               <label className="form-label">Номер комнаты</label>
               <input
                 required
-                value={props.openCurrentField.room_id}
+                value={props.openCurrentField.number}
                 type="number"
                 name="room_id"
                 onChange={props.handleChange}

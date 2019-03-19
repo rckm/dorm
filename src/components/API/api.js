@@ -4,7 +4,7 @@ import qs from "querystring";
 const instance = axios.create({
   baseURL: "https://dorm-keu.herokuapp.com/api",
   headers: {
-    'content-type': "application/x-www-form-urlencoded",
+    "content-type": "application/x-www-form-urlencoded"
   }
 });
 
@@ -22,6 +22,9 @@ class API {
     this.api = instance;
   }
 
+  mother = null;
+  father = null;
+
   //* get login and password of administrator
   getAuth = (login, password) => {
     return this.api.get(`auth?login=${login}&password=${password}`);
@@ -31,11 +34,27 @@ class API {
   postRequest = reqValues => {
     const reqOptions = {
       headers: {
-        'content-type': "application/x-www-form-urlencoded",
-        'mother':
-          '{ "name_f":"' + encodeURI(reqValues.mother.name_f) + '","name_l":"' + encodeURI(reqValues.mother.name_l) + '",  "patronymic":"' + encodeURI(reqValues.mother.patronymic) + '", "phone":"' + encodeURI(reqValues.mother.phone) + '"}',
-        'father':
-          '{ "name_f":"' + encodeURI(reqValues.father.name_f) + '","name_l":"' + encodeURI(reqValues.father.name_l) + '",  "patronymic":"' + encodeURI(reqValues.father.patronymic) + '", "phone":"' + encodeURI(reqValues.father.phone) + '"}'
+        "content-type": "application/x-www-form-urlencoded",
+        mother:
+          '{ "name_f":"' +
+          encodeURI(reqValues.mother.name_f) +
+          '","name_l":"' +
+          encodeURI(reqValues.mother.name_l) +
+          '",  "patronymic":"' +
+          encodeURI(reqValues.mother.patronymic) +
+          '", "phone":"' +
+          encodeURI(reqValues.mother.phone) +
+          '"}',
+        father:
+          '{ "name_f":"' +
+          encodeURI(reqValues.father.name_f) +
+          '","name_l":"' +
+          encodeURI(reqValues.father.name_l) +
+          '",  "patronymic":"' +
+          encodeURI(reqValues.father.patronymic) +
+          '", "phone":"' +
+          encodeURI(reqValues.father.phone) +
+          '"}'
       }
     };
     return this.api.post("/request", qs.stringify(reqValues), reqOptions);
@@ -68,18 +87,27 @@ class API {
   };
 
   //* get autocompleted word document of request
-  getRequestDocument = ( name_f, name_l, patronymic, gender_id, address, phone, room_id, children, date_residence, group) => {
-    return this.props.get(`/doc/request?
-    name_f=${name_f}
-    &name_l=${name_l}
-    &patronymic=${patronymic}
-    &gender_id=${gender_id}
-    &address=${address}
-    &phone=${phone}
-    &room_id=${room_id}
-    &children=${children}
-    &date_residence=${date_residence}
-    &group=${group}`);
+  getRequestDocument = (
+    name_f,
+    name_l,
+    patronymic,
+    gender_id,
+    address,
+    phone,
+    room_id,
+    children,
+    date_residence,
+    group
+  ) => {
+    return this.api.get(
+      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`,
+      {
+        headers: {
+          mother: "213",
+          father: "12312"
+        }
+      }
+    );
   };
 }
 

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
 import { Grid, Table, Segment, Modal, Button, Header } from "semantic-ui-react";
 import { withAPI } from "../API";
@@ -5,6 +7,12 @@ import { gender } from "../../utils/util";
 import AdminDirection from "./AdminDirection";
 
 import { AdminRequestsStyle } from "./style";
+
+const DownloadDoc = props => {
+  return (
+    <Button onClick={props.getRequestDocument}>Скачать направление</Button>
+  );
+};
 
 class AdminRequests extends Component {
   state = {
@@ -14,19 +22,26 @@ class AdminRequests extends Component {
   };
 
   getRequestDocument = () => {
-    return this.props.api.getRequestDocument(
-      this.state.currentDataToDocument.name_f,
-      this.state.currentDataToDocument.name_l,
-      this.state.currentDataToDocument.patronymic,
-      this.state.currentDataToDocument.gender_id,
-      this.state.currentDataToDocument.address,
-      this.state.currentDataToDocument.phone,
-      this.state.currentDataToDocument.room_id,
-      this.state.currentDataToDocument.children,
-      this.state.currentDataToDocument.date_residence,
-      this.state.currentDataToDocument.group,
-    )
-  }
+    return this.props.api
+      .getRequestDocument(
+        this.state.currentDataToDocument.name_f,
+        this.state.currentDataToDocument.name_l,
+        this.state.currentDataToDocument.patronymic,
+        this.state.currentDataToDocument.gender_id,
+        this.state.currentDataToDocument.address,
+        this.state.currentDataToDocument.phone,
+        this.state.currentDataToDocument.number,
+        this.state.currentDataToDocument.children,
+        this.state.currentDataToDocument.date_residence,
+        this.state.currentDataToDocument.group
+      )
+      .then(res => {
+        window.open(res.config.url);
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
 
   componentDidMount = () => {
     this.props.api
@@ -121,7 +136,31 @@ class AdminRequests extends Component {
                             </Modal>
                           </Table.Cell>
                           <Table.Cell>
-                            <Button onClick={this.getRequestDocument}>Скачать направление</Button>
+                            <Modal
+                              dimmer="blurring"
+                              size="mini"
+                              trigger={
+                                <Button
+                                  onClick={() => {
+                                    this.setState({
+                                      currentDataToDocument: value
+                                    });
+                                  }}
+                                >
+                                  Открыть направление
+                                </Button>
+                              }
+                            >
+                              <Header
+                                icon="file outline"
+                                content="Скачать направление"
+                              />
+                              <Modal.Content>
+                                <DownloadDoc
+                                  getRequestDocument={this.getRequestDocument}
+                                />
+                              </Modal.Content>
+                            </Modal>
                           </Table.Cell>
                         </Table.Row>
                       );

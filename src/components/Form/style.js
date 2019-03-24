@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const FormStyle = styled.div`
-  color: #000000;
   .title {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    text-shadow: #000 2px 2px 4px;
     font-size: 42px;
     text-transform: uppercase;
     text-align: center;
@@ -11,6 +13,7 @@ export const FormStyle = styled.div`
   .form-label,
   .gender label {
     padding: 10px 10px 10px 0px;
+    font-family: "Roboto", sans-serif;
   }
   .button {
     margin: 10px 10px 10px 0px;
@@ -25,7 +28,4 @@ export const FormStyle = styled.div`
   .ui.primary.buttons .button {
     padding: 15px;
   }
-  /* .ui.segment {
-    background: #e1e1e1;
-  } */
 `;

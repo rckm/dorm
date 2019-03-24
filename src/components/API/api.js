@@ -17,6 +17,9 @@ instance.interceptors.request.use(config => {
   return newConfig;
 });
 
+/**
+ * @this {API}
+ */
 class API {
   constructor() {
     this.api = instance;
@@ -26,11 +29,18 @@ class API {
   father = null;
 
   //* get login and password of administrator
+  /**
+   * @param {string} login The login of admin
+   * @param {string} password The password of admin
+   */
   getAuth = (login, password) => {
     return this.api.get(`auth?login=${login}&password=${password}`);
   };
 
   //* posting request to the server
+  /**
+   * @param {} reqValues The Request data that will be sended
+   */
   postRequest = reqValues => {
     const reqOptions = {
       headers: {
@@ -45,6 +55,7 @@ class API {
           '", "phone":"' +
           encodeURI(reqValues.mother.phone) +
           '"}',
+        // `'{ "name_f": "${encodeURI(reqValues.mother.name_f)}", "name_l": "${encodeURI(reqValues.mother.name_l)}", "patronymic": "${encodeURI(reqValues.mother.patronymic)}", "phone": "${encodeURI(reqValues.mother.phone)}"'`
         father:
           '{ "name_f":"' +
           encodeURI(reqValues.father.name_f) +
@@ -55,12 +66,16 @@ class API {
           '", "phone":"' +
           encodeURI(reqValues.father.phone) +
           '"}'
+        // `'{ "name_f": "${encodeURI(reqValues.father.name_f)}", "name_l": "${encodeURI(reqValues.father.name_l)}", "patronymic": "${encodeURI(reqValues.father.patronymic)}", "phone": "${encodeURI(reqValues.father.phone)}"'`
       }
     };
     return this.api.post("/request", qs.stringify(reqValues), reqOptions);
   };
 
   //* posting reports to the server
+  /**
+   * @param {} repValues The Report data that will be sended
+   */
   postReport = repValues => {
     const repOptions = {
       headers: {
@@ -87,6 +102,18 @@ class API {
   };
 
   //* get autocompleted word document of request
+  /**
+   * @param {string} name_f Firstname of student
+   * @param {string} name_l Lastname of student
+   * @param {string} patronymic Patronymic of student
+   * @param {string} gender_id Gender
+   * @param {string} address Address of living of student
+   * @param {string} phone Phone of student
+   * @param {number} room_id Which room he selected
+   * @param {number} children How many childrens he has in family
+   * @param {date} date_residence On which date he reserved a room
+   * @param {string} group In which group he joined
+   */
   getRequestDocument = (
     name_f,
     name_l,

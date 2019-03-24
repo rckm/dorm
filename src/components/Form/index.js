@@ -7,7 +7,7 @@ import { FormStyle } from "./style";
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
-  
+
   function handleParentsChange(e) {
     const { value } = e.target;
     const [parentType, name] = e.target.name.split(".");
@@ -26,7 +26,20 @@ const FormComponent = props => {
           <Grid.Column computer={14} mobile={10}>
             <h1 className="title">Dorm</h1>
             <Segment raised>
-              <Form success={props.state.responseStatus === 200 || props.state.responseStatus === 201} error={props.state.responseStatus === 400 || props.state.responseStatus === 401} size="large" onSubmit={props.handleSubmit}>
+              <Form
+                success={
+                  props.state.responseStatus === 200 ||
+                  props.state.responseStatus === 201
+                }
+                error={
+                  props.state.responseStatus === 400 ||
+                  props.state.responseStatus === 401 ||
+                  props.state.responseStatus === 404 ||
+                  props.state.responseStatus === 409
+                }
+                size="large"
+                onSubmit={props.handleSubmit}
+              >
                 <Form.Group widths="equal">
                   <Form.Field required>
                     <label className="form-label">Фамилия</label>
@@ -135,7 +148,9 @@ const FormComponent = props => {
                     control="select"
                     required
                   >
-                    <option disabled />
+                    <option value="" disabled>
+                      Выберите пол
+                    </option>
                     <option value="1">Мужской</option>
                     <option value="2">Женский</option>
                   </Form.Field>
@@ -161,6 +176,17 @@ const FormComponent = props => {
                     placeholder="Улица, дом, квартира"
                   />
                 </Form.Field>
+                <Form.Field required>
+                  <label className="form-label">E-Mail</label>
+                  <input
+                    required
+                    value={props.state.email}
+                    type="email"
+                    name="email"
+                    onChange={props.handleChange}
+                    placeholder="E-Mail"
+                  />
+                </Form.Field>
                 <Form.Field
                   name="parents"
                   onChange={props.handleChange}
@@ -168,7 +194,9 @@ const FormComponent = props => {
                   label="Родители"
                   control="select"
                 >
-                  <option value="">Нет</option>
+                  <option value="" disabled>
+                    Нет
+                  </option>
                   <option value="both">Оба</option>
                   <option value="mother">Мама</option>
                   <option value="father">Папа</option>
@@ -226,47 +254,49 @@ const FormComponent = props => {
                     <React.Fragment>
                       <Form.Field>
                         <label>Фамилия</label>
-                        <input 
-                        name="father.name_l"
-                        value={props.state.father.name_l || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Фамилия отца"
-                        type="text" />
+                        <input
+                          name="father.name_l"
+                          value={props.state.father.name_l || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Фамилия отца"
+                          type="text"
+                        />
                       </Form.Field>
                       <Form.Field>
                         <label>Имя</label>
-                        <input 
+                        <input
                           name="father.name_f"
                           value={props.state.father.name_f || ""}
                           onChange={handleParentsChange}
                           placeholder="Имя отца"
                           type="text"
-                          />
+                        />
                       </Form.Field>
                       <Form.Field>
                         <label>Отчество</label>
-                        <input 
+                        <input
                           name="father.patronymic"
                           value={props.state.father.patronymic || ""}
                           onChange={handleParentsChange}
                           placeholder="Отчество отца"
                           type="text"
-                          />
+                        />
                       </Form.Field>
                       <Form.Field>
                         <label>Номер телефона</label>
-                        <input 
+                        <input
                           name="father.phone"
                           value={props.state.father.phone || ""}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона отца"
                           type="text"
-                          />
+                        />
                       </Form.Field>
                     </React.Fragment>
                   )}
                 </Form.Group>
-                <Message success header="Форма отправлена успешно"/>
+                <Message success header="Форма отправлена успешно!" />
+                <Message error header="Неправильно заполнена форма!" />
                 <Button animated="fade" primary type="submit">
                   <Button.Content visible>Отправить заявление</Button.Content>
                   <Button.Content hidden>

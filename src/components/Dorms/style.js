@@ -18,6 +18,8 @@ export const RoomWrapper = styled.div`
   .desc {
     text-align: center;
     font-size: 24px;
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
   }
 
   .ui.card > .image,
@@ -27,6 +29,7 @@ export const RoomWrapper = styled.div`
 `;
 
 export const DormStyle = styled.div`
+  background-color: #ffffff;
   ul {
     padding: 0;
     margin: 0;

@@ -1,9 +1,14 @@
 import styled from "styled-components";
-import bgImage from "../../static/bg.png";
 
 export const AppWrapper = styled.div`
-  /* background: url(${bgImage}) no-repeat center;
-  background-size: cover; */
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-  /* min-height: 100%; */
+  @import url("https://fonts.googleapis.com/css?family=Montserrat");
+  @import url("https://fonts.googleapis.com/css?family=Roboto&subset=cyrillic,cyrillic-ext,latin-ext");
+  background-image: linear-gradient(
+    to right top,
+    #4b4453,
+    #746f7b,
+    #9f9da5,
+    #cecdd1,
+    #ffffff
+  );
 `;

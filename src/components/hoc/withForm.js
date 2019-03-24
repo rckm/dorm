@@ -12,6 +12,7 @@ const fields = {
   children: "",
   room_id: "",
   gender_id: "",
+  email: "",
   parents: "",
   mother: {
     name_l: "",
@@ -43,6 +44,7 @@ const WithForm = WrappedComponent => {
       gender_id: "",
       date_residence: "",
       status_id: "",
+      email: "",
       responseStatus: "",
       parents: "",
       mother: {
@@ -82,20 +84,22 @@ const WithForm = WrappedComponent => {
     }
 
     //* handling for posting requests
-    handleSubmit = () => {
+    handleSubmit = e => {
+      e.preventDefault();
+
       const state = { ...this.state };
       const values = withoutFields(
         state,
         "status_id",
         "dormDb",
-        "parents"
+        "parents",
+        "responseStatus"
       );
-      this.props.api.postRequest(values)
-      .then(res => {
+      this.props.api.postRequest(values).then(res => {
         this.setState({
           responseStatus: res.status
-        })
-      })
+        });
+      });
       this.resetForm();
     };
 
@@ -107,6 +111,7 @@ const WithForm = WrappedComponent => {
         "group",
         "dormDb",
         "parents",
+        "responseStatus"
       );
       this.props.api.postReport(values);
       this.resetForm();

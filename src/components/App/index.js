@@ -10,7 +10,7 @@ const App = () => {
     <Switch>
       <AppWrapper>
         <Route exact path="/" component={FormComponent} />
-        <Route path="/admin" component={Admin} />
+        <Route exact path="/admin" component={Admin} />
       </AppWrapper>
     </Switch>
   );

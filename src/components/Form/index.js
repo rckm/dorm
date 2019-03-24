@@ -37,8 +37,10 @@ const FormComponent = props => {
                   props.state.responseStatus === 404 ||
                   props.state.responseStatus === 409
                 }
+                loading={props.state.loading}
                 size="large"
                 onSubmit={props.handleSubmit}
+                unstackable
               >
                 <Form.Group widths="equal">
                   <Form.Field required>

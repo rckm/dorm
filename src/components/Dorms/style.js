@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const RoomWrapper = styled.div`
+  height: 100%;
   .ui.cards a.card:hover,
   .ui.link.card:hover,
   .ui.link.cards .card:hover,
@@ -53,6 +54,10 @@ export const DormStyle = styled.div`
     fill: gray;
   }
 
+  .title {
+    font-size: 24px;
+  }
+
   .hide {
     display: none;
   }
@@ -74,6 +79,6 @@ export const DormStyle = styled.div`
   }
   .show ul li {
     list-style-type: none;
-    word-spacing: 1px;
+    line-height: 40px;
   }
 `;

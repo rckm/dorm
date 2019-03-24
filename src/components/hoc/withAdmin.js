@@ -22,7 +22,7 @@ const WithAdmin = WrappedComponent => {
           localStorage.setItem("sessionUser", res.data.token);
         })
         .catch(error => {
-          console.log(error);
+          throw error;
         });
     };
 

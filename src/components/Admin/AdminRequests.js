@@ -54,7 +54,7 @@ class AdminRequests extends Component {
         },
         error => {
           if (error.response.status === 401) {
-            this.props.handleLogout();
+            return this.props.handleLogout();
           }
         }
       )
@@ -68,11 +68,10 @@ class AdminRequests extends Component {
     return (
       <AdminRequestsStyle>
         <Grid.Row centered>
-          <Grid.Column>
-            <h1>Заявления</h1>
+          <Grid.Column width={16}>
             {!loaded ? (
               <Segment loading={loaded}>
-                <Table fixed size="large" celled>
+                <Table fixed size="small" celled>
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell>Фамилия</Table.HeaderCell>

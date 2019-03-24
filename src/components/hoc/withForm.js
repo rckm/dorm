@@ -46,6 +46,7 @@ const WithForm = WrappedComponent => {
       status_id: "",
       email: "",
       responseStatus: "",
+      loading: false,
       parents: "",
       mother: {
         name_l: "",
@@ -93,11 +94,16 @@ const WithForm = WrappedComponent => {
         "status_id",
         "dormDb",
         "parents",
-        "responseStatus"
+        "responseStatus",
+        "loading"
       );
+      this.setState({
+        loading: true
+      });
       this.props.api.postRequest(values).then(res => {
         this.setState({
-          responseStatus: res.status
+          responseStatus: res.status,
+          loading: false
         });
       });
       this.resetForm();
@@ -111,7 +117,8 @@ const WithForm = WrappedComponent => {
         "group",
         "dormDb",
         "parents",
-        "responseStatus"
+        "responseStatus",
+        "loading"
       );
       this.props.api.postReport(values);
       this.resetForm();

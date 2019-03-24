@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const AdminComponent = styled.div`
-  background-color: #b1b1b1;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
   height: 100vh;
   .form {
     padding-top: 50%;
@@ -10,11 +11,12 @@ export const AdminComponent = styled.div`
 
 export const AdminPanelStyle = styled.div`
   height: 100vh;
-  .title {
-    font-size: 42px;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 30px;
+  .ui.segment {
+    border-radius: 0px;
+  }
+  i.icon,
+  i.icons {
+    font-size: 1.4em;
   }
   .form-label,
   .gender label,
@@ -22,8 +24,9 @@ export const AdminPanelStyle = styled.div`
     padding: 10px 10px 10px 0px;
   }
   .ui.button {
-    margin: 10px 10px 10px 0px;
-    padding: 15px;
+    margin: 2px 2px 2px 0px;
+    padding: 10px;
+    font-size: 14px;
   }
 `;
 

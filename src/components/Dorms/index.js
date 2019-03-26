@@ -6,22 +6,7 @@ import FirstDorm from "../../static/firstDorm.JPG";
 import SecondDorm from "../../static/secondDorm.JPG";
 
 class Dorms extends Component {
-  _isMounted = false;
-  state = {
-    dormDb: {}
-  };
-  componentDidMount = () => {
-    this._isMounted = true;
-    this.props.api.getDormDb().then(res => {
-      this.setState({
-        dormDb: res.data
-      });
-    });
-  };
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
+  state = {};
 
   render() {
     return (
@@ -36,6 +21,20 @@ class Dorms extends Component {
           <Grid.Row centered>
             <Grid.Column width={14}>
               <Card.Group itemsPerRow={4} centered>
+                {/* {this.props.dormDb.dorms &&
+                  this.props.dormDb.dorms.map((dorms, key) => {
+                    return (
+                      <React.Fragment key={key}>
+                        <Card
+                          raised
+                          color="yellow"
+                          image={FirstDorm}
+                          onClick={() => this.props.setCurrentDorm(dorms.id)}
+                          meta="г. Караганда, ул. Академическая 5"
+                        />
+                      </React.Fragment>
+                    );
+                  })} */}
                 <Card
                   raised
                   color="yellow"

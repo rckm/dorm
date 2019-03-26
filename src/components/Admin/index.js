@@ -16,7 +16,7 @@ const Admin = props => {
         <Grid.Row centered>
           <Grid.Column width={8}>
             <Form className="form" onSubmit={props.handleLogin}>
-              <Segment inverted>
+              <Segment>
                 <Form.Field>
                   <label htmlFor="login">Login</label>
                   <Input

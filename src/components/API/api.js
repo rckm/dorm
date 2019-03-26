@@ -121,6 +121,11 @@ class API {
     return this.api.get("/request");
   };
 
+  //* get rooms by floor id
+  getRooms = floor_id => {
+    return this.api.get(`/room?id=${floor_id}`);
+  };
+
   //* get autocompleted word document of request
   /**
    * @param {string} name_f Firstname of student

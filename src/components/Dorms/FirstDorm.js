@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Button } from "semantic-ui-react";
 import DormImage from "../../static/1.png";
 import { DormStyle } from "./style";
+import { withAPI } from "../API";
 
 class FirstDorm extends Component {
   state = {
@@ -11,6 +13,9 @@ class FirstDorm extends Component {
       room: room
     });
   };
+
+  // this.props.dormDb.floors - id: 1
+
   render() {
     return (
       <DormStyle>
@@ -22,9 +27,9 @@ class FirstDorm extends Component {
             <li>Этаж: 1</li>
             <li>{this.props.currentdorm}</li>
             <li>
-              <button onClick={() => this.props.setCurrentDorm(0)}>
+              <Button secondary onClick={() => this.props.setCurrentDorm(0)}>
                 Назад
-              </button>{" "}
+              </Button>{" "}
             </li>
           </ul>
         </div>
@@ -36,7 +41,7 @@ class FirstDorm extends Component {
             width="97.901"
             height="194.58"
             strokeWidth="7.5678"
-            onClick={() => this.handleTooltip(101)}
+            onClick={() => this.handleTooltip(1)}
           />
           <rect
             className="rectangle"
@@ -125,4 +130,4 @@ class FirstDorm extends Component {
   }
 }
 
-export default FirstDorm;
+export default withAPI(FirstDorm);

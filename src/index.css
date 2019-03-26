@@ -9,6 +9,7 @@ body {
 }
 
 body {
+  /* background-color: #0288d1; */
   background: url("./static/bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;

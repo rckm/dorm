@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
-import FirstDorm from "../Dorms/FirstDorm";
+import FirstDorm from "../Dorms/FirstDorm/";
 // import SecondDorm from "../Dorms/SecondDorm";
 import { FormStyle } from "./style";
 
@@ -321,9 +321,14 @@ const FormComponent = props => {
         <Grid.Row centered>
           <Grid.Column width="14">
             {currentDorm === 1 ? (
-              <FirstDorm setCurrentDorm={setCurrentDorm} />
+              <FirstDorm
+                dormDb={props.state.dormDb}
+                setCurrentDorm={setCurrentDorm}
+                currentDorm={currentDorm}
+              />
             ) : (
               <Dorms
+                dormDb={props.state.dormDb}
                 currentdorm={currentDorm}
                 setCurrentDorm={setCurrentDorm}
               />

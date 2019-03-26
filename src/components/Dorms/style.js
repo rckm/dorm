@@ -82,7 +82,7 @@ export const DormStyle = styled.div`
     top: 70px;
     bottom: 0;
     right: 0;
-    left: 160px;
+    left: 105px;
   }
   .show ul li {
     list-style-type: none;

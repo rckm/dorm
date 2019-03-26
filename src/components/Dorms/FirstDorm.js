@@ -4,14 +4,12 @@ import { DormStyle } from "./style";
 
 class FirstDorm extends Component {
   state = {
-    display: false,
     room: ""
   };
   handleTooltip = room => {
-    this.setState(prevState => ({
-      display: !prevState.display,
+    this.setState({
       room: room
-    }));
+    });
   };
   render() {
     return (
@@ -19,9 +17,15 @@ class FirstDorm extends Component {
         <img src={DormImage} alt="Dorm" />
         <div className="show">
           <ul>
-            <li>Info: dasdasd</li>
-            <li>Room: {this.state.room}</li>
-            <li>Floor: 1</li>
+            <li>Инфо: Первая Общага</li>
+            <li>Комната №: {this.state.room}</li>
+            <li>Этаж: 1</li>
+            <li>{this.props.currentdorm}</li>
+            <li>
+              <button onClick={() => this.props.setCurrentDorm(0)}>
+                Назад
+              </button>{" "}
+            </li>
           </ul>
         </div>
         <svg className="svg">

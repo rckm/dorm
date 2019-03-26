@@ -27,6 +27,7 @@ class AdminReports extends Component {
           <Grid.Column>
             {!loaded ? (
               <Segment loading={loaded}>
+                <h1>Направления</h1>
                 <Table size="large" celled>
                   <Table.Header>
                     <Table.Row>

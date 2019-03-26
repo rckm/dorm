@@ -9,8 +9,10 @@ const App = () => {
   return (
     <Switch>
       <AppWrapper>
-        <Route exact path="/" component={FormComponent} />
-        <Route exact path="/admin" component={Admin} />
+        <div className="app">
+          <Route exact path="/" component={FormComponent} />
+          <Route exact path="/admin" component={Admin} />
+        </div>
       </AppWrapper>
     </Switch>
   );

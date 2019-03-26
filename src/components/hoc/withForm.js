@@ -12,8 +12,8 @@ const fields = {
   children: "",
   room_id: "",
   gender_id: "",
+  status_id: "",
   email: "",
-  parents: "",
   mother: {
     name_l: "",
     name_f: "",
@@ -26,52 +26,33 @@ const fields = {
     patronymic: "",
     phone: ""
   },
-  date_residence: "",
-  status_id: ""
+  date_residence: ""
 };
 const WithForm = WrappedComponent => {
   class WithForm extends Component {
+    _isMounted = false;
     state = {
-      name_f: "",
-      name_l: "",
-      patronymic: "",
-      uin: "",
-      group: "",
-      address: "",
-      phone: "",
-      children: "",
-      room_id: "",
-      gender_id: "",
-      date_residence: "",
-      status_id: "",
-      email: "",
+      ...fields,
       responseStatus: "",
-      loading: false,
+      error: null,
       parents: "",
-      mother: {
-        name_l: "",
-        name_f: "",
-        patronymic: "",
-        phone: ""
-      },
-      father: {
-        name_l: "",
-        name_f: "",
-        patronymic: "",
-        phone: ""
-      },
+      loading: false,
       dormDb: {}
     };
 
-    //* reset form fields
+    /**
+     * @function resetForm This function for clearing inputs fields
+     */
     resetForm = () => {
       this.setState({ ...fields });
     };
 
-    //* get from the api the dorm database info
+    /**
+     * @method this.props.api.getDormDb Get from the api the dorm database info
+     */
     componentDidMount() {
       if (this.state.dormDb.length) return;
-
+      this._isMounted = true;
       this.props.api
         .getDormDb()
         .then(res => {
@@ -84,7 +65,13 @@ const WithForm = WrappedComponent => {
         });
     }
 
-    //* handling for posting requests
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
+
+    /**
+     * Handling for posting requests
+     */
     handleSubmit = e => {
       e.preventDefault();
 
@@ -100,43 +87,43 @@ const WithForm = WrappedComponent => {
       this.setState({
         loading: true
       });
-      this.props.api.postRequest(values).then(res => {
-        this.setState({
-          responseStatus: res.status,
-          loading: false
+      this.props.api
+        .postRequest(values)
+        .then(res => {
+          this.setState({
+            responseStatus: res.status,
+            loading: false,
+            error: null
+          });
+        })
+        .catch(error => {
+          this.setState({
+            error: error,
+            loading: false
+          });
         });
-      });
       this.resetForm();
     };
 
-    //* handling for posting reports
-    handleSubmitReport = () => {
-      const state = { ...this.state };
-      const values = withoutFields(
-        state,
-        "group",
-        "dormDb",
-        "parents",
-        "responseStatus",
-        "loading"
-      );
-      this.props.api.postReport(values);
-      this.resetForm();
-    };
-
-    //* handling for inputs
+    /**
+     * Handling for inputs
+     */
     handleChange = e => {
       this.setState({
         [e.target.name]: e.target.value
       });
     };
 
-    //* handling for mother and father inputs
+    /**
+     * Handling for mother and father inputs
+     */
     handleParentsChange = callback => {
       this.setState(callback);
     };
 
-    //* handling for select and options
+    /**
+     * Handling for select and options
+     */
     handleSelect = e => {
       this.setState({
         [e.target.name]: e.target.value

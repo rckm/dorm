@@ -27,10 +27,17 @@ export const RoomWrapper = styled.div`
   .ui.cards > .card > .image {
     cursor: pointer;
   }
+  .ui.card .meta,
+  .ui.cards > .card .meta {
+    color: black;
+    font-size: 16px;
+  }
 `;
 
 export const DormStyle = styled.div`
   background-color: #ffffff;
+  border-radius: 0.28571429rem;
+  padding: 2rem;
   ul {
     padding: 0;
     margin: 0;
@@ -62,9 +69,9 @@ export const DormStyle = styled.div`
     display: none;
   }
   .show {
-    width: 200px;
-    height: 200px;
-    background-color: #000000;
+    width: 300px;
+    height: 250px;
+    background-color: #b1b1b1;
     border-radius: 4px;
     display: flex;
     justify-content: center;
@@ -72,7 +79,7 @@ export const DormStyle = styled.div`
     position: absolute;
     font-size: 24px;
     color: #ffffff;
-    top: 150px;
+    top: 70px;
     bottom: 0;
     right: 0;
     left: 160px;

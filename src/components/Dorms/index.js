@@ -2,8 +2,27 @@ import React, { Component } from "react";
 import { withAPI } from "../API";
 import { RoomWrapper } from "./style";
 import { Grid, Card } from "semantic-ui-react";
+import FirstDorm from "../../static/firstDorm.JPG";
+import SecondDorm from "../../static/secondDorm.JPG";
 
 class Dorms extends Component {
+  _isMounted = false;
+  state = {
+    dormDb: {}
+  };
+  componentDidMount = () => {
+    this._isMounted = true;
+    this.props.api.getDormDb().then(res => {
+      this.setState({
+        dormDb: res.data
+      });
+    });
+  };
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     return (
       <RoomWrapper>
@@ -20,23 +39,23 @@ class Dorms extends Component {
                 <Card
                   raised
                   color="yellow"
-                  image="https://react.semantic-ui.com/images/wireframe/image.png"
+                  image={FirstDorm}
                   onClick={() => this.props.setCurrentDorm(1)}
                   meta="г. Караганда, ул. Академическая 5"
                 />
                 <Card
                   raised
                   color="yellow"
-                  image="https://react.semantic-ui.com/images/wireframe/image.png"
+                  image={SecondDorm}
                   onClick={() => this.props.setCurrentDorm(2)}
-                  meta="г. Караганда, ул. Академическая 5"
+                  meta="г. Караганда, ул. Академическая 5/1"
                 />
                 <Card
                   raised
                   color="yellow"
                   image="https://react.semantic-ui.com/images/wireframe/image.png"
                   onClick={() => this.props.setCurrentDorm(3)}
-                  meta="г. Караганда, ул. Академическая 5"
+                  meta="г. Караганда, ул. Комиссарова 32"
                 />
               </Card.Group>
             </Grid.Column>

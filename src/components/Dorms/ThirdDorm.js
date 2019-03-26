@@ -12,7 +12,11 @@ class ThirdDorm extends Component {
     }));
   };
   render() {
-    return <DormStyle />;
+    return (
+      <DormStyle>
+        <h1>Third Dorm</h1>
+      </DormStyle>
+    );
   }
 }
 

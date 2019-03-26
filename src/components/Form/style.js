@@ -15,6 +15,9 @@ export const FormStyle = styled.div`
     padding: 10px 10px 10px 0px;
     font-family: "Roboto", sans-serif;
   }
+  .ui.segment {
+    padding: 2rem 2rem;
+  }
   .button {
     margin: 10px 10px 10px 0px;
     padding: 15px;

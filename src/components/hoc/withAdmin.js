@@ -1,3 +1,7 @@
+/**
+ * @file This HOC is for auth for admin
+ */
+
 import React, { Component } from "react";
 import { withAPI } from "../API";
 

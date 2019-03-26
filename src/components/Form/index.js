@@ -3,10 +3,19 @@ import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm";
+// import SecondDorm from "../Dorms/SecondDorm";
 import { FormStyle } from "./style";
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
+  /**
+   * This is for setting min date that student can reserve a room
+   */
+  const date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let currDate = `${year}-0${month}-${day}`;
 
   function handleParentsChange(e) {
     const { value } = e.target;
@@ -31,12 +40,7 @@ const FormComponent = props => {
                   props.state.responseStatus === 200 ||
                   props.state.responseStatus === 201
                 }
-                error={
-                  props.state.responseStatus === 400 ||
-                  props.state.responseStatus === 401 ||
-                  props.state.responseStatus === 404 ||
-                  props.state.responseStatus === 409
-                }
+                error={props.state.error}
                 loading={props.state.loading}
                 size="large"
                 onSubmit={props.handleSubmit}
@@ -47,7 +51,6 @@ const FormComponent = props => {
                     <label className="form-label">Фамилия</label>
                     <input
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
-                      variant="outlined"
                       required
                       value={props.state.name_l}
                       type="text"
@@ -159,6 +162,7 @@ const FormComponent = props => {
                   <Form.Field required>
                     <label className="form-label">Дата заселения</label>
                     <input
+                      min={currDate}
                       required
                       value={props.state.date_residence}
                       type="date"
@@ -181,7 +185,6 @@ const FormComponent = props => {
                 <Form.Field required>
                   <label className="form-label">E-Mail</label>
                   <input
-                    required
                     value={props.state.email}
                     type="email"
                     name="email"
@@ -254,6 +257,7 @@ const FormComponent = props => {
                   {(props.state.parents === "father" ||
                     props.state.parents === "both") && (
                     <React.Fragment>
+                      <label>Отец</label>
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
@@ -297,8 +301,13 @@ const FormComponent = props => {
                     </React.Fragment>
                   )}
                 </Form.Group>
-                <Message success header="Форма отправлена успешно!" />
-                <Message error header="Неправильно заполнена форма!" />
+                {props.state.responseStatus === 200 ||
+                  (props.state.responseStatus === 201 && (
+                    <Message success header="Форма отправлена успешно!" />
+                  ))}
+                {props.state.error && (
+                  <Message error header="Неправильно заполнена форма!" />
+                )}
                 <Button animated="fade" primary type="submit">
                   <Button.Content visible>Отправить заявление</Button.Content>
                   <Button.Content hidden>
@@ -309,12 +318,15 @@ const FormComponent = props => {
             </Segment>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            {currentDorm ? (
+        <Grid.Row centered>
+          <Grid.Column width="14">
+            {currentDorm === 1 ? (
               <FirstDorm setCurrentDorm={setCurrentDorm} />
             ) : (
-              <Dorms setCurrentDorm={setCurrentDorm} />
+              <Dorms
+                currentdorm={currentDorm}
+                setCurrentDorm={setCurrentDorm}
+              />
             )}
           </Grid.Column>
         </Grid.Row>

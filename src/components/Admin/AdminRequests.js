@@ -1,10 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable react/jsx-no-comment-textnodes */
 import React, { Component } from "react";
 import { Grid, Table, Segment, Modal, Button, Header } from "semantic-ui-react";
 import { withAPI } from "../API";
 import { gender } from "../../utils/util";
 import AdminDirection from "./AdminDirection";
+import { withoutFields } from "../../utils/util";
 
 import { AdminRequestsStyle } from "./style";
 
@@ -18,7 +17,37 @@ class AdminRequests extends Component {
   state = {
     requests: [],
     openCurrentField: null,
-    currentDataToDocument: null
+    currentDataToDocument: null,
+    openModal: false
+  };
+
+  handleSubmitReport = e => {
+    e.preventDefault();
+    const state = { ...this.state.openCurrentField };
+    const value = withoutFields(state, "id", "active", "number");
+    this.props.api.postReport(value).then(() => {
+      this.setState({
+        openModal: false
+      });
+    });
+  };
+
+  handleChange = e => {
+    this.setState({
+      openCurrentField: {
+        ...this.state.openCurrentField,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  handleSelect = e => {
+    this.setState({
+      openCurrentField: {
+        ...this.state.openCurrentField,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
   getRequestDocument = () => {
@@ -30,10 +59,12 @@ class AdminRequests extends Component {
         this.state.currentDataToDocument.gender_id,
         this.state.currentDataToDocument.address,
         this.state.currentDataToDocument.phone,
-        this.state.currentDataToDocument.number,
+        this.state.currentDataToDocument.room_id,
         this.state.currentDataToDocument.children,
         this.state.currentDataToDocument.date_residence,
-        this.state.currentDataToDocument.group
+        this.state.currentDataToDocument.group,
+        this.state.currentDataToDocument.mother,
+        this.state.currentDataToDocument.father
       )
       .then(res => {
         window.open(res.config.url);
@@ -71,6 +102,7 @@ class AdminRequests extends Component {
           <Grid.Column width={16}>
             {!loaded ? (
               <Segment loading={loaded}>
+                <h1 style={{ textAlign: "center" }}>Заявления</h1>
                 <Table fixed size="small" celled>
                   <Table.Header>
                     <Table.Row>
@@ -108,13 +140,20 @@ class AdminRequests extends Component {
                           <Table.Cell>{value.number}</Table.Cell>
                           <Table.Cell>
                             <Modal
+                              open={this.state.openModal}
+                              onClose={() =>
+                                this.setState({
+                                  openModal: false
+                                })
+                              }
                               dimmer="blurring"
                               size="fullscreen"
                               trigger={
                                 <Button
                                   onClick={() =>
                                     this.setState({
-                                      openCurrentField: value
+                                      openCurrentField: value,
+                                      openModal: true
                                     })
                                   }
                                 >
@@ -130,6 +169,11 @@ class AdminRequests extends Component {
                               <Modal.Content>
                                 <AdminDirection
                                   openCurrentField={this.state.openCurrentField}
+                                  handleCurrentFieldChange={this.handleChange}
+                                  handleCurrentFieldSelect={this.handleSelect}
+                                  handleCurrentFieldSubmitReport={
+                                    this.handleSubmitReport
+                                  }
                                 />
                               </Modal.Content>
                             </Modal>

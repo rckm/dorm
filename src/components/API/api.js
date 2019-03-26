@@ -1,3 +1,7 @@
+/**
+ * @file This file includes all api requests like GET,POST and etc.
+ */
+
 import axios from "axios";
 import qs from "querystring";
 
@@ -24,9 +28,6 @@ class API {
   constructor() {
     this.api = instance;
   }
-
-  mother = null;
-  father = null;
 
   //* get login and password of administrator
   /**
@@ -55,7 +56,6 @@ class API {
           '", "phone":"' +
           encodeURI(reqValues.mother.phone) +
           '"}',
-        // `'{ "name_f": "${encodeURI(reqValues.mother.name_f)}", "name_l": "${encodeURI(reqValues.mother.name_l)}", "patronymic": "${encodeURI(reqValues.mother.patronymic)}", "phone": "${encodeURI(reqValues.mother.phone)}"'`
         father:
           '{ "name_f":"' +
           encodeURI(reqValues.father.name_f) +
@@ -66,7 +66,6 @@ class API {
           '", "phone":"' +
           encodeURI(reqValues.father.phone) +
           '"}'
-        // `'{ "name_f": "${encodeURI(reqValues.father.name_f)}", "name_l": "${encodeURI(reqValues.father.name_l)}", "patronymic": "${encodeURI(reqValues.father.patronymic)}", "phone": "${encodeURI(reqValues.father.phone)}"'`
       }
     };
     return this.api.post("/request", qs.stringify(reqValues), reqOptions);
@@ -76,10 +75,31 @@ class API {
   /**
    * @param {} repValues The Report data that will be sended
    */
-  postReport = repValues => {
+  postReport = ({ mother, father, ...repValues }) => {
+    console.log(mother, father);
     const repOptions = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded"
+        "content-type": "application/x-www-form-urlencoded",
+        mother:
+          '{ "name_f":"' +
+          encodeURI(mother.name_f || "") +
+          '","name_l":"' +
+          encodeURI(mother.name_l || "") +
+          '",  "patronymic":"' +
+          encodeURI(mother.patronymic || "") +
+          '", "phone":"' +
+          encodeURI(mother.phone || "") +
+          '"}',
+        father:
+          '{ "name_f":"' +
+          encodeURI(father.name_f || "") +
+          '","name_l":"' +
+          encodeURI(father.name_l || "") +
+          '",  "patronymic":"' +
+          encodeURI(father.patronymic || "") +
+          '", "phone":"' +
+          encodeURI(father.phone || "") +
+          '"}'
       }
     };
 
@@ -124,10 +144,39 @@ class API {
     room_id,
     children,
     date_residence,
-    group
+    group,
+    mother,
+    father
   ) => {
+    const reqDocOptions = {
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        mother:
+          '{ "name_f":"' +
+          encodeURI(mother.name_f || "") +
+          '","name_l":"' +
+          encodeURI(mother.name_l || "") +
+          '",  "patronymic":"' +
+          encodeURI(mother.patronymic || "") +
+          '", "phone":"' +
+          encodeURI(mother.phone || "") +
+          '"}',
+        // `'{ "name_f": "${encodeURI(reqValues.mother.name_f)}", "name_l": "${encodeURI(reqValues.mother.name_l)}", "patronymic": "${encodeURI(reqValues.mother.patronymic)}", "phone": "${encodeURI(reqValues.mother.phone)}"'`
+        father:
+          '{ "name_f":"' +
+          encodeURI(father.name_f || "") +
+          '","name_l":"' +
+          encodeURI(father.name_l || "") +
+          '",  "patronymic":"' +
+          encodeURI(father.patronymic || "") +
+          '", "phone":"' +
+          encodeURI(father.phone || "") +
+          '"}'
+      }
+    };
     return this.api.get(
-      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`
+      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`,
+      reqDocOptions
     );
   };
 }

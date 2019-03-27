@@ -1,35 +1,61 @@
-import React, { Component } from "react";
-import FirstFloor from "./FirstFloor";
-import SecondFloor from "./SecondFloor";
-import ThirdFloor from "./ThirdFloor";
+import React, { useEffect, useState } from "react";
+import { Grid, Segment } from "semantic-ui-react";
+import { FirstDormStyle } from "./style";
+import { withAPI } from "../../API";
+import Floors from "../Floors";
 
-class FirstDorm extends Component {
-  state = {
-    selectedFloor: ""
+/**
+ *
+ * @param {string} selectedFloor Comes from select
+ * @param {*} getRooms This is just API
+ *
+ */
+const getRooms = (selectedFloor, getRooms) => {
+  const [rooms, setRooms] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  /**
+   * useEffect тригеррится только тогда когда меняется 2-ой аргумент [selectedFloor]
+   */
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const response = await getRooms(selectedFloor);
+      setRooms(response.data);
+      setLoading(false);
+    })();
+  }, [selectedFloor]); // Триггеры на которые будут дергаться API
+
+  return [rooms, isLoading];
+};
+
+const useField = defaultValue => {
+  const [value, handleChange] = useState(defaultValue);
+  return [value, handleChange];
+};
+
+const FirstDorm = props => {
+  const [currentDorm, setCurrentDorm] = useField("1");
+
+  const [rooms, isLoading] = getRooms(currentDorm, props.api.getRooms);
+
+  const handleChange = e => {
+    const { value } = e.target;
+    setCurrentDorm(value);
   };
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-  render() {
-    const floors = this.props.dormDb.floors.filter(dormId => {
-      return dormId.dorm_id === this.props.currentDorm;
-    });
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "300px",
-          height: "300px",
-          margin: "0 auto"
-        }}
-      >
-        <select onChange={this.handleChange} name="selectedFloor">
-          <option selected disabled value="0">
+  const floors = props.dormDb.floors.filter(dormId => {
+    return dormId.dorm_id === props.currentDorm;
+  });
+
+  return (
+    <FirstDormStyle>
+      <div className="select-wrapper">
+        <select
+          value={currentDorm}
+          onChange={handleChange}
+          name="selectedFloor"
+        >
+          <option disabled value="0">
             Выберите этаж
           </option>
           {floors.map((floor, key) => {
@@ -40,29 +66,74 @@ class FirstDorm extends Component {
             );
           })}
         </select>
-        <div>
-          {this.state.selectedFloor === "1" && (
-            <FirstFloor
-              selectedFloor={this.state.selectedFloor}
-              setCurrentDorm={this.props.setCurrentDorm}
-            />
-          )}
-          {this.state.selectedFloor === "2" && (
-            <SecondFloor
-              selectedFloor={this.state.selectedFloor}
-              setCurrentDorm={this.props.setCurrentDorm}
-            />
-          )}
-          {this.state.selectedFloor === "3" && (
-            <ThirdFloor
-              selectedFloor={this.state.selectedFloor}
-              setCurrentDorm={this.props.setCurrentDorm}
-            />
-          )}
-        </div>
       </div>
-    );
-  }
-}
+      <div>
+        {currentDorm === "1" && (
+          <Grid>
+            <Grid.Row centered>
+              <Grid.Column width={16}>
+                <Segment loading={isLoading}>
+                  <Floors
+                    rooms={rooms}
+                    selectedFloor={currentDorm}
+                    setCurrentDorm={props.setCurrentDorm}
+                    setSelectedRoom={selectedRoom =>
+                      props.setSelectedRoom(state => ({
+                        ...state,
+                        room_id: selectedRoom
+                      }))
+                    }
+                  />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )}
+        {currentDorm === "2" && (
+          <Grid>
+            <Grid.Row centered>
+              <Grid.Column width={16}>
+                <Segment loading={isLoading}>
+                  <Floors
+                    rooms={rooms}
+                    selectedFloor={currentDorm}
+                    setCurrentDorm={props.setCurrentDorm}
+                    setSelectedRoom={selectedRoom =>
+                      props.setSelectedRoom(state => ({
+                        ...state,
+                        room_id: selectedRoom
+                      }))
+                    }
+                  />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )}
+        {currentDorm === "3" && (
+          <Grid>
+            <Grid.Row centered>
+              <Grid.Column width={16}>
+                <Segment loading={isLoading}>
+                  <Floors
+                    rooms={rooms}
+                    selectedFloor={currentDorm}
+                    setCurrentDorm={props.setCurrentDorm}
+                    setSelectedRoom={selectedRoom =>
+                      props.setSelectedRoom(state => ({
+                        ...state,
+                        room_id: selectedRoom
+                      }))
+                    }
+                  />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        )}
+      </div>
+    </FirstDormStyle>
+  );
+};
 
-export default FirstDorm;
+export default withAPI(FirstDorm);

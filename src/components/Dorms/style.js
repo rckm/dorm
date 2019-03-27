@@ -68,9 +68,13 @@ export const DormStyle = styled.div`
   .hide {
     display: none;
   }
+  .text {
+    font-size: 16px;
+    cursor: pointer;
+  }
   .show {
     width: 300px;
-    height: 250px;
+    height: 270px;
     background-color: #b1b1b1;
     border-radius: 4px;
     display: flex;
@@ -87,5 +91,15 @@ export const DormStyle = styled.div`
   .show ul li {
     list-style-type: none;
     line-height: 40px;
+    font-size: 14px;
+  }
+
+  .select-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
   }
 `;

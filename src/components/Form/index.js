@@ -3,7 +3,8 @@ import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm/";
-// import SecondDorm from "../Dorms/SecondDorm";
+import SecondDorm from "../Dorms/SecondDorm";
+import ThirdDorm from "../Dorms/ThirdDorm";
 import { FormStyle } from "./style";
 
 const FormComponent = props => {
@@ -28,6 +29,48 @@ const FormComponent = props => {
       }
     }));
   }
+
+  const renderDorm = () => {
+    switch (currentDorm) {
+      case 1:
+        return (
+          <FirstDorm
+            dormDb={props.state.dormDb}
+            setCurrentDorm={setCurrentDorm}
+            currentDorm={currentDorm}
+            setSelectedRoom={props.handleParentsChange}
+          />
+        );
+      case 2:
+        return (
+          <SecondDorm
+            dormDb={props.state.dormDb}
+            setCurrentDorm={setCurrentDorm}
+            currentDorm={currentDorm}
+            setSelectedRoom={props.handleParentsChange}
+          />
+        );
+      case 3:
+        return (
+          <ThirdDorm
+            dormDb={props.state.dormDb}
+            setCurrentDorm={setCurrentDorm}
+            currentDorm={currentDorm}
+            setSelectedRoom={props.handleParentsChange}
+          />
+        );
+
+      default:
+        return (
+          <Dorms
+            dormDb={props.state.dormDb}
+            currentdorm={currentDorm}
+            setCurrentDorm={setCurrentDorm}
+          />
+        );
+    }
+  };
+
   return (
     <FormStyle>
       <Grid>
@@ -185,6 +228,7 @@ const FormComponent = props => {
                 <Form.Field required>
                   <label className="form-label">E-Mail</label>
                   <input
+                    required
                     value={props.state.email}
                     type="email"
                     name="email"
@@ -319,21 +363,7 @@ const FormComponent = props => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered>
-          <Grid.Column width="14">
-            {currentDorm === 1 ? (
-              <FirstDorm
-                dormDb={props.state.dormDb}
-                setCurrentDorm={setCurrentDorm}
-                currentDorm={currentDorm}
-              />
-            ) : (
-              <Dorms
-                dormDb={props.state.dormDb}
-                currentdorm={currentDorm}
-                setCurrentDorm={setCurrentDorm}
-              />
-            )}
-          </Grid.Column>
+          <Grid.Column width="14">{renderDorm()}</Grid.Column>
         </Grid.Row>
       </Grid>
     </FormStyle>

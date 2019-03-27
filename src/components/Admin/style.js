@@ -13,6 +13,8 @@ export const AdminPanelStyle = styled.div`
   height: 100vh;
   .ui.segment {
     border-radius: 0px;
+    width: 100%;
+    overflow-x: auto;
   }
   i.icon,
   i.icons {

@@ -82,7 +82,8 @@ const WithForm = WrappedComponent => {
         "dormDb",
         "parents",
         "responseStatus",
-        "loading"
+        "loading",
+        "error"
       );
       this.setState({
         loading: true

@@ -151,7 +151,8 @@ class API {
     date_residence,
     group,
     mother,
-    father
+    father,
+    id
   ) => {
     const reqDocOptions = {
       headers: {
@@ -180,7 +181,7 @@ class API {
       }
     };
     return this.api.get(
-      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}`,
+      `/doc/request?name_f=${name_f}&name_l=${name_l}&patronymic=${patronymic}&gender_id=${gender_id}&address=${address}&phone=${phone}&room_id=${room_id}&children=${children}&date_residence=${date_residence}&group=${group}&id=${id}&mother={"name_l":${mother.name_l},"name_f":${mother.name_f}, "patronymic":${mother.patronymic}, "phone":${mother.phone}}&father={"name_l":${father.name_l},"name_f":${father.name_f},"patronymic":${father.patronymic}, "phone":${father.phone}}`,
       reqDocOptions
     );
   };

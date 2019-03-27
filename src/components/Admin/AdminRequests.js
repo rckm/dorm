@@ -24,7 +24,7 @@ class AdminRequests extends Component {
   handleSubmitReport = e => {
     e.preventDefault();
     const state = { ...this.state.openCurrentField };
-    const value = withoutFields(state, "id", "active", "number");
+    const value = withoutFields(state, "id", "active", "room_id");
     this.props.api.postReport(value).then(() => {
       this.setState({
         openModal: false
@@ -59,12 +59,13 @@ class AdminRequests extends Component {
         this.state.currentDataToDocument.gender_id,
         this.state.currentDataToDocument.address,
         this.state.currentDataToDocument.phone,
-        this.state.currentDataToDocument.room_id,
+        this.state.currentDataToDocument.rooms.id,
         this.state.currentDataToDocument.children,
         this.state.currentDataToDocument.date_residence,
         this.state.currentDataToDocument.group,
         this.state.currentDataToDocument.mother,
-        this.state.currentDataToDocument.father
+        this.state.currentDataToDocument.father,
+        this.state.currentDataToDocument.id
       )
       .then(res => {
         window.open(res.config.url);
@@ -103,7 +104,7 @@ class AdminRequests extends Component {
             {!loaded ? (
               <Segment loading={loaded}>
                 <h1 style={{ textAlign: "center" }}>Заявления</h1>
-                <Table fixed size="small" celled>
+                <Table compact={true} size="small" celled>
                   <Table.Header>
                     <Table.Row>
                       <Table.HeaderCell>Фамилия</Table.HeaderCell>
@@ -137,7 +138,7 @@ class AdminRequests extends Component {
                           <Table.Cell>{value.phone}</Table.Cell>
                           <Table.Cell>{value.children}</Table.Cell>
                           <Table.Cell>{value.date_residence}</Table.Cell>
-                          <Table.Cell>{value.number}</Table.Cell>
+                          <Table.Cell>{value.rooms.number}</Table.Cell>
                           <Table.Cell>
                             <Modal
                               open={this.state.openModal}

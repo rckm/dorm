@@ -37,7 +37,7 @@ class AdminDirection extends PureComponent {
               <Form.Field>
                 <label className="form-label">Отчество</label>
                 <input
-                  value={this.props.openCurrentField.patronymic}
+                  value={this.props.openCurrentField.patronymic || ""}
                   type="text"
                   name="patronymic"
                   onChange={this.props.handleCurrentFieldChange}

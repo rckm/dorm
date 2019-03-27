@@ -68,69 +68,25 @@ const FirstDorm = props => {
         </select>
       </div>
       <div>
-        {currentDorm === "1" && (
-          <Grid>
-            <Grid.Row centered>
-              <Grid.Column width={16}>
-                <Segment loading={isLoading}>
-                  <Floors
-                    rooms={rooms}
-                    selectedFloor={currentDorm}
-                    setCurrentDorm={props.setCurrentDorm}
-                    setSelectedRoom={selectedRoom =>
-                      props.setSelectedRoom(state => ({
-                        ...state,
-                        room_id: selectedRoom
-                      }))
-                    }
-                  />
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        )}
-        {currentDorm === "2" && (
-          <Grid>
-            <Grid.Row centered>
-              <Grid.Column width={16}>
-                <Segment loading={isLoading}>
-                  <Floors
-                    rooms={rooms}
-                    selectedFloor={currentDorm}
-                    setCurrentDorm={props.setCurrentDorm}
-                    setSelectedRoom={selectedRoom =>
-                      props.setSelectedRoom(state => ({
-                        ...state,
-                        room_id: selectedRoom
-                      }))
-                    }
-                  />
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        )}
-        {currentDorm === "3" && (
-          <Grid>
-            <Grid.Row centered>
-              <Grid.Column width={16}>
-                <Segment loading={isLoading}>
-                  <Floors
-                    rooms={rooms}
-                    selectedFloor={currentDorm}
-                    setCurrentDorm={props.setCurrentDorm}
-                    setSelectedRoom={selectedRoom =>
-                      props.setSelectedRoom(state => ({
-                        ...state,
-                        room_id: selectedRoom
-                      }))
-                    }
-                  />
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        )}
+        <Grid>
+          <Grid.Row centered>
+            <Grid.Column width={16}>
+              <Segment loading={isLoading}>
+                <Floors
+                  rooms={rooms}
+                  selectedFloor={currentDorm}
+                  setCurrentDorm={props.setCurrentDorm}
+                  setSelectedRoom={selectedRoom =>
+                    props.setSelectedRoom(state => ({
+                      ...state,
+                      room_id: selectedRoom
+                    }))
+                  }
+                />
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     </FirstDormStyle>
   );

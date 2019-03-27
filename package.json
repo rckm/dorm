@@ -4,18 +4,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
-    "history": "^4.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-image-compressor": "^1.0.1",
     "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.84.0",
-    "styled-components": "^4.1.3"
+    "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,5 +29,11 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "history": "^4.9.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.86.0",
+    "styled-components": "^4.2.0"
+  }
 }

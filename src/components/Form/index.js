@@ -391,7 +391,7 @@ const FormComponent = props => {
                   <Message error header="Неправильно заполнена форма!" />
                 )}
                 <Button animated="fade" primary type="submit">
-                  <Button.Content visible>Отправить заявление</Button.Content>
+                  <Button.Content visible>Отправить заявку</Button.Content>
                   <Button.Content hidden>
                     <Icon name="arrow right" />
                   </Button.Content>

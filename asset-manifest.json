@@ -1,7 +1,7 @@
 {
-  "main.css": "/dorm/static/css/main.841461f2.chunk.css",
-  "main.js": "/dorm/static/js/main.12fcfc70.chunk.js",
-  "main.js.map": "/dorm/static/js/main.12fcfc70.chunk.js.map",
+  "main.css": "/dorm/static/css/main.03c0239d.chunk.css",
+  "main.js": "/dorm/static/js/main.7736d035.chunk.js",
+  "main.js.map": "/dorm/static/js/main.7736d035.chunk.js.map",
   "static/css/1.08778825.chunk.css": "/dorm/static/css/1.08778825.chunk.css",
   "static/js/1.437da992.chunk.js": "/dorm/static/js/1.437da992.chunk.js",
   "static/js/1.437da992.chunk.js.map": "/dorm/static/js/1.437da992.chunk.js.map",
@@ -12,9 +12,9 @@
   "static/media/1.webp": "/dorm/static/media/1.05912791.webp",
   "static/media/secondDorm.webp": "/dorm/static/media/secondDorm.3246be3b.webp",
   "static/media/index.css": "/dorm/static/media/bg.ac8a57c2.webp",
-  "static/css/main.841461f2.chunk.css.map": "/dorm/static/css/main.841461f2.chunk.css.map",
+  "static/css/main.03c0239d.chunk.css.map": "/dorm/static/css/main.03c0239d.chunk.css.map",
   "static/css/1.08778825.chunk.css.map": "/dorm/static/css/1.08778825.chunk.css.map",
   "index.html": "/dorm/index.html",
-  "precache-manifest.d22370cd67941a038e8715d3cb1f11ed.js": "/dorm/precache-manifest.d22370cd67941a038e8715d3cb1f11ed.js",
+  "precache-manifest.ea2ed6e6fffae2273dc68d41c849ae98.js": "/dorm/precache-manifest.ea2ed6e6fffae2273dc68d41c849ae98.js",
   "service-worker.js": "/dorm/service-worker.js"
 }

@@ -32,6 +32,10 @@ export const RoomWrapper = styled.div`
     color: black;
     font-size: 16px;
   }
+
+  .card-group {
+    padding: 100px 0;
+  }
 `;
 
 export const DormStyle = styled.div`

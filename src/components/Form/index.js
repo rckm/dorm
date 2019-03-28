@@ -75,7 +75,7 @@ const FormComponent = props => {
     <FormStyle>
       <Grid>
         <Grid.Row centered>
-          <Grid.Column computer={14} mobile={10}>
+          <Grid.Column computer={14} mobile={14}>
             <h1 className="title">Dorm</h1>
             <Segment raised>
               <Form

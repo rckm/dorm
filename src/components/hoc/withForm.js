@@ -1,3 +1,9 @@
+/**
+ * @file This HOC includes all input fields and its state.
+ * @file This HOC only for components that have input fields.
+ * This HOC includes functions like POST Request [handleSubmit], GET Request [getDormDb], and handlers for inputs.
+ */
+
 import React, { Component } from "react";
 import { withAPI } from "../API";
 import { withoutFields } from "../../utils/util";
@@ -47,9 +53,6 @@ const WithForm = WrappedComponent => {
       this.setState({ ...fields });
     };
 
-    /**
-     * @method this.props.api.getDormDb Get from the api the dorm database info
-     */
     componentDidMount() {
       if (this.state.dormDb.length) return;
       this._isMounted = true;
@@ -73,8 +76,6 @@ const WithForm = WrappedComponent => {
      * Handling for posting requests
      */
     handleSubmit = e => {
-      e.preventDefault();
-
       const state = { ...this.state };
       const values = withoutFields(
         state,

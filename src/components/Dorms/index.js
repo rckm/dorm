@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { withAPI } from "../API";
 import { RoomWrapper } from "./style";
 import { Grid, Card } from "semantic-ui-react";
-import FirstDorm from "../../static/firstDorm.JPG";
-import SecondDorm from "../../static/secondDorm.JPG";
+import FirstDorm from "../../static/firstDorm.webp";
+import SecondDorm from "../../static/secondDorm.webp";
 
 class Dorms extends Component {
   state = {};
@@ -21,20 +21,6 @@ class Dorms extends Component {
           <Grid.Row centered>
             <Grid.Column width={14}>
               <Card.Group itemsPerRow={4} centered>
-                {/* {this.props.dormDb.dorms &&
-                  this.props.dormDb.dorms.map((dorms, key) => {
-                    return (
-                      <React.Fragment key={key}>
-                        <Card
-                          raised
-                          color="yellow"
-                          image={FirstDorm}
-                          onClick={() => this.props.setCurrentDorm(dorms.id)}
-                          meta="г. Караганда, ул. Академическая 5"
-                        />
-                      </React.Fragment>
-                    );
-                  })} */}
                 <Card
                   raised
                   color="yellow"

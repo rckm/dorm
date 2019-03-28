@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "semantic-ui-react";
-import FirstFloor from "../../static/firstDorm/1.png";
+import FirstFloor from "../../static/firstDorm/1.webp";
 import { DormStyle } from "../Dorms/style";
 
 const coordinates = [120, 221, 320, 416, 505, 596, 692, 779, 859, 943];

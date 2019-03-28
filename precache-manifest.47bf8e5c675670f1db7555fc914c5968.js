@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "9cf382972b3eae459c15",
+    "revision": "7a9dd3f477bd099c7345",
     "url": "/dorm/static/css/main.141ab6cf.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/firstDorm.3246be3b.webp"
   },
   {
-    "revision": "25c163a8a7ded670d7b6e247dd5d58d2",
-    "url": "/dorm/static/media/secondDorm.25c163a8.webp"
+    "revision": "b99f9185a6098f7a7cde2582d9a64ef1",
+    "url": "/dorm/static/media/secondDorm.b99f9185.webp"
   },
   {
     "revision": "e662d390b06543f4320d58b913f45a83",
@@ -52,8 +52,8 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "9cf382972b3eae459c15",
-    "url": "/dorm/static/js/main.9cf38297.chunk.js"
+    "revision": "7a9dd3f477bd099c7345",
+    "url": "/dorm/static/js/main.7a9dd3f4.chunk.js"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/dorm/static/css/1.8735cd1c.chunk.css"
   },
   {
-    "revision": "a85b512280973753f9a0d75aef2bca77",
+    "revision": "87c7ad8fccc2796028e1041bb79363cf",
     "url": "/dorm/index.html"
   }
 ];

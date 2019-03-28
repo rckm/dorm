@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "semantic-ui-react";
 import FirstFloor from "../../static/firstDorm/1.webp";
 import { DormStyle } from "../Dorms/style";
+import { SvgRect } from "../Dorms/style";
 
 const coordinates = [120, 221, 320, 416, 505, 596, 692, 779, 859, 943];
 const reqCoordinates = [
@@ -19,7 +19,8 @@ const reqCoordinates = [
 
 class Floor extends Component {
   state = {
-    selectedRoom: {}
+    selectedRoom: {},
+    gender_id: null
   };
 
   handleSelectedRoom = room => {
@@ -28,44 +29,76 @@ class Floor extends Component {
     });
   };
 
+  genderColor = (gender_id, amount) => {
+    if (amount === 0) {
+      return "#E8F5E9";
+    }
+    switch (gender_id) {
+      case 1:
+        return "#E3F2FD";
+      case 2:
+        return "#FCE4EC";
+      default:
+        return "#E8F5E9";
+    }
+  };
+
   componentDidUpdate = (_, prevState) => {
     if (prevState.selectedRoom !== this.state.selectedRoom) {
-      this.props.setSelectedRoom(this.state.selectedRoom.number);
+      this.props.setSelectedRoom(
+        this.state.selectedRoom.id,
+        this.props.currentDormId
+      );
     }
+  };
+
+  sortReports = rooms => {
+    for (let i = 0, endI = rooms.length - 1; i < endI; i++) {
+      let wasSwap = false;
+
+      for (let j = 0, endJ = endI - i; j < endJ; j++) {
+        if (rooms[j].id > rooms[j + 1].id) {
+          [rooms[j], rooms[j + 1]] = [rooms[j + 1], rooms[j]];
+          wasSwap = true;
+        }
+      }
+
+      if (!wasSwap) break;
+    }
+
+    return rooms;
   };
 
   render() {
     const { rooms } = this.props;
+    this.sortReports(rooms);
     const { selectedRoom } = this.state;
+    this.genderColor();
+    console.log(this.state.gender_id);
     return (
       <DormStyle>
         <img src={FirstFloor} alt="Dorm" />
         <div className="show">
           <ul>
-            <li>Инфо: Первое общежитие </li>
+            <li>Общежитие №: {this.props.currentDormId} </li>
             <li>Комната №: {selectedRoom.number}</li>
             <li>Максимальное кол-во жителей: {selectedRoom.max}</li>
             <li>Сейчас проживает: {selectedRoom.amount} чел.</li>
-            <li>Этаж: {selectedRoom.floor_id}</li>
-            <li>
-              <Button secondary onClick={() => this.props.setCurrentDorm(null)}>
-                Назад
-              </Button>
-            </li>
+            <li>Этаж: {this.props.selectedFloor}</li>
           </ul>
         </div>
         <svg className="svg">
           {rooms.map((room, index) => {
             console.log(room);
             return (
-              <rect
+              <SvgRect
                 key={room.id}
                 onClick={() => this.handleSelectedRoom(room)}
-                className="rectangle"
                 x={`${reqCoordinates[index].x}`}
                 y="444.01"
                 width={`${reqCoordinates[index].width}`}
                 height="191.57"
+                gender={this.genderColor(room.gender_id, room.amount)}
               />
             );
           })}

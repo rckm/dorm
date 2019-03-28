@@ -9,8 +9,7 @@ body {
 }
 
 body {
-  /* background-color: #cccccc; */
-  background: url("./static/bg.webp");
+  background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

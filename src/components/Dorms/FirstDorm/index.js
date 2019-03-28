@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment, Form, Button } from "semantic-ui-react";
 import { FirstDormStyle } from "./style";
 import { withAPI } from "../../API";
 import Floors from "../Floors";
@@ -50,36 +50,47 @@ const FirstDorm = props => {
   return (
     <FirstDormStyle>
       <div className="select-wrapper">
-        <select
-          value={currentDorm}
-          onChange={handleChange}
-          name="selectedFloor"
-        >
-          <option disabled value="0">
-            Выберите этаж
-          </option>
-          {floors.map((floor, key) => {
-            return (
-              <React.Fragment key={key}>
-                <option value={floor.number}>{floor.number} этаж</option>
-              </React.Fragment>
-            );
-          })}
-        </select>
+        <Form>
+          <Form.Group>
+            <Form.Field>
+              <select
+                value={currentDorm}
+                onChange={handleChange}
+                name="selectedFloor"
+              >
+                <option disabled value="0">
+                  Выберите этаж
+                </option>
+                {floors.map((floor, key) => {
+                  return (
+                    <React.Fragment key={key}>
+                      <option value={floor.number}>{floor.number} этаж</option>
+                    </React.Fragment>
+                  );
+                })}
+              </select>
+            </Form.Field>
+            <Form.Field>
+              <Button onClick={() => props.setCurrentDorm(null)}>Назад</Button>
+            </Form.Field>
+          </Form.Group>
+        </Form>
       </div>
       <div>
         <Grid>
           <Grid.Row centered>
             <Grid.Column width={16}>
-              <Segment loading={isLoading}>
+              <Segment className="firstDorm" loading={isLoading}>
                 <Floors
                   rooms={rooms}
                   selectedFloor={currentDorm}
+                  currentDormId={props.currentDorm}
                   setCurrentDorm={props.setCurrentDorm}
-                  setSelectedRoom={selectedRoom =>
+                  setSelectedRoom={(selectedRoom, selectedDorm) =>
                     props.setSelectedRoom(state => ({
                       ...state,
-                      room_id: selectedRoom
+                      room_id: selectedRoom,
+                      dorm_id: selectedDorm
                     }))
                   }
                 />

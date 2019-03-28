@@ -114,7 +114,7 @@ class AdminDirection extends PureComponent {
                 <label className="form-label">Номер комнаты</label>
                 <input
                   required
-                  value={this.props.openCurrentField.room_id || ""}
+                  value={this.props.openCurrentField.rooms.id}
                   type="number"
                   name="room_id"
                   onChange={this.props.handleCurrentFieldChange}

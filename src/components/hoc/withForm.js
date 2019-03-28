@@ -19,6 +19,7 @@ const fields = {
   room_id: "",
   gender_id: "",
   status_id: "",
+  dorm_id: "",
   email: "",
   mother: {
     name_l: "",

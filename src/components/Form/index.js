@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm/";
@@ -76,7 +77,21 @@ const FormComponent = props => {
       <Grid>
         <Grid.Row centered>
           <Grid.Column computer={14} mobile={14}>
-            <h1 className="title">Dorm</h1>
+            <Button
+              className="auth-btn"
+              as={Link}
+              to="/admin"
+              floated="right"
+              animated="fade"
+            >
+              <Button.Content visible>Авторизация</Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow right" />
+              </Button.Content>
+            </Button>
+            <h1 style={{ color: "#fff" }} className="title">
+              Dorm
+            </h1>
             <Segment raised>
               <Form
                 success={
@@ -89,6 +104,16 @@ const FormComponent = props => {
                 onSubmit={props.handleSubmit}
                 unstackable
               >
+                <Grid.Row centered>
+                  <Grid.Column computer={14} mobile={14}>
+                    <h1
+                      style={{ padding: "5px 20px 30px 20px" }}
+                      className="title"
+                    >
+                      Заявление
+                    </h1>
+                  </Grid.Column>
+                </Grid.Row>
                 <Form.Group widths="equal">
                   <Form.Field required>
                     <label className="form-label">Фамилия</label>
@@ -179,12 +204,25 @@ const FormComponent = props => {
                   <Form.Field required>
                     <label className="form-label">Номер комнаты</label>
                     <input
+                      readOnly
                       required
                       value={props.state.room_id}
                       type="number"
                       name="room_id"
                       onChange={props.handleChange}
                       placeholder="Введите номер комнаты"
+                    />
+                  </Form.Field>
+                  <Form.Field required>
+                    <label className="form-label">Номер общежития</label>
+                    <input
+                      readOnly
+                      required
+                      value={props.state.dorm_id || ""}
+                      type="number"
+                      name="dorm_id"
+                      onChange={props.handleChange}
+                      placeholder="Номер общежития"
                     />
                   </Form.Field>
                   <Form.Field
@@ -233,7 +271,7 @@ const FormComponent = props => {
                     type="email"
                     name="email"
                     onChange={props.handleChange}
-                    placeholder="E-Mail"
+                    placeholder="test@test.kz"
                   />
                 </Form.Field>
                 <Form.Field
@@ -363,7 +401,9 @@ const FormComponent = props => {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row centered>
-          <Grid.Column width="14">{renderDorm()}</Grid.Column>
+          <Grid.Column width="14">
+            <Segment raised>{renderDorm()}</Segment>
+          </Grid.Column>
         </Grid.Row>
       </Grid>
     </FormStyle>

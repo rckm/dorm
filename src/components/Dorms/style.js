@@ -20,7 +20,7 @@ export const RoomWrapper = styled.div`
     text-align: center;
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
-    color: #ffffff;
+    color: #000;
   }
 
   .ui.card > .image,
@@ -35,6 +35,19 @@ export const RoomWrapper = styled.div`
 
   .card-group {
     padding: 100px 0;
+  }
+`;
+
+export const SvgRect = styled.rect.attrs(({ x, width }) => ({
+  x: x,
+  width: width
+}))`
+  position: relative;
+  transition: 0.5s all;
+  fill: ${props => props.gender};
+  cursor: pointer;
+  :hover {
+    fill: gray;
   }
 `;
 
@@ -55,16 +68,6 @@ export const DormStyle = styled.div`
     height: 666px;
     position: absolute;
   }
-  .rectangle {
-    position: relative;
-    transition: 0.5s all;
-    cursor: pointer;
-    fill: transparent;
-  }
-  .rectangle:hover {
-    fill: gray;
-  }
-
   .title {
     font-size: 24px;
   }
@@ -77,8 +80,8 @@ export const DormStyle = styled.div`
     cursor: pointer;
   }
   .show {
-    width: 300px;
-    height: 270px;
+    width: 350px;
+    height: 230px;
     background-color: #b1b1b1;
     border-radius: 4px;
     display: flex;
@@ -91,11 +94,13 @@ export const DormStyle = styled.div`
     bottom: 0;
     right: 0;
     left: 105px;
+    z-index: 2;
   }
   .show ul li {
     list-style-type: none;
     line-height: 40px;
-    font-size: 14px;
+    font-size: 18px;
+    line-height: 36px;
   }
 
   .select-wrapper {

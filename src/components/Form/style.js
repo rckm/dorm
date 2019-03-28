@@ -1,10 +1,14 @@
 import styled from "styled-components";
 
 export const FormStyle = styled.div`
+  .auth-btn {
+    margin-top: 58px !important;
+    position: absolute !important;
+    z-index: 999 !important;
+  }
   .title {
-    color: #fff;
+    color: #000;
     font-family: "Montserrat", sans-serif;
-    text-shadow: #000 2px 2px 4px;
     font-size: 42px;
     text-transform: uppercase;
     text-align: center;

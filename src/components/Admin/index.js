@@ -1,6 +1,6 @@
 import React from "react";
 import AdminPanel from "./AdminPanel";
-import withAdmin from "../hoc/withAdmin";
+import withAdmin from "../HOC/withAdmin";
 import { AdminComponent } from "./style";
 import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
 

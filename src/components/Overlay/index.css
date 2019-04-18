@@ -1,0 +1,107 @@
+.section-1 {
+  background: url("../../static/OverlayBg.webp") no-repeat center;
+  background-size: cover;
+}
+
+.logo {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ffffff;
+  padding: 30px 30px;
+  font-size: 50px;
+  text-shadow: 2px 2px 2px black;
+  font-weight: 500;
+}
+
+/* .auth-button {
+  position: relative;
+  top: 0px;
+  bottom: 0;
+  left: 0px;
+  right: 0;
+  padding: 20px 50px 20px 50px !important;
+} */
+
+.auth-text {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.description {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  text-shadow: 2px 2px 2px black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.req-text {
+  text-transform: uppercase;
+  color: #000000;
+  font-size: 18px;
+}
+
+.req-button {
+  padding: 20px 50px 20px 50px !important;
+  background: #ffffff none !important;
+  transition: 0.5s all !important;
+}
+
+.req-button:hover {
+  background-color: #e1e1e1 !important;
+}
+
+.ui.icon.button,
+.ui.icon.buttons .button {
+  padding: 20px 20px 20px 20px !important;
+}
+
+/* Scroll down icon  */
+.icon-scroll,
+.icon-scroll:before {
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
+}
+
+.icon-scroll {
+  width: 40px;
+  height: 70px;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: 100px;
+  box-shadow: inset 0 0 0 1px #fff;
+  border-radius: 25px;
+}
+
+.icon-scroll:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  margin-left: -4px;
+  top: 8px;
+  border-radius: 4px;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: scroll;
+}
+@keyframes scroll {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(46px);
+  }
+}
+/* Scroll down icon  */

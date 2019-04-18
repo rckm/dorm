@@ -9,7 +9,6 @@
     "imagemin-webp": "^5.0.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
-    "react-loader-spinner": "^2.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1"
   },
@@ -31,6 +30,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@fullpage/react-fullpage": "^0.1.13",
     "axios": "^0.18.0",
     "history": "^4.9.0",
     "semantic-ui-css": "^2.4.1",

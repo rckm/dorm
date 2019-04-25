@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RoomWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   .ui.cards a.card:hover,
   .ui.link.card:hover,
   .ui.link.cards .card:hover,

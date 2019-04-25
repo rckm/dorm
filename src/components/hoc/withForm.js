@@ -37,7 +37,6 @@ const fields = {
 };
 const WithForm = WrappedComponent => {
   class WithForm extends Component {
-    _isMounted = false;
     state = {
       ...fields,
       responseStatus: "",
@@ -56,7 +55,6 @@ const WithForm = WrappedComponent => {
 
     componentDidMount() {
       if (this.state.dormDb.length) return;
-      this._isMounted = true;
       this.props.api
         .getDormDb()
         .then(res => {
@@ -67,10 +65,6 @@ const WithForm = WrappedComponent => {
         .catch(error => {
           throw error;
         });
-    }
-
-    componentWillUnmount() {
-      this._isMounted = false;
     }
 
     /**
@@ -141,7 +135,6 @@ const WithForm = WrappedComponent => {
           handleChange={this.handleChange}
           handleSelect={this.handleSelect}
           handleParentsChange={this.handleParentsChange}
-          handleSubmitReport={this.handleSubmitReport}
           {...this.props}
         />
       );

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Button, Grid, Form, Segment, Icon, Message } from "semantic-ui-react";
+import {
+  Button,
+  Grid,
+  Form,
+  Segment,
+  Icon,
+  Message,
+  Input
+} from "semantic-ui-react";
 import WithForm from "../HOC/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm/";
@@ -7,8 +15,11 @@ import SecondDorm from "../Dorms/SecondDorm";
 import ThirdDorm from "../Dorms/ThirdDorm";
 import { FormStyle } from "./style";
 
+import "./index.css";
+
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
+
   /**
    * This is for setting min date that student can reserve a room
    */
@@ -64,8 +75,9 @@ const FormComponent = props => {
         return (
           <Dorms
             dormDb={props.state.dormDb}
-            currentdorm={currentDorm}
             setCurrentDorm={setCurrentDorm}
+            currentDorm={currentDorm}
+            setSelectedRoom={props.handleParentsChange}
           />
         );
     }
@@ -73,9 +85,6 @@ const FormComponent = props => {
 
   return (
     <FormStyle>
-      {/* <Grid>
-        <Grid.Row centered>
-          <Grid.Column computer={16} mobile={14}> */}
       <Segment>
         <Form
           success={
@@ -88,312 +97,357 @@ const FormComponent = props => {
           onSubmit={props.handleSubmit}
           unstackable
         >
-          <Grid columns="2">
-            {/* <Grid.Row> */}
-            <Grid.Column width={8}>
-              <Form.Group>
-                <Form.Field required>
-                  <label className="form-label">Фамилия</label>
-                  <input
-                    pattern="[А-ЯЁ][а-яё]{1,39}$"
+          <Grid relaxed="very" columns="3">
+            <Grid.Row centered>
+              <Grid.Column stretched width="7">
+                <label className="form-label">ФИО</label>
+                <Form.Group>
+                  <Form.Field width="7" required>
+                    <Input
+                      required
+                      type="text"
+                      name="name_l"
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.name_l}
+                      label={{ icon: "asterisk", color: "black" }}
+                      labelPosition="right corner"
+                      placeholder="Фамилия"
+                    />
+                  </Form.Field>
+                  <Form.Field width="7" required>
+                    <Input
+                      required
+                      type="text"
+                      name="name_f"
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.name_f}
+                      label={{ icon: "asterisk", color: "black" }}
+                      labelPosition="right corner"
+                      placeholder="Имя"
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field width="14">
+                    <Input
+                      required
+                      type="text"
+                      name="patronymic"
+                      pattern="[А-ЯЁ][а-яё]{1,39}$"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.patronymic}
+                      label={{ icon: "asterisk", color: "black" }}
+                      labelPosition="right corner"
+                      placeholder="Отчество"
+                    />
+                  </Form.Field>
+                </Form.Group>
+
+                <label className="form-label">Личные данные</label>
+
+                <Form.Group>
+                  <Form.Field width="10" required>
+                    <Input
+                      required
+                      type="text"
+                      name="uin"
+                      maxLength="12"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.uin}
+                      placeholder="ИИН"
+                    />
+                  </Form.Field>
+                  <Form.Field
+                    width="4"
+                    className="gender"
+                    name="gender_id"
+                    onChange={props.handleSelect}
+                    defaultValue={props.state.gender_id}
+                    control="select"
                     required
-                    value={props.state.name_l}
-                    type="text"
-                    name="name_l"
+                  >
+                    <option value="" disabled>
+                      Выберите пол
+                    </option>
+                    <option value="1">Мужской</option>
+                    <option value="2">Женский</option>
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field width="10" required>
+                    <Input
+                      required
+                      type="text"
+                      name="address"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.address}
+                      placeholder="Адрес проживания"
+                    />
+                  </Form.Field>
+                  <Form.Field width="4" required>
+                    <Input
+                      required
+                      type="number"
+                      name="children"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.patronymic}
+                      placeholder="Кол-во детей в семье"
+                    />
+                  </Form.Field>
+                </Form.Group>
+
+                <label className="form-label">Контакты</label>
+
+                <Form.Group>
+                  <Form.Field width="14" required>
+                    <Input
+                      type="number"
+                      name="phone"
+                      maxLength="11"
+                      onChange={props.handleChange}
+                      pattern="((\+7)|[8])7[0-9]{9}$"
+                      defaultValue={props.state.phone}
+                      icon="phone"
+                      label={{ content: "Телефон", color: "black" }}
+                      labelPosition="left"
+                      placeholder="Начиная с 8"
+                    />
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field width="14" required>
+                    <Input
+                      type="email"
+                      name="email"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.email}
+                      icon="mail"
+                      label={{ content: "E-mail", color: "black" }}
+                      labelPosition="left"
+                      placeholder="test@test.kz"
+                    />
+                  </Form.Field>
+                </Form.Group>
+
+                <label className="form-label">Другое</label>
+
+                <Form.Group>
+                  <Form.Field width="7" required>
+                    <Input
+                      type="text"
+                      name="group"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.group}
+                      icon="group"
+                      label={{ content: "Группа", color: "black" }}
+                      labelPosition="left"
+                      placeholder="ВТ-13С"
+                    />
+                  </Form.Field>
+                  <Form.Field width="7" required>
+                    <Input
+                      type="date"
+                      min={currDate}
+                      name="date_residence"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.date_residence}
+                      icon="calendar"
+                      label={{ content: "Дата заселения", color: "black" }}
+                      labelPosition="left"
+                      placeholder="test@test.kz"
+                    />
+                  </Form.Field>
+                </Form.Group>
+              </Grid.Column>
+
+              <Grid.Column width="7">
+                <label className="form-label">Родители</label>
+                <Form.Group inline>
+                  <Form.Field
+                    width="16"
+                    name="parents"
                     onChange={props.handleChange}
-                    placeholder="Заглавная буква,кириллица"
-                  />
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">Имя</label>
-                  <input
-                    pattern="[А-ЯЁ][а-яё]{1,39}$"
-                    required
-                    value={props.state.name_f}
-                    type="text"
-                    name="name_f"
-                    onChange={props.handleChange}
-                    placeholder="Заглавная буква,кириллица"
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label className="form-label">Отчество</label>
-                  <input
-                    pattern="[А-ЯЁ][а-яё]{1,39}$"
-                    value={props.state.patronymic}
-                    type="text"
-                    name="patronymic"
-                    onChange={props.handleChange}
-                    placeholder="Заглавная буква,кириллица"
-                  />
-                </Form.Field>
-              </Form.Group>
-              <Form.Group>
-                <Form.Field required>
-                  <label className="form-label">ИИН</label>
-                  <input
-                    required
-                    value={props.state.uin}
-                    type="text"
-                    name="uin"
-                    maxLength="12"
-                    onChange={props.handleChange}
-                    placeholder="Только цифры"
-                  />
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">Группа</label>
-                  <input
-                    pattern="[\-А-ЯЁ0-9 ]{2,12}$"
-                    required
-                    value={props.state.group}
-                    type="text"
-                    name="group"
-                    onChange={props.handleChange}
-                    placeholder="С заглавной буквы, кириллица"
-                  />
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">Номер телефона</label>
-                  <input
-                    required
-                    pattern="((\+7)|[8])7[0-9]{9}$"
-                    value={props.state.phone}
-                    type="text"
-                    name="phone"
-                    maxLength="11"
-                    onChange={props.handleChange}
-                    placeholder="Начиная с 8"
-                  />
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">Количество детей в семье</label>
-                  <input
-                    required
-                    value={props.state.children}
-                    type="number"
-                    name="children"
-                    onChange={props.handleChange}
-                  />
-                </Form.Field>
-              </Form.Group>
-              <Form.Group>
-                {/* <Form.Field required>
-                        <label className="form-label">Номер комнаты</label>
+                    defaultValue={props.state.parents}
+                    control="select"
+                  >
+                    <option value="" disabled>
+                      Нет
+                    </option>
+                    <option value="both">Оба</option>
+                    <option value="mother">Мама</option>
+                    <option value="father">Папа</option>
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  {(props.state.parents === "mother" ||
+                    props.state.parents === "both") && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Фамилия</label>
                         <input
-                          readOnly
-                          required
-                          value={props.state.room_id}
-                          type="number"
-                          name="room_id"
-                          onChange={props.handleChange}
-                          placeholder="Введите номер комнаты"
+                          name="mother.name_l"
+                          value={props.state.mother.name_l || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Фамилия матери"
+                          type="text"
                         />
-                      </Form.Field> */}
-                <Form.Field
-                  className="gender"
-                  name="gender_id"
-                  onChange={props.handleSelect}
-                  value={props.state.gender_id}
-                  label="Пол"
-                  control="select"
-                  required
-                >
-                  <option value="" disabled>
-                    Выберите пол
-                  </option>
-                  <option value="1">Мужской</option>
-                  <option value="2">Женский</option>
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">E-Mail</label>
-                  <input
-                    required
-                    value={props.state.email}
-                    type="email"
-                    name="email"
-                    onChange={props.handleChange}
-                    placeholder="test@test.kz"
-                  />
-                </Form.Field>
-                {/* <Form.Field required>
-                        <label className="form-label">Номер общежития</label>
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
                         <input
-                          readOnly
-                          required
-                          value={props.state.dorm_id || ""}
-                          type="number"
-                          name="dorm_id"
-                          onChange={props.handleChange}
-                          placeholder="Номер общежития"
+                          name="mother.name_f"
+                          value={props.state.mother.name_f || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Имя матери"
+                          type="text"
                         />
-                      </Form.Field> */}
-              </Form.Group>
-              <Form.Group>
-                <Form.Field required>
-                  <label className="form-label">Дата заселения</label>
-                  <input
-                    min={currDate}
-                    required
-                    value={props.state.date_residence}
-                    type="date"
-                    name="date_residence"
-                    onChange={props.handleChange}
-                  />
-                </Form.Field>
-                <Form.Field required>
-                  <label className="form-label">Адрес проживания</label>
-                  <input
-                    required
-                    value={props.state.address}
-                    type="text"
-                    name="address"
-                    onChange={props.handleChange}
-                    placeholder="Улица, дом, квартира"
-                  />
-                </Form.Field>
-              </Form.Group>
-            </Grid.Column>
-            {/* </Grid.Row> */}
-            {/* <Grid.Row> */}
-            <Grid.Column width={8}>
-              <Form.Field
-                name="parents"
-                onChange={props.handleChange}
-                value={props.state.parents}
-                label="Родители"
-                control="select"
-              >
-                <option value="" disabled>
-                  Нет
-                </option>
-                <option value="both">Оба</option>
-                <option value="mother">Мама</option>
-                <option value="father">Папа</option>
-              </Form.Field>
-              <Form.Group>
-                {(props.state.parents === "mother" ||
-                  props.state.parents === "both") && (
-                  <React.Fragment>
-                    <Form.Field>
-                      <label>Фамилия</label>
-                      <input
-                        name="mother.name_l"
-                        value={props.state.mother.name_l || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Фамилия матери"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Имя</label>
-                      <input
-                        name="mother.name_f"
-                        value={props.state.mother.name_f || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Имя матери"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Отчество</label>
-                      <input
-                        name="mother.patronymic"
-                        value={props.state.mother.patronymic || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Отчество матери"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Номер телефона</label>
-                      <input
-                        name="mother.phone"
-                        value={props.state.mother.phone || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Номер телефона матери"
-                        type="text"
-                      />
-                    </Form.Field>
-                  </React.Fragment>
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Отчество</label>
+                        <input
+                          name="mother.patronymic"
+                          value={props.state.mother.patronymic || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Отчество матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Номер телефона</label>
+                        <input
+                          name="mother.phone"
+                          value={props.state.mother.phone || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Номер телефона матери"
+                          type="text"
+                        />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
+                </Form.Group>
+                <Form.Group>
+                  {(props.state.parents === "father" ||
+                    props.state.parents === "both") && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Фамилия</label>
+                        <input
+                          name="father.name_l"
+                          value={props.state.father.name_l || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Фамилия отца"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
+                        <input
+                          name="father.name_f"
+                          value={props.state.father.name_f || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Имя отца"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Отчество</label>
+                        <input
+                          name="father.patronymic"
+                          value={props.state.father.patronymic || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Отчество отца"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Номер телефона</label>
+                        <input
+                          name="father.phone"
+                          value={props.state.father.phone || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Номер телефона отца"
+                          type="text"
+                        />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
+                </Form.Group>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row>
+              <Grid.Column>
+                {props.state.responseStatus === 200 ||
+                  (props.state.responseStatus === 201 && (
+                    <Message success header="Форма отправлена успешно!" />
+                  ))}
+                {props.state.error && (
+                  <Message error header="Неправильно заполнена форма!" />
                 )}
-              </Form.Group>
-              <Form.Group>
-                {(props.state.parents === "father" ||
-                  props.state.parents === "both") && (
-                  <React.Fragment>
-                    <label>Отец</label>
-                    <Form.Field>
-                      <label>Фамилия</label>
-                      <input
-                        name="father.name_l"
-                        value={props.state.father.name_l || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Фамилия отца"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Имя</label>
-                      <input
-                        name="father.name_f"
-                        value={props.state.father.name_f || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Имя отца"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Отчество</label>
-                      <input
-                        name="father.patronymic"
-                        value={props.state.father.patronymic || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Отчество отца"
-                        type="text"
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Номер телефона</label>
-                      <input
-                        name="father.phone"
-                        value={props.state.father.phone || ""}
-                        onChange={handleParentsChange}
-                        placeholder="Номер телефона отца"
-                        type="text"
-                      />
-                    </Form.Field>
-                  </React.Fragment>
-                )}
-              </Form.Group>
-            </Grid.Column>
-            {/* </Grid.Row> */}
-            {props.state.responseStatus === 200 ||
-              (props.state.responseStatus === 201 && (
-                <Message success header="Форма отправлена успешно!" />
-              ))}
-            {props.state.error && (
-              <Message error header="Неправильно заполнена форма!" />
-            )}
-            <Button animated="fade" primary type="submit">
-              <Button.Content visible>Отправить заявку</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow right" />
-              </Button.Content>
-            </Button>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row columns="equal" centered>
+              <Grid.Column width="4">progressbar</Grid.Column>
+              <Grid.Column width="6" textAlign="center">
+                <h2 className="questionnaire">Анкета</h2>
+              </Grid.Column>
+              <Grid.Column width="4" textAlign="right">
+                <Button animated="fade" primary type="submit">
+                  <Button.Content visible>Отправить заявку</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="arrow right" />
+                  </Button.Content>
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row centered>
+              <Grid.Column width="12">
+                <div
+                  onClick={() => window.scrollTo(0, 2000)}
+                  className="icon-scroll2"
+                />
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Form>
       </Segment>
-      {/* </Grid.Column>
-        </Grid.Row> */}
-      {/* <Grid.Row centered>
-          <Grid.Column width="14">
-            <Segment raised>{renderDorm()}</Segment>
-          </Grid.Column>
-        </Grid.Row> */}
-      {/* </Grid> */}
+      <Grid.Row centered>
+        <Grid.Column width="14">
+          <Segment>{renderDorm()}</Segment>
+        </Grid.Column>
+      </Grid.Row>
     </FormStyle>
   );
 };
 
 export default WithForm(FormComponent);
+
+/* <Form.Field required>
+    <label className="form-label">Номер комнаты</label>
+    <input
+      readOnly
+      required
+      value={props.state.room_id}
+      type="number"
+      name="room_id"
+      onChange={props.handleChange}
+      placeholder="Введите номер комнаты"
+    />
+    </Form.Field> */
+
+/* <Form.Field required>
+    <label className="form-label">Номер общежития</label>
+    <input
+      readOnly
+      required
+      value={props.state.dorm_id || ""}
+      type="number"
+      name="dorm_id"
+      onChange={props.handleChange}
+      placeholder="Номер общежития"
+    />
+    </Form.Field> */

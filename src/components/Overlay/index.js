@@ -6,6 +6,8 @@ import "./index.css";
 
 const Overlay = () => (
   <ReactFullpage
+    navigation
+    scrollingSpeed="800"
     render={({ state, fullpageApi }) => {
       return (
         <ReactFullpage.Wrapper>
@@ -100,8 +102,11 @@ const Overlay = () => (
               </Grid.Row>
             </Grid>
           </div>
-          <div className="section">
-            <p>Section 2</p>
+          <div className="section section2">
+            <div className="slide section2text"> Slide 1 </div>
+            <div className="slide section2text"> Slide 2 </div>
+            <div className="slide section2text"> Slide 3 </div>
+            <div className="slide section2text"> Slide 4 </div>
           </div>
         </ReactFullpage.Wrapper>
       );

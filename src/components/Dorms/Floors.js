@@ -74,7 +74,6 @@ class Floor extends Component {
     this.sortReports(rooms);
     const { selectedRoom } = this.state;
     this.genderColor();
-    console.log(this.state.gender_id);
     return (
       <DormStyle>
         <img src={FirstFloor} alt="Dorm" />
@@ -89,7 +88,6 @@ class Floor extends Component {
         </div>
         <svg className="svg">
           {rooms.map((room, index) => {
-            console.log(room);
             return (
               <SvgRect
                 key={room.id}

@@ -105,3 +105,21 @@
   }
 }
 /* Scroll down icon  */
+
+.section2 {
+  background-color: #000;
+}
+.section2text {
+  color: #ffffff;
+  text-align: center;
+  font-size: 36px;
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background-color: #fff;
+}
+
+.fp-right {
+  margin-right: 30px;
+}

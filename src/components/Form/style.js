@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FormStyle = styled.div`
+  height: 100vh;
   .auth-btn {
     margin-top: 58px !important;
     position: absolute !important;
@@ -14,13 +15,20 @@ export const FormStyle = styled.div`
     text-align: center;
     padding: 30px;
   }
+  .form-label {
+    font-weight: 500;
+    font-size: 18px;
+  }
   .form-label,
   .gender label {
-    padding: 10px 10px 10px 0px;
+    padding: 15px 10px 15px 0px;
     font-family: "Roboto", sans-serif;
   }
   .ui.segment {
-    padding: 2rem 2rem;
+    padding: 4rem 2rem 2rem 2rem;
+    border: 0px;
+    box-shadow: none;
+    height: 100vh;
   }
   .button {
     margin: 10px 10px 10px 0px;
@@ -34,5 +42,14 @@ export const FormStyle = styled.div`
   .ui.primary.button,
   .ui.primary.buttons .button {
     padding: 15px;
+  }
+
+  .firstCol {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .questionnaire {
+    font-size: 36px;
   }
 `;

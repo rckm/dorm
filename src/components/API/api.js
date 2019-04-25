@@ -61,7 +61,7 @@ class API {
   };
 
   /**
-   * Posting reports to the server
+   * Posting reports to the serverz
    * @param {} repValues The Report data that will be sended
    */
   postReport = ({ mother, father, ...repValues }) => {

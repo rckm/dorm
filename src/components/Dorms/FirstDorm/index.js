@@ -34,18 +34,23 @@ const useField = defaultValue => {
 };
 
 const FirstDorm = props => {
-  const [currentDorm, setCurrentDorm] = useField("1");
-
-  const [rooms, isLoading] = getRooms(currentDorm, props.api.getRooms);
-
-  const handleChange = e => {
-    const { value } = e.target;
-    setCurrentDorm(value);
-  };
-
   const floors = props.dormDb.floors.filter(dormId => {
     return dormId.dorm_id === props.currentDorm;
   });
+
+  const [currentFloor, setCurrentFloor] = useField("");
+
+  const [rooms, isLoading] = getRooms(
+    currentFloor || floors[0].id,
+    props.api.getRooms
+  );
+
+  console.log(rooms);
+
+  const handleChange = e => {
+    const { value } = e.target;
+    setCurrentFloor(value);
+  };
 
   return (
     <FirstDormStyle>
@@ -54,7 +59,7 @@ const FirstDorm = props => {
           <Form.Group>
             <Form.Field>
               <select
-                value={currentDorm}
+                value={currentFloor}
                 onChange={handleChange}
                 name="selectedFloor"
               >
@@ -64,7 +69,7 @@ const FirstDorm = props => {
                 {floors.map((floor, key) => {
                   return (
                     <React.Fragment key={key}>
-                      <option value={floor.number}>{floor.number} этаж</option>
+                      <option value={floor.id}>{floor.number} этаж</option>
                     </React.Fragment>
                   );
                 })}
@@ -83,7 +88,8 @@ const FirstDorm = props => {
               <Segment className="firstDorm" loading={isLoading}>
                 <Floors
                   rooms={rooms}
-                  selectedFloor={currentDorm}
+                  floors={floors[0].number}
+                  selectedFloor={currentFloor}
                   currentDormId={props.currentDorm}
                   setCurrentDorm={props.setCurrentDorm}
                   setSelectedRoom={(selectedRoom, selectedDorm) =>

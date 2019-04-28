@@ -11,11 +11,7 @@ import {
 import WithForm from "../HOC/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm/";
-import SecondDorm from "../Dorms/SecondDorm";
-import ThirdDorm from "../Dorms/ThirdDorm";
 import { FormStyle } from "./style";
-
-import "./index.css";
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
@@ -31,12 +27,15 @@ const FormComponent = props => {
 
   function handleParentsChange(e) {
     const { value } = e.target;
-    const [parentType, name] = e.target.name.split(".");
+    const [shelter, parentType, name] = e.target.name.split(".");
     props.handleParentsChange(state => ({
       ...state,
-      [parentType]: {
-        ...state[parentType],
-        [name]: value
+      [shelter]: {
+        ...state[shelter],
+        [parentType]: {
+          ...state[shelter][parentType],
+          [name]: value
+        }
       }
     }));
   }
@@ -54,7 +53,7 @@ const FormComponent = props => {
         );
       case 2:
         return (
-          <SecondDorm
+          <FirstDorm
             dormDb={props.state.dormDb}
             setCurrentDorm={setCurrentDorm}
             currentDorm={currentDorm}
@@ -63,7 +62,7 @@ const FormComponent = props => {
         );
       case 3:
         return (
-          <ThirdDorm
+          <FirstDorm
             dormDb={props.state.dormDb}
             setCurrentDorm={setCurrentDorm}
             currentDorm={currentDorm}
@@ -85,6 +84,11 @@ const FormComponent = props => {
 
   return (
     <FormStyle>
+      <Grid.Row centered>
+        <Grid.Column width="14">
+          <Segment>{renderDorm()}</Segment>
+        </Grid.Column>
+      </Grid.Row>
       <Segment>
         <Form
           success={
@@ -287,8 +291,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
-                          name="mother.name_l"
-                          value={props.state.mother.name_l || ""}
+                          name="shelter.parent_mother.name_l"
+                          value={props.state.shelter.parent_mother.name_l || ""}
                           onChange={handleParentsChange}
                           placeholder="Фамилия матери"
                           type="text"
@@ -297,8 +301,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Имя</label>
                         <input
-                          name="mother.name_f"
-                          value={props.state.mother.name_f || ""}
+                          name="shelter.parent_mother.name_f"
+                          value={props.state.shelter.parent_mother.name_f || ""}
                           onChange={handleParentsChange}
                           placeholder="Имя матери"
                           type="text"
@@ -307,8 +311,10 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Отчество</label>
                         <input
-                          name="mother.patronymic"
-                          value={props.state.mother.patronymic || ""}
+                          name="shelter.parent_mother.patronymic"
+                          value={
+                            props.state.shelter.parent_mother.patronymic || ""
+                          }
                           onChange={handleParentsChange}
                           placeholder="Отчество матери"
                           type="text"
@@ -317,8 +323,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Номер телефона</label>
                         <input
-                          name="mother.phone"
-                          value={props.state.mother.phone || ""}
+                          name="shelter.parent_mother.phone"
+                          value={props.state.shelter.parent_mother.phone || ""}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона матери"
                           type="text"
@@ -334,8 +340,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
-                          name="father.name_l"
-                          value={props.state.father.name_l || ""}
+                          name="shelter.parent_father.name_l"
+                          value={props.state.shelter.parent_father.name_l || ""}
                           onChange={handleParentsChange}
                           placeholder="Фамилия отца"
                           type="text"
@@ -344,8 +350,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Имя</label>
                         <input
-                          name="father.name_f"
-                          value={props.state.father.name_f || ""}
+                          name="shelter.parent_father.name_f"
+                          value={props.state.shelter.parent_father.name_f || ""}
                           onChange={handleParentsChange}
                           placeholder="Имя отца"
                           type="text"
@@ -354,8 +360,10 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Отчество</label>
                         <input
-                          name="father.patronymic"
-                          value={props.state.father.patronymic || ""}
+                          name="shelter.parent_father.patronymic"
+                          value={
+                            props.state.shelter.parent_father.patronymic || ""
+                          }
                           onChange={handleParentsChange}
                           placeholder="Отчество отца"
                           type="text"
@@ -364,8 +372,8 @@ const FormComponent = props => {
                       <Form.Field>
                         <label>Номер телефона</label>
                         <input
-                          name="father.phone"
-                          value={props.state.father.phone || ""}
+                          name="shelter.parent_father.phone"
+                          value={props.state.shelter.parent_father.phone || ""}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона отца"
                           type="text"
@@ -403,23 +411,9 @@ const FormComponent = props => {
                 </Button>
               </Grid.Column>
             </Grid.Row>
-
-            <Grid.Row centered>
-              <Grid.Column width="12">
-                <div
-                  onClick={() => window.scrollTo(0, 2000)}
-                  className="icon-scroll2"
-                />
-              </Grid.Column>
-            </Grid.Row>
           </Grid>
         </Form>
       </Segment>
-      <Grid.Row centered>
-        <Grid.Column width="14">
-          <Segment>{renderDorm()}</Segment>
-        </Grid.Column>
-      </Grid.Row>
     </FormStyle>
   );
 };

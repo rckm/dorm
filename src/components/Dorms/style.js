@@ -34,7 +34,7 @@ export const RoomWrapper = styled.div`
   }
 
   .card-group {
-    padding: 100px 0;
+    padding: 100px 0 0 0;
   }
 `;
 
@@ -55,52 +55,48 @@ export const DormStyle = styled.div`
   background-color: #ffffff;
   border-radius: 0.28571429rem;
   padding: 2rem;
-  ul {
-    padding: 0;
-    margin: 0;
-  }
   outline: none;
   background-image: none;
   display: flex;
   justify-content: center;
+  overflow: auto;
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  .svgwrapper {
+    position: absolute;
+    margin: auto;
+    text-align: center;
+  }
+
   .svg {
     width: 1080px;
     height: 666px;
-    position: absolute;
   }
+
   .title {
     font-size: 24px;
   }
 
-  .hide {
-    display: none;
-  }
   .text {
     font-size: 16px;
     cursor: pointer;
   }
-  .show {
-    width: 350px;
-    height: 230px;
-    background-color: #b1b1b1;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    font-size: 24px;
-    color: #ffffff;
-    top: 70px;
-    bottom: 0;
-    right: 0;
-    left: 105px;
+
+  .info {
+    width: 100%;
+    text-align: center;
     z-index: 2;
   }
-  .show ul li {
+  .info ul li {
     list-style-type: none;
     line-height: 40px;
     font-size: 18px;
-    line-height: 36px;
+    display: inline-block;
+    /* line-height: 36px; */
   }
 
   .select-wrapper {

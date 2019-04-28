@@ -1,21 +1,90 @@
 import React, { Component } from "react";
-import FirstFloor from "../../static/firstDorm/1.webp";
+import FirstDormScheme from "../../static/dormSchemes/1.webp";
+import SecondDormScheme from "../../static/dormSchemes/2.webp";
+import ThirdDormScheme from "../../static/dormSchemes/3.webp";
 import { DormStyle } from "../Dorms/style";
 import { SvgRect } from "../Dorms/style";
+import {
+  coordinatesFirstDorm,
+  recCoordinatesFirstDorm,
+  coordinatesSecondDorm,
+  recCoordinatesSecondDorm
+} from "../../utils/util";
 
-const coordinates = [120, 221, 320, 416, 505, 596, 692, 779, 859, 943];
-const reqCoordinates = [
-  { x: 86.989, width: 96.972 },
-  { x: 188.99, width: 96.972 },
-  { x: 290.99, width: 92.218 },
-  { x: 388.99, width: 87.465 },
-  { x: 480.99, width: 83.187 },
-  { x: 570.99, width: 85.563 },
-  { x: 660.99, width: 87.244 },
-  { x: 754.99, width: 77.262 },
-  { x: 837.46, width: 73.228 },
-  { x: 916.78, width: 77.598 }
-];
+const FloorComponent = props => {
+  console.log(props.selectedFloor);
+  const setCurrentScheme = () => {
+    if (props.currentDormId === 1) {
+      return FirstDormScheme;
+    } else if (props.currentDormId === 2) {
+      return SecondDormScheme;
+    } else {
+      return ThirdDormScheme;
+    }
+  };
+
+  const setCurrentCoordinates = () => {
+    if (props.currentDormId === 1) {
+      return {
+        coordinates: coordinatesFirstDorm,
+        recCoordinates: recCoordinatesFirstDorm
+      };
+    } else if (props.currentDormId === 2) {
+      return {
+        coordinates: coordinatesSecondDorm,
+        recCoordinates: recCoordinatesSecondDorm
+      };
+    } else {
+      return ThirdDormScheme;
+    }
+  };
+
+  return (
+    <DormStyle>
+      {/* <nav className="info">
+        <ul>
+          <li>Общежитие №: {props.currentDormId} </li>
+          <li>Комната №: {props.selectedRoom.number}</li>
+          <li>Максимальное кол-во жителей: {props.selectedRoom.max}</li>
+          <li>Сейчас проживает: {props.selectedRoom.amount} чел.</li>
+          <li>Этаж: {props.selectedFloor || props.floors}</li>
+        </ul>
+      </nav> */}
+      <img src={setCurrentScheme()} alt="Dorm" />
+      <div className="svgwrapper">
+        <svg className="svg">
+          {props.rooms.map((room, index) => {
+            return (
+              <SvgRect
+                key={room.id}
+                onClick={() => props.handleSelectedRoom(room)}
+                x={`${setCurrentCoordinates().recCoordinates[index].x}`}
+                y={`${setCurrentCoordinates().recCoordinates[index].y}`}
+                width={`${setCurrentCoordinates().recCoordinates[index].width}`}
+                height={`${
+                  setCurrentCoordinates().recCoordinates[index].height
+                }`}
+                gender={props.genderColor(room.gender_id, room.amount)}
+              />
+            );
+          })}
+          {props.rooms.map((room, index) => (
+            <text
+              key={room.id}
+              onClick={() => props.handleSelectedRoom(room)}
+              className="text"
+              height={`${setCurrentCoordinates().recCoordinates[index].height}`}
+              x={`${setCurrentCoordinates().coordinates[index].x}`}
+              y={`${setCurrentCoordinates().coordinates[index].y}`}
+            >
+              {room.number}
+            </text>
+          ))}
+        </svg>
+      </div>
+    </DormStyle>
+  );
+};
 
 class Floor extends Component {
   state = {
@@ -75,45 +144,14 @@ class Floor extends Component {
     const { selectedRoom } = this.state;
     this.genderColor();
     return (
-      <DormStyle>
-        <img src={FirstFloor} alt="Dorm" />
-        <div className="show">
-          <ul>
-            <li>Общежитие №: {this.props.currentDormId} </li>
-            <li>Комната №: {selectedRoom.number}</li>
-            <li>Максимальное кол-во жителей: {selectedRoom.max}</li>
-            <li>Сейчас проживает: {selectedRoom.amount} чел.</li>
-            <li>Этаж: {this.props.selectedFloor}</li>
-          </ul>
-        </div>
-        <svg className="svg">
-          {rooms.map((room, index) => {
-            return (
-              <SvgRect
-                key={room.id}
-                onClick={() => this.handleSelectedRoom(room)}
-                x={`${reqCoordinates[index].x}`}
-                y="444.01"
-                width={`${reqCoordinates[index].width}`}
-                height="191.57"
-                gender={this.genderColor(room.gender_id, room.amount)}
-              />
-            );
-          })}
-          {rooms.map((room, index) => (
-            <text
-              key={room.id}
-              onClick={() => this.handleSelectedRoom(room)}
-              className="text"
-              height="191.57"
-              x={`${coordinates[index]}`}
-              y="556"
-            >
-              {room.number}
-            </text>
-          ))}
-        </svg>
-      </DormStyle>
+      <FloorComponent
+        currentDormId={this.props.currentDormId}
+        selectedRoom={selectedRoom}
+        selectedFloor={this.props.selectedFloor}
+        rooms={rooms}
+        handleSelectedRoom={this.handleSelectedRoom}
+        genderColor={this.genderColor}
+      />
     );
   }
 }

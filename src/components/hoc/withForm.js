@@ -11,7 +11,40 @@ const fields = {
   name_f: "",
   name_l: "",
   patronymic: "",
-  uin: "",
+  residence_permit: {
+    city: "",
+    country_id: "",
+    address: ""
+  },
+  citizenship: {
+    number: " ",
+    country_id: ""
+  },
+  shelter: {
+    parent_mother: {
+      name_l: "",
+      name_f: "",
+      patronymic: "",
+      phone: ""
+    },
+    parent_father: {
+      name_l: "",
+      name_f: "",
+      patronymic: "",
+      phone: ""
+    },
+    guardian: {
+      name_l: "",
+      name_f: "",
+      patronymic: "",
+      phone: ""
+    },
+    orphanage: {
+      address: "",
+      phone: ""
+    }
+  },
+  eduactional_form_id: "",
   group: "",
   address: "",
   phone: "",
@@ -21,18 +54,6 @@ const fields = {
   status_id: "",
   dorm_id: "",
   email: "",
-  mother: {
-    name_l: "",
-    name_f: "",
-    patronymic: "",
-    phone: ""
-  },
-  father: {
-    name_l: "",
-    name_f: "",
-    patronymic: "",
-    phone: ""
-  },
   date_residence: ""
 };
 const WithForm = WrappedComponent => {

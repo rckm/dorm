@@ -53,53 +53,27 @@ const FormComponent = props => {
     }));
   }
 
-  const renderDorm = () => {
-    switch (currentDorm) {
-      case 1:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-      case 2:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-      case 3:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-
-      default:
-        return (
-          <Dorms
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-    }
-  };
-
   return (
     <FormStyle>
       <Grid.Row centered>
         <Grid.Column width="14">
-          <Segment>{renderDorm()}</Segment>
+          <Segment>
+            {currentDorm !== null ? (
+              <FirstDorm
+                dormDb={props.state.dormDb}
+                setCurrentDorm={setCurrentDorm}
+                currentDorm={currentDorm}
+                setSelectedRoom={props.handleParentsChange}
+              />
+            ) : (
+              <Dorms
+                dormDb={props.state.dormDb}
+                setCurrentDorm={setCurrentDorm}
+                currentDorm={currentDorm}
+                setSelectedRoom={props.handleParentsChange}
+              />
+            )}
+          </Segment>
         </Grid.Column>
       </Grid.Row>
       <Segment>

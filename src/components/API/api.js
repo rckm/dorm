@@ -3,10 +3,10 @@
  */
 
 import axios from "axios";
-import qs from "querystring";
+import qs from "qs";
 
 const instance = axios.create({
-  baseURL: "https://dorm-keu.herokuapp.com/api",
+  baseURL: "https://www.keu.kz:5555/api",
   headers: {
     "content-type": "application/x-www-form-urlencoded"
   }
@@ -31,30 +31,10 @@ class API {
    * @param {} reqValues The Request data that will be sended
    */
   postRequest = reqValues => {
+    console.log(reqValues);
     const reqOptions = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        mother:
-          '{ "name_f":"' +
-          encodeURI(reqValues.mother.name_f) +
-          '","name_l":"' +
-          encodeURI(reqValues.mother.name_l) +
-          '",  "patronymic":"' +
-          encodeURI(reqValues.mother.patronymic) +
-          '", "phone":"' +
-          encodeURI(reqValues.mother.phone) +
-          '"}',
-        father:
-          '{ "name_f":"' +
-          encodeURI(reqValues.father.name_f) +
-          '","name_l":"' +
-          encodeURI(reqValues.father.name_l) +
-          '",  "patronymic":"' +
-          encodeURI(reqValues.father.patronymic) +
-          '", "phone":"' +
-          encodeURI(reqValues.father.phone) +
-          '"}',
-        dorm_id: reqValues.dorm_id
+        "content-type": "application/x-www-form-urlencoded" //x-www-form-urlencoded
       }
     };
     return this.api.post("/request", qs.stringify(reqValues), reqOptions);
@@ -67,27 +47,7 @@ class API {
   postReport = ({ mother, father, ...repValues }) => {
     const repOptions = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        mother:
-          '{ "name_f":"' +
-          encodeURI(mother.name_f || "") +
-          '","name_l":"' +
-          encodeURI(mother.name_l || "") +
-          '",  "patronymic":"' +
-          encodeURI(mother.patronymic || "") +
-          '", "phone":"' +
-          encodeURI(mother.phone || "") +
-          '"}',
-        father:
-          '{ "name_f":"' +
-          encodeURI(father.name_f || "") +
-          '","name_l":"' +
-          encodeURI(father.name_l || "") +
-          '",  "patronymic":"' +
-          encodeURI(father.patronymic || "") +
-          '", "phone":"' +
-          encodeURI(father.phone || "") +
-          '"}'
+        "content-type": "application/x-www-form-urlencoded"
       }
     };
 
@@ -107,7 +67,7 @@ class API {
    * Get data from dorm database
    */
   getDormDb = () => {
-    return this.api.get("https://www.keu.kz:5555/api/db");
+    return this.api.get("/db");
   };
 
   /**
@@ -170,28 +130,7 @@ class API {
   ) => {
     const reqDocOptions = {
       headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        mother:
-          '{ "name_f":"' +
-          encodeURI(mother.name_f || "") +
-          '","name_l":"' +
-          encodeURI(mother.name_l || "") +
-          '",  "patronymic":"' +
-          encodeURI(mother.patronymic || "") +
-          '", "phone":"' +
-          encodeURI(mother.phone || "") +
-          '"}',
-        // `'{ "name_f": "${encodeURI(reqValues.mother.name_f)}", "name_l": "${encodeURI(reqValues.mother.name_l)}", "patronymic": "${encodeURI(reqValues.mother.patronymic)}", "phone": "${encodeURI(reqValues.mother.phone)}"'`
-        father:
-          '{ "name_f":"' +
-          encodeURI(father.name_f || "") +
-          '","name_l":"' +
-          encodeURI(father.name_l || "") +
-          '",  "patronymic":"' +
-          encodeURI(father.patronymic || "") +
-          '", "phone":"' +
-          encodeURI(father.phone || "") +
-          '"}'
+        "content-type": "application/x-www-form-urlencoded"
       }
     };
     return this.api.get(

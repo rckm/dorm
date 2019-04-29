@@ -11,6 +11,16 @@ const fields = {
   name_f: "",
   name_l: "",
   patronymic: "",
+  educational_form_id: "",
+  group: "",
+  phone: "",
+  children: "",
+  room_id: "",
+  gender_id: "",
+  status_id: "",
+  dorm_id: "",
+  email: "",
+  date_residence: "",
   residence_permit: {
     city: "",
     country_id: "",
@@ -43,18 +53,7 @@ const fields = {
       address: "",
       phone: ""
     }
-  },
-  eduactional_form_id: "",
-  group: "",
-  address: "",
-  phone: "",
-  children: "",
-  room_id: "",
-  gender_id: "",
-  status_id: "",
-  dorm_id: "",
-  email: "",
-  date_residence: ""
+  }
 };
 const WithForm = WrappedComponent => {
   class WithForm extends Component {
@@ -96,7 +95,7 @@ const WithForm = WrappedComponent => {
      */
     handleSubmit = e => {
       const state = { ...this.state };
-      const values = (withoutFields(
+      const values = withoutFields(
         state,
         "status_id",
         "dormDb",
@@ -104,7 +103,7 @@ const WithForm = WrappedComponent => {
         "responseStatus",
         "loading",
         "error"
-      ).citizenship.country_id = state.residence_permit.country_id);
+      );
       this.setState({
         loading: true
       });
@@ -123,7 +122,7 @@ const WithForm = WrappedComponent => {
             loading: false
           });
         });
-      this.resetForm();
+      // this.resetForm();
     };
 
     /**

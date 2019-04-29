@@ -82,7 +82,7 @@ const FormComponent = props => {
             props.state.responseStatus === 200 ||
             props.state.responseStatus === 201
           }
-          error={props.state.error}
+          error={props.state.error ? true : false}
           loading={props.state.loading}
           onSubmit={props.handleSubmit}
           className="mainForm"
@@ -101,7 +101,7 @@ const FormComponent = props => {
                       name="name_l"
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
-                      defaultValue={props.state.name_l}
+                      value={props.state.name_l}
                       label={{ icon: "asterisk", color: "black" }}
                       labelPosition="right corner"
                       placeholder="Фамилия"
@@ -114,7 +114,7 @@ const FormComponent = props => {
                       name="name_f"
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
-                      defaultValue={props.state.name_f}
+                      value={props.state.name_f}
                       label={{ icon: "asterisk", color: "black" }}
                       labelPosition="right corner"
                       placeholder="Имя"
@@ -129,7 +129,7 @@ const FormComponent = props => {
                       name="patronymic"
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
-                      defaultValue={props.state.patronymic}
+                      value={props.state.patronymic}
                       label={{ icon: "asterisk", color: "black" }}
                       labelPosition="right corner"
                       placeholder="Отчество"
@@ -144,7 +144,7 @@ const FormComponent = props => {
                     width="14"
                     name="residence_permit.country_id"
                     onChange={handleNestedObjChange}
-                    defaultValue={props.state.residence_permit.country_id}
+                    value={props.state.residence_permit.country_id}
                     control="select"
                     required
                   >
@@ -168,7 +168,7 @@ const FormComponent = props => {
                       type="text"
                       name="residence_permit.city"
                       onChange={handleNestedObjChange}
-                      defaultValue={props.state.residence_permit.city}
+                      value={props.state.residence_permit.city}
                       placeholder="Город"
                     />
                   </Form.Field>
@@ -178,7 +178,7 @@ const FormComponent = props => {
                       type="text"
                       name="residence_permit.address"
                       onChange={handleNestedObjChange}
-                      defaultValue={props.state.residence_permit.address}
+                      value={props.state.residence_permit.address}
                       placeholder="Адрес проживания"
                     />
                   </Form.Field>
@@ -216,10 +216,10 @@ const FormComponent = props => {
                   <Form.Field width="7" required>
                     <Input
                       required
-                      type="number"
+                      type="text"
                       name="children"
                       onChange={props.handleChange}
-                      defaultValue={props.state.patronymic}
+                      value={props.state.children}
                       placeholder="Кол-во детей в семье"
                     />
                   </Form.Field>
@@ -228,7 +228,7 @@ const FormComponent = props => {
                     className="gender"
                     name="gender_id"
                     onChange={props.handleSelect}
-                    defaultValue={props.state.gender_id}
+                    value={props.state.gender_id}
                     control="select"
                     required
                   >
@@ -250,7 +250,7 @@ const FormComponent = props => {
                       maxLength="11"
                       onChange={props.handleChange}
                       pattern="((\+7)|[8])7[0-9]{9}$"
-                      defaultValue={props.state.phone}
+                      value={props.state.phone}
                       icon="phone"
                       label={{ content: "Телефон", color: "black" }}
                       labelPosition="left"
@@ -264,7 +264,7 @@ const FormComponent = props => {
                       type="email"
                       name="email"
                       onChange={props.handleChange}
-                      defaultValue={props.state.email}
+                      value={props.state.email}
                       icon="mail"
                       label={{ content: "E-mail", color: "black" }}
                       labelPosition="left"
@@ -281,7 +281,7 @@ const FormComponent = props => {
                       type="text"
                       name="group"
                       onChange={props.handleChange}
-                      defaultValue={props.state.group}
+                      value={props.state.group}
                       icon="group"
                       label={{ content: "Группа", color: "black" }}
                       labelPosition="left"
@@ -294,7 +294,7 @@ const FormComponent = props => {
                       min={currDate}
                       name="date_residence"
                       onChange={props.handleChange}
-                      defaultValue={props.state.date_residence}
+                      value={props.state.date_residence}
                       icon="calendar"
                       label={{ content: "Дата", color: "black" }}
                       labelPosition="left"
@@ -306,12 +306,12 @@ const FormComponent = props => {
                   <Form.Field
                     width="14"
                     name="educational_form_id"
-                    onChange={props.handleChange}
-                    defaultValue={props.state.educational_form_id}
+                    onChange={props.handleSelect}
+                    value={props.state.educational_form_id}
                     control="select"
                     required
                   >
-                    <option defaultValue="">Выберите форму обучения</option>
+                    <option value="">Выберите форму обучения</option>
                     {props.state.dormDb.educational_form &&
                       props.state.dormDb.educational_form.map(
                         (eduForm, index) => {
@@ -321,13 +321,37 @@ const FormComponent = props => {
                           );
                           return (
                             <React.Fragment key={index}>
-                              <option value={eduForm.id || ""}>
-                                {name.name_ru}
-                              </option>
+                              <option value={eduForm.id}>{name.name_ru}</option>
                             </React.Fragment>
                           );
                         }
                       )}
+                  </Form.Field>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Field required>
+                    <label className="form-label">Номер комнаты</label>
+                    <input
+                      readOnly
+                      required
+                      value={props.state.room_id}
+                      type="number"
+                      name="room_id"
+                      onChange={props.handleChange}
+                      placeholder="Введите номер комнаты"
+                    />
+                  </Form.Field>
+                  <Form.Field required>
+                    <label className="form-label">Номер общежития</label>
+                    <input
+                      readOnly
+                      required
+                      value={props.state.dorm_id || ""}
+                      type="number"
+                      name="dorm_id"
+                      onChange={props.handleChange}
+                      placeholder="Номер общежития"
+                    />
                   </Form.Field>
                 </Form.Group>
               </Grid.Column>
@@ -341,7 +365,7 @@ const FormComponent = props => {
                     width="16"
                     name="parents"
                     onChange={props.handleChange}
-                    defaultValue={props.state.parents}
+                    value={props.state.parents}
                     control="select"
                   >
                     <option value="">Нет</option>
@@ -555,29 +579,3 @@ const FormComponent = props => {
 };
 
 export default WithForm(FormComponent);
-
-/* <Form.Field required>
-    <label className="form-label">Номер комнаты</label>
-    <input
-      readOnly
-      required
-      value={props.state.room_id}
-      type="number"
-      name="room_id"
-      onChange={props.handleChange}
-      placeholder="Введите номер комнаты"
-    />
-    </Form.Field> */
-
-/* <Form.Field required>
-    <label className="form-label">Номер общежития</label>
-    <input
-      readOnly
-      required
-      value={props.state.dorm_id || ""}
-      type="number"
-      name="dorm_id"
-      onChange={props.handleChange}
-      placeholder="Номер общежития"
-    />
-    </Form.Field> */

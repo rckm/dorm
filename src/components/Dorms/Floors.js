@@ -1,18 +1,12 @@
-import React, { Component } from "react";
-import FirstDormScheme from "../../static/dormSchemes/1.webp";
-import SecondDormScheme from "../../static/dormSchemes/2.webp";
-import ThirdDormScheme from "../../static/dormSchemes/3.webp";
-import { DormStyle } from "../Dorms/style";
-import { SvgRect } from "../Dorms/style";
-import {
-  coordinatesFirstDorm,
-  recCoordinatesFirstDorm,
-  coordinatesSecondDorm,
-  recCoordinatesSecondDorm
-} from "../../utils/util";
+import React, { Component } from 'react';
+import FirstDormScheme from '../../static/dormSchemes/1.webp';
+import SecondDormScheme from '../../static/dormSchemes/2.webp';
+import ThirdDormScheme from '../../static/dormSchemes/3.webp';
+import { DormStyle } from '../Dorms/style';
+import { SvgRect } from '../Dorms/style';
+import { coordinatesDB } from '../../utils/util';
 
 const FloorComponent = props => {
-  console.log(props.selectedFloor);
   const setCurrentScheme = () => {
     if (props.currentDormId === 1) {
       return FirstDormScheme;
@@ -23,25 +17,11 @@ const FloorComponent = props => {
     }
   };
 
-  const setCurrentCoordinates = () => {
-    if (props.currentDormId === 1) {
-      return {
-        coordinates: coordinatesFirstDorm,
-        recCoordinates: recCoordinatesFirstDorm
-      };
-    } else if (props.currentDormId === 2) {
-      return {
-        coordinates: coordinatesSecondDorm,
-        recCoordinates: recCoordinatesSecondDorm
-      };
-    } else {
-      return ThirdDormScheme;
-    }
-  };
+  const coordinatesByDormID = coordinatesDB[props.currentDormId];
 
   return (
     <DormStyle>
-      {/* <nav className="info">
+      <nav className="info">
         <ul>
           <li>Общежитие №: {props.currentDormId} </li>
           <li>Комната №: {props.selectedRoom.number}</li>
@@ -49,7 +29,7 @@ const FloorComponent = props => {
           <li>Сейчас проживает: {props.selectedRoom.amount} чел.</li>
           <li>Этаж: {props.selectedFloor || props.floors}</li>
         </ul>
-      </nav> */}
+      </nav>
       <img src={setCurrentScheme()} alt="Dorm" />
       <div className="svgwrapper">
         <svg className="svg">
@@ -58,12 +38,10 @@ const FloorComponent = props => {
               <SvgRect
                 key={room.id}
                 onClick={() => props.handleSelectedRoom(room)}
-                x={`${setCurrentCoordinates().recCoordinates[index].x}`}
-                y={`${setCurrentCoordinates().recCoordinates[index].y}`}
-                width={`${setCurrentCoordinates().recCoordinates[index].width}`}
-                height={`${
-                  setCurrentCoordinates().recCoordinates[index].height
-                }`}
+                x={`${coordinatesByDormID.recCoordinates[index].x}`}
+                y={`${coordinatesByDormID.recCoordinates[index].y}`}
+                width={`${coordinatesByDormID.recCoordinates[index].width}`}
+                height={`${coordinatesByDormID.recCoordinates[index].height}`}
                 gender={props.genderColor(room.gender_id, room.amount)}
               />
             );
@@ -73,9 +51,9 @@ const FloorComponent = props => {
               key={room.id}
               onClick={() => props.handleSelectedRoom(room)}
               className="text"
-              height={`${setCurrentCoordinates().recCoordinates[index].height}`}
-              x={`${setCurrentCoordinates().coordinates[index].x}`}
-              y={`${setCurrentCoordinates().coordinates[index].y}`}
+              height={`${coordinatesByDormID.recCoordinates[index].height}`}
+              x={`${coordinatesByDormID.coordinates[index].x}`}
+              y={`${coordinatesByDormID.coordinates[index].y}`}
             >
               {room.number}
             </text>
@@ -100,15 +78,15 @@ class Floor extends Component {
 
   genderColor = (gender_id, amount) => {
     if (amount === 0) {
-      return "#E8F5E9";
+      return '#E8F5E9';
     }
     switch (gender_id) {
       case 1:
-        return "#E3F2FD";
+        return '#E3F2FD';
       case 2:
-        return "#FCE4EC";
+        return '#FCE4EC';
       default:
-        return "#E8F5E9";
+        return '#E8F5E9';
     }
   };
 

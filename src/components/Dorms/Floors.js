@@ -21,15 +21,22 @@ const FloorComponent = props => {
 
   return (
     <DormStyle>
-      {/* <nav className="info">
-        <ul>
-          <li>Общежитие №: {props.currentDormId} </li>
-          <li>Комната №: {props.selectedRoom.number}</li>
-          <li>Максимальное кол-во жителей: {props.selectedRoom.max}</li>
-          <li>Сейчас проживает: {props.selectedRoom.amount} чел.</li>
-          <li>Этаж: {props.selectedFloor || props.floors}</li>
-        </ul>
-      </nav> */}
+      <div className="tooltip">
+        <div className="first-block">
+          <span>КОМНАТА {props.currentDormId}</span>
+          <span>
+            ПРОЖИВАЕТ {props.selectedRoom.amount}/{props.selectedRoom.max}
+          </span>
+        </div>
+        <div className="center-block">
+          <span>ВЫБРАНА КОМНАТА {props.selectedRoom.number}</span>
+        </div>
+        <div className="last-block">
+          <div className="free">СВОБОДНАЯ</div>
+          <div className="male">МУЖСКАЯ</div>
+          <div className="female">ЖЕНСКАЯ</div>
+        </div>
+      </div>
       <img src={setCurrentScheme()} alt="Dorm" />
       <div className="svgwrapper">
         <svg className="svg">

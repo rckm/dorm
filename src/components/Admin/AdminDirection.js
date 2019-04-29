@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { Button, Segment, Form } from "semantic-ui-react";
 import { findName } from "../../utils/util";
-import WithForm from "../HOC/withForm";
+import WithForm from "../hoc/withForm";
 
 import { AdminDirectionStyle } from "./style";
 

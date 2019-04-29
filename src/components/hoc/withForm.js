@@ -17,7 +17,7 @@ const fields = {
     address: ""
   },
   citizenship: {
-    number: " ",
+    number: "",
     country_id: ""
   },
   shelter: {
@@ -65,7 +65,8 @@ const WithForm = WrappedComponent => {
       parents: "",
       loading: false,
       dormDb: {
-        countries: []
+        countries: [],
+        educational_form: []
       }
     };
 
@@ -95,7 +96,7 @@ const WithForm = WrappedComponent => {
      */
     handleSubmit = e => {
       const state = { ...this.state };
-      const values = withoutFields(
+      const values = (withoutFields(
         state,
         "status_id",
         "dormDb",
@@ -103,7 +104,7 @@ const WithForm = WrappedComponent => {
         "responseStatus",
         "loading",
         "error"
-      );
+      ).citizenship.country_id = state.residence_permit.country_id);
       this.setState({
         loading: true
       });

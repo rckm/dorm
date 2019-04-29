@@ -8,7 +8,8 @@ import {
   Message,
   Input
 } from "semantic-ui-react";
-import WithForm from "../HOC/withForm";
+import { findName } from "../../utils/util";
+import WithForm from "../hoc/withForm";
 import Dorms from "../Dorms";
 import FirstDorm from "../Dorms/FirstDorm/";
 import { FormStyle } from "./style";
@@ -176,9 +177,7 @@ const FormComponent = props => {
                     <option value="" disabled>
                       Выберите страну
                     </option>
-                    {console.log(props.state.dormDb.countries)}
                     {props.state.dormDb.countries.map((country, index) => {
-                      // console.log(props.state.dormDb);
                       return (
                         <React.Fragment key={index}>
                           <option value={country.id}>{country.name}</option>
@@ -212,17 +211,31 @@ const FormComponent = props => {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Field width="14" required>
-                    <Input
-                      required
-                      type="text"
-                      name="uin"
-                      maxLength="12"
-                      onChange={props.handleChange}
-                      defaultValue={props.state.uin}
-                      placeholder="ИИН"
-                    />
-                  </Form.Field>
+                  {props.state.residence_permit.country_id === "71" ? (
+                    <Form.Field width="14" required>
+                      <Input
+                        required
+                        type="text"
+                        name="citizenship.number"
+                        maxLength="12"
+                        onChange={handleNestedObjChange}
+                        value={props.state.citizenship.number}
+                        placeholder="ИИН"
+                      />
+                    </Form.Field>
+                  ) : (
+                    <Form.Field width="14" required>
+                      <Input
+                        required
+                        type="text"
+                        name="citizenship.number"
+                        maxLength="10"
+                        onChange={handleNestedObjChange}
+                        value={props.state.citizenship.number}
+                        placeholder="Номер паспорта"
+                      />
+                    </Form.Field>
+                  )}
                 </Form.Group>
 
                 <Form.Group>
@@ -315,7 +328,37 @@ const FormComponent = props => {
                     />
                   </Form.Field>
                 </Form.Group>
+                <Form.Group>
+                  <Form.Field
+                    width="14"
+                    name="educational_form_id"
+                    onChange={props.handleChange}
+                    defaultValue={props.state.educational_form_id}
+                    control="select"
+                    required
+                  >
+                    <option defaultValue="">Выберите форму обучения</option>
+                    {props.state.dormDb.educational_form &&
+                      props.state.dormDb.educational_form.map(
+                        (eduForm, index) => {
+                          const name = findName(
+                            props.state.dormDb.names,
+                            eduForm.name_id
+                          );
+                          return (
+                            <React.Fragment key={index}>
+                              <option value={eduForm.id || ""}>
+                                {name.name_ru}
+                              </option>
+                            </React.Fragment>
+                          );
+                        }
+                      )}
+                  </Form.Field>
+                </Form.Group>
               </Grid.Column>
+
+              {/* second column */}
 
               <Grid.Column width="7">
                 <label className="form-label">Родители</label>

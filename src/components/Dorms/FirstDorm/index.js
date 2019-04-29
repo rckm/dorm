@@ -1,51 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Grid, Segment, Form, Button } from "semantic-ui-react";
-import { FirstDormStyle } from "./style";
-import { withAPI } from "../../API";
-import Floors from "../Floors";
-
-/**
- *
- * @param {string} selectedFloor Comes from select
- * @param {*} getRooms This is just API
- *
- */
-const getRooms = (selectedFloor, getRooms) => {
-  const [rooms, setRooms] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  /**
-   * useEffect тригеррится только тогда когда меняется 2-ой аргумент [selectedFloor]
-   */
-  useEffect(() => {
-    (async () => {
-      setLoading(true);
-      const response = await getRooms(selectedFloor);
-      setRooms(response.data);
-      setLoading(false);
-    })();
-  }, [selectedFloor]); // Триггеры на которые будут дергаться API
-
-  return [rooms, isLoading];
-};
-
-const useField = defaultValue => {
-  const [value, handleChange] = useState(defaultValue);
-  return [value, handleChange];
-};
+import React from 'react';
+import { Grid, Segment, Form, Button } from 'semantic-ui-react';
+import { useField, useGetRooms } from './FirstForm.hooks';
+import { FirstDormStyle } from './style';
+import { withAPI } from '../../API';
+import Floors from '../Floors';
 
 const FirstDorm = props => {
-  const floors = props.dormDb.floors.filter(dormId => {
-    return dormId.dorm_id === props.currentDorm;
-  });
+  const floors = props.dormDb.floors
+    ? props.dormDb.floors.filter(dormId => {
+        return dormId.dorm_id === props.currentDorm;
+      })
+    : [{}];
 
-  const [currentFloor, setCurrentFloor] = useField("");
-
-  const [rooms, isLoading] = getRooms(
+  const [currentFloor, setCurrentFloor] = useField('');
+  const [rooms, isLoading] = useGetRooms(
     currentFloor || floors[0].id,
     props.api.getRooms
   );
-
-  console.log(rooms);
 
   const handleChange = e => {
     const { value } = e.target;

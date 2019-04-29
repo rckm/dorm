@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Button,
   Grid,
@@ -7,11 +7,11 @@ import {
   Icon,
   Message,
   Input
-} from "semantic-ui-react";
-import WithForm from "../HOC/withForm";
-import Dorms from "../Dorms";
-import FirstDorm from "../Dorms/FirstDorm/";
-import { FormStyle } from "./style";
+} from 'semantic-ui-react';
+import WithForm from '../HOC/withForm';
+import Dorms from '../Dorms';
+import FirstDorm from '../Dorms/FirstDorm/';
+import { FormStyle } from './style';
 
 const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
@@ -27,7 +27,7 @@ const FormComponent = props => {
 
   function handleParentsChange(e) {
     const { value } = e.target;
-    const [shelter, parentType, name] = e.target.name.split(".");
+    const [shelter, parentType, name] = e.target.name.split('.');
     props.handleParentsChange(state => ({
       ...state,
       [shelter]: {
@@ -42,7 +42,7 @@ const FormComponent = props => {
 
   function handleNestedObjChange(e) {
     const { value } = e.target;
-    const [type, name] = e.target.name.split(".");
+    const [type, name] = e.target.name.split('.');
     props.handleParentsChange(state => ({
       ...state,
       [type]: {
@@ -52,53 +52,27 @@ const FormComponent = props => {
     }));
   }
 
-  const renderDorm = () => {
-    switch (currentDorm) {
-      case 1:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-      case 2:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-      case 3:
-        return (
-          <FirstDorm
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-
-      default:
-        return (
-          <Dorms
-            dormDb={props.state.dormDb}
-            setCurrentDorm={setCurrentDorm}
-            currentDorm={currentDorm}
-            setSelectedRoom={props.handleParentsChange}
-          />
-        );
-    }
-  };
-
   return (
     <FormStyle>
       <Grid.Row centered>
         <Grid.Column width="14">
-          <Segment>{renderDorm()}</Segment>
+          <Segment>
+            {currentDorm !== null ? (
+              <FirstDorm
+                dormDb={props.state.dormDb}
+                setCurrentDorm={setCurrentDorm}
+                currentDorm={currentDorm}
+                setSelectedRoom={props.handleParentsChange}
+              />
+            ) : (
+              <Dorms
+                dormDb={props.state.dormDb}
+                setCurrentDorm={setCurrentDorm}
+                currentDorm={currentDorm}
+                setSelectedRoom={props.handleParentsChange}
+              />
+            )}
+          </Segment>
         </Grid.Column>
       </Grid.Row>
       <Segment>
@@ -127,7 +101,7 @@ const FormComponent = props => {
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
                       defaultValue={props.state.name_l}
-                      label={{ icon: "asterisk", color: "black" }}
+                      label={{ icon: 'asterisk', color: 'black' }}
                       labelPosition="right corner"
                       placeholder="Фамилия"
                     />
@@ -140,7 +114,7 @@ const FormComponent = props => {
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
                       defaultValue={props.state.name_f}
-                      label={{ icon: "asterisk", color: "black" }}
+                      label={{ icon: 'asterisk', color: 'black' }}
                       labelPosition="right corner"
                       placeholder="Имя"
                     />
@@ -155,7 +129,7 @@ const FormComponent = props => {
                       pattern="[А-ЯЁ][а-яё]{1,39}$"
                       onChange={props.handleChange}
                       defaultValue={props.state.patronymic}
-                      label={{ icon: "asterisk", color: "black" }}
+                      label={{ icon: 'asterisk', color: 'black' }}
                       labelPosition="right corner"
                       placeholder="Отчество"
                     />
@@ -265,7 +239,7 @@ const FormComponent = props => {
                       pattern="((\+7)|[8])7[0-9]{9}$"
                       defaultValue={props.state.phone}
                       icon="phone"
-                      label={{ content: "Телефон", color: "black" }}
+                      label={{ content: 'Телефон', color: 'black' }}
                       labelPosition="left"
                       placeholder="Начиная с 8"
                     />
@@ -279,7 +253,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       defaultValue={props.state.email}
                       icon="mail"
-                      label={{ content: "E-mail", color: "black" }}
+                      label={{ content: 'E-mail', color: 'black' }}
                       labelPosition="left"
                       placeholder="test@test.kz"
                     />
@@ -296,7 +270,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       defaultValue={props.state.group}
                       icon="group"
-                      label={{ content: "Группа", color: "black" }}
+                      label={{ content: 'Группа', color: 'black' }}
                       labelPosition="left"
                       placeholder="ВТ-13С"
                     />
@@ -309,7 +283,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       defaultValue={props.state.date_residence}
                       icon="calendar"
-                      label={{ content: "Дата", color: "black" }}
+                      label={{ content: 'Дата', color: 'black' }}
                       labelPosition="left"
                       placeholder="test@test.kz"
                     />
@@ -336,14 +310,14 @@ const FormComponent = props => {
                   </Form.Field>
                 </Form.Group>
                 <Form.Group>
-                  {(props.state.parents === "mother" ||
-                    props.state.parents === "both") && (
+                  {(props.state.parents === 'mother' ||
+                    props.state.parents === 'both') && (
                     <React.Fragment>
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
                           name="shelter.parent_mother.name_l"
-                          value={props.state.shelter.parent_mother.name_l || ""}
+                          value={props.state.shelter.parent_mother.name_l || ''}
                           onChange={handleParentsChange}
                           placeholder="Фамилия матери"
                           type="text"
@@ -353,7 +327,7 @@ const FormComponent = props => {
                         <label>Имя</label>
                         <input
                           name="shelter.parent_mother.name_f"
-                          value={props.state.shelter.parent_mother.name_f || ""}
+                          value={props.state.shelter.parent_mother.name_f || ''}
                           onChange={handleParentsChange}
                           placeholder="Имя матери"
                           type="text"
@@ -364,7 +338,7 @@ const FormComponent = props => {
                         <input
                           name="shelter.parent_mother.patronymic"
                           value={
-                            props.state.shelter.parent_mother.patronymic || ""
+                            props.state.shelter.parent_mother.patronymic || ''
                           }
                           onChange={handleParentsChange}
                           placeholder="Отчество матери"
@@ -375,7 +349,7 @@ const FormComponent = props => {
                         <label>Номер телефона</label>
                         <input
                           name="shelter.parent_mother.phone"
-                          value={props.state.shelter.parent_mother.phone || ""}
+                          value={props.state.shelter.parent_mother.phone || ''}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона матери"
                           type="text"
@@ -385,14 +359,14 @@ const FormComponent = props => {
                   )}
                 </Form.Group>
                 <Form.Group>
-                  {(props.state.parents === "father" ||
-                    props.state.parents === "both") && (
+                  {(props.state.parents === 'father' ||
+                    props.state.parents === 'both') && (
                     <React.Fragment>
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
                           name="shelter.parent_father.name_l"
-                          value={props.state.shelter.parent_father.name_l || ""}
+                          value={props.state.shelter.parent_father.name_l || ''}
                           onChange={handleParentsChange}
                           placeholder="Фамилия отца"
                           type="text"
@@ -402,7 +376,7 @@ const FormComponent = props => {
                         <label>Имя</label>
                         <input
                           name="shelter.parent_father.name_f"
-                          value={props.state.shelter.parent_father.name_f || ""}
+                          value={props.state.shelter.parent_father.name_f || ''}
                           onChange={handleParentsChange}
                           placeholder="Имя отца"
                           type="text"
@@ -413,7 +387,7 @@ const FormComponent = props => {
                         <input
                           name="shelter.parent_father.patronymic"
                           value={
-                            props.state.shelter.parent_father.patronymic || ""
+                            props.state.shelter.parent_father.patronymic || ''
                           }
                           onChange={handleParentsChange}
                           placeholder="Отчество отца"
@@ -424,7 +398,7 @@ const FormComponent = props => {
                         <label>Номер телефона</label>
                         <input
                           name="shelter.parent_father.phone"
-                          value={props.state.shelter.parent_father.phone || ""}
+                          value={props.state.shelter.parent_father.phone || ''}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона отца"
                           type="text"
@@ -432,13 +406,13 @@ const FormComponent = props => {
                       </Form.Field>
                     </React.Fragment>
                   )}
-                  {props.state.parents === "orphanage" && (
+                  {props.state.parents === 'orphanage' && (
                     <React.Fragment>
                       <Form.Field>
                         <label>Адресс</label>
                         <input
                           name="shelter.orphanage.address"
-                          value={props.state.shelter.orphanage.address || ""}
+                          value={props.state.shelter.orphanage.address || ''}
                           onChange={handleParentsChange}
                           placeholder="Адрес"
                           type="text"
@@ -448,7 +422,7 @@ const FormComponent = props => {
                         <label>Имя</label>
                         <input
                           name="shelter.orphanage.phone"
-                          value={props.state.shelter.orphanage.phone || ""}
+                          value={props.state.shelter.orphanage.phone || ''}
                           onChange={handleParentsChange}
                           placeholder="Телефон"
                           type="text"
@@ -456,13 +430,13 @@ const FormComponent = props => {
                       </Form.Field>
                     </React.Fragment>
                   )}
-                  {props.state.parents === "guardian" && (
+                  {props.state.parents === 'guardian' && (
                     <React.Fragment>
                       <Form.Field>
                         <label>Фамилия</label>
                         <input
                           name="shelter.guardian.name_l"
-                          value={props.state.shelter.guardian.name_l || ""}
+                          value={props.state.shelter.guardian.name_l || ''}
                           onChange={handleParentsChange}
                           placeholder="Фамилия"
                           type="text"
@@ -472,7 +446,7 @@ const FormComponent = props => {
                         <label>Имя</label>
                         <input
                           name="shelter.guardian.name_f"
-                          value={props.state.shelter.guardian.name_f || ""}
+                          value={props.state.shelter.guardian.name_f || ''}
                           onChange={handleParentsChange}
                           placeholder="Имя"
                           type="text"
@@ -482,7 +456,7 @@ const FormComponent = props => {
                         <label>Отчество</label>
                         <input
                           name="shelter.guardian.patronymic"
-                          value={props.state.shelter.guardian.patronymic || ""}
+                          value={props.state.shelter.guardian.patronymic || ''}
                           onChange={handleParentsChange}
                           placeholder="Отчество"
                           type="text"
@@ -492,7 +466,7 @@ const FormComponent = props => {
                         <label>Номер телефона</label>
                         <input
                           name="shelter.guardian.phone"
-                          value={props.state.shelter.guardian.phone || ""}
+                          value={props.state.shelter.guardian.phone || ''}
                           onChange={handleParentsChange}
                           placeholder="Номер телефона"
                           type="text"

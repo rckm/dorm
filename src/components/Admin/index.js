@@ -1,8 +1,8 @@
-import React from "react";
-import AdminPanel from "./AdminPanel";
-import withAdmin from "../HOC/withAdmin";
-import { AdminComponent } from "./style";
-import { Grid, Segment, Input, Button, Form } from "semantic-ui-react";
+import React from 'react';
+import AdminPanel from './AdminPanel';
+import withAdmin from '../HOC/withAdmin';
+import { AdminComponent } from './style';
+import { Grid, Segment, Input, Button, Form } from 'semantic-ui-react';
 
 const Admin = props => {
   const { user } = props.state;

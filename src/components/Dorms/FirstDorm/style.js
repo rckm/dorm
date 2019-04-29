@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FirstDormStyle = styled.div`
+  padding-top: 50px;
   .select-wrapper {
     display: flex;
     justify-content: center;

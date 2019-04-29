@@ -21,7 +21,7 @@ const FloorComponent = props => {
 
   return (
     <DormStyle>
-      <nav className="info">
+      {/* <nav className="info">
         <ul>
           <li>Общежитие №: {props.currentDormId} </li>
           <li>Комната №: {props.selectedRoom.number}</li>
@@ -29,7 +29,7 @@ const FloorComponent = props => {
           <li>Сейчас проживает: {props.selectedRoom.amount} чел.</li>
           <li>Этаж: {props.selectedFloor || props.floors}</li>
         </ul>
-      </nav>
+      </nav> */}
       <img src={setCurrentScheme()} alt="Dorm" />
       <div className="svgwrapper">
         <svg className="svg">

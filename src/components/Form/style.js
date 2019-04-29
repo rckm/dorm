@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const FormStyle = styled.div`
   height: 100%;
+  .mainForm {
+    padding-bottom: 50px;
+  }
   .auth-btn {
     margin-top: 58px !important;
     position: absolute !important;
@@ -25,7 +28,6 @@ export const FormStyle = styled.div`
     font-family: "Roboto", sans-serif;
   }
   .ui.segment {
-    /* padding: 4rem 2rem 2rem 2rem; */
     border: 0px;
     box-shadow: none;
     height: 100%;

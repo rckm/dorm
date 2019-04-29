@@ -107,7 +107,7 @@ class API {
    * Get data from dorm database
    */
   getDormDb = () => {
-    return this.api.get("/db");
+    return this.api.get("https://www.keu.kz:5555/api/db");
   };
 
   /**

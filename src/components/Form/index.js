@@ -40,6 +40,18 @@ const FormComponent = props => {
     }));
   }
 
+  function handleNestedObjChange(e) {
+    const { value } = e.target;
+    const [type, name] = e.target.name.split(".");
+    props.handleParentsChange(state => ({
+      ...state,
+      [type]: {
+        ...state[type],
+        [name]: value
+      }
+    }));
+  }
+
   const renderDorm = () => {
     switch (currentDorm) {
       case 1:
@@ -97,8 +109,9 @@ const FormComponent = props => {
           }
           error={props.state.error}
           loading={props.state.loading}
-          size="large"
           onSubmit={props.handleSubmit}
+          className="mainForm"
+          size="large"
           unstackable
         >
           <Grid relaxed="very" columns="3">
@@ -152,7 +165,54 @@ const FormComponent = props => {
                 <label className="form-label">Личные данные</label>
 
                 <Form.Group>
+                  <Form.Field
+                    width="14"
+                    name="residence_permit.country_id"
+                    onChange={handleNestedObjChange}
+                    defaultValue={props.state.residence_permit.country_id}
+                    control="select"
+                    required
+                  >
+                    <option value="" disabled>
+                      Выберите страну
+                    </option>
+                    {console.log(props.state.dormDb.countries)}
+                    {props.state.dormDb.countries.map((country, index) => {
+                      // console.log(props.state.dormDb);
+                      return (
+                        <React.Fragment key={index}>
+                          <option value={country.id}>{country.name}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </Form.Field>
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Field width="4" required>
+                    <Input
+                      required
+                      type="text"
+                      name="residence_permit.city"
+                      onChange={handleNestedObjChange}
+                      defaultValue={props.state.residence_permit.city}
+                      placeholder="Город"
+                    />
+                  </Form.Field>
                   <Form.Field width="10" required>
+                    <Input
+                      required
+                      type="text"
+                      name="residence_permit.address"
+                      onChange={handleNestedObjChange}
+                      defaultValue={props.state.residence_permit.address}
+                      placeholder="Адрес проживания"
+                    />
+                  </Form.Field>
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Field width="14" required>
                     <Input
                       required
                       type="text"
@@ -163,8 +223,21 @@ const FormComponent = props => {
                       placeholder="ИИН"
                     />
                   </Form.Field>
+                </Form.Group>
+
+                <Form.Group>
+                  <Form.Field width="7" required>
+                    <Input
+                      required
+                      type="number"
+                      name="children"
+                      onChange={props.handleChange}
+                      defaultValue={props.state.patronymic}
+                      placeholder="Кол-во детей в семье"
+                    />
+                  </Form.Field>
                   <Form.Field
-                    width="4"
+                    width="7"
                     className="gender"
                     name="gender_id"
                     onChange={props.handleSelect}
@@ -177,28 +250,6 @@ const FormComponent = props => {
                     </option>
                     <option value="1">Мужской</option>
                     <option value="2">Женский</option>
-                  </Form.Field>
-                </Form.Group>
-                <Form.Group>
-                  <Form.Field width="10" required>
-                    <Input
-                      required
-                      type="text"
-                      name="address"
-                      onChange={props.handleChange}
-                      defaultValue={props.state.address}
-                      placeholder="Адрес проживания"
-                    />
-                  </Form.Field>
-                  <Form.Field width="4" required>
-                    <Input
-                      required
-                      type="number"
-                      name="children"
-                      onChange={props.handleChange}
-                      defaultValue={props.state.patronymic}
-                      placeholder="Кол-во детей в семье"
-                    />
                   </Form.Field>
                 </Form.Group>
 
@@ -258,7 +309,7 @@ const FormComponent = props => {
                       onChange={props.handleChange}
                       defaultValue={props.state.date_residence}
                       icon="calendar"
-                      label={{ content: "Дата заселения", color: "black" }}
+                      label={{ content: "Дата", color: "black" }}
                       labelPosition="left"
                       placeholder="test@test.kz"
                     />
@@ -276,12 +327,12 @@ const FormComponent = props => {
                     defaultValue={props.state.parents}
                     control="select"
                   >
-                    <option value="" disabled>
-                      Нет
-                    </option>
-                    <option value="both">Оба</option>
+                    <option value="">Нет</option>
+                    <option value="both">Оба родителя</option>
                     <option value="mother">Мама</option>
                     <option value="father">Папа</option>
+                    <option value="guardian">Опекун</option>
+                    <option value="orphanage">Детский дом</option>
                   </Form.Field>
                 </Form.Group>
                 <Form.Group>
@@ -381,6 +432,74 @@ const FormComponent = props => {
                       </Form.Field>
                     </React.Fragment>
                   )}
+                  {props.state.parents === "orphanage" && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Адресс</label>
+                        <input
+                          name="shelter.orphanage.address"
+                          value={props.state.shelter.orphanage.address || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Адрес"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
+                        <input
+                          name="shelter.orphanage.phone"
+                          value={props.state.shelter.orphanage.phone || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Телефон"
+                          type="text"
+                        />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
+                  {props.state.parents === "guardian" && (
+                    <React.Fragment>
+                      <Form.Field>
+                        <label>Фамилия</label>
+                        <input
+                          name="shelter.guardian.name_l"
+                          value={props.state.shelter.guardian.name_l || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Фамилия"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Имя</label>
+                        <input
+                          name="shelter.guardian.name_f"
+                          value={props.state.shelter.guardian.name_f || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Имя"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Отчество</label>
+                        <input
+                          name="shelter.guardian.patronymic"
+                          value={props.state.shelter.guardian.patronymic || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Отчество"
+                          type="text"
+                        />
+                      </Form.Field>
+                      <Form.Field>
+                        <label>Номер телефона</label>
+                        <input
+                          name="shelter.guardian.phone"
+                          value={props.state.shelter.guardian.phone || ""}
+                          onChange={handleParentsChange}
+                          placeholder="Номер телефона"
+                          type="text"
+                        />
+                      </Form.Field>
+                    </React.Fragment>
+                  )}
                 </Form.Group>
               </Grid.Column>
             </Grid.Row>
@@ -398,9 +517,9 @@ const FormComponent = props => {
             </Grid.Row>
 
             <Grid.Row columns="equal" centered>
-              <Grid.Column width="4">progressbar</Grid.Column>
+              <Grid.Column width="4" />
               <Grid.Column width="6" textAlign="center">
-                <h2 className="questionnaire">Анкета</h2>
+                <h2 className="questionnaire">Заполните анкету</h2>
               </Grid.Column>
               <Grid.Column width="4" textAlign="right">
                 <Button animated="fade" primary type="submit">

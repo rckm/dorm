@@ -64,7 +64,9 @@ const WithForm = WrappedComponent => {
       error: null,
       parents: "",
       loading: false,
-      dormDb: {}
+      dormDb: {
+        countries: []
+      }
     };
 
     /**

@@ -94,6 +94,7 @@ const WithForm = WrappedComponent => {
      * Handling for posting requests
      */
     handleSubmit = e => {
+      e.preventDefault();
       const state = { ...this.state };
       const values = withoutFields(
         state,
@@ -104,6 +105,19 @@ const WithForm = WrappedComponent => {
         "loading",
         "error"
       );
+
+      /* This is for send nested objects, because library 'qs' requires to stringify stringified object  */
+
+      values.shelter = JSON.stringify(values.shelter);
+      values.residence_permit = JSON.stringify(values.residence_permit);
+      let resPer = JSON.parse(values.residence_permit);
+      values.citizenship = JSON.stringify(values.citizenship).replace(
+        /""/g,
+        resPer.country_id
+      );
+
+      console.log(values);
+
       this.setState({
         loading: true
       });
@@ -115,14 +129,15 @@ const WithForm = WrappedComponent => {
             loading: false,
             error: null
           });
+          this.resetForm();
         })
         .catch(error => {
           this.setState({
             error: error,
             loading: false
           });
+          return values;
         });
-      // this.resetForm();
     };
 
     /**

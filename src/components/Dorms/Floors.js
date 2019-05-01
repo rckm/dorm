@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import FirstDormScheme from '../../static/dormSchemes/1.webp';
-import SecondDormScheme from '../../static/dormSchemes/2.webp';
-import ThirdDormScheme from '../../static/dormSchemes/3.webp';
-import { DormStyle } from '../Dorms/style';
-import { SvgRect } from '../Dorms/style';
-import { coordinatesDB } from '../../utils/util';
+import React, { Component } from "react";
+import FirstDormScheme from "../../static/dormSchemes/1.webp";
+import SecondDormScheme from "../../static/dormSchemes/2.webp";
+import ThirdDormScheme from "../../static/dormSchemes/3.webp";
+import { DormStyle, SvgRect } from "../Dorms/style";
+import { coordinatesDB } from "../../utils/util";
 
 const FloorComponent = props => {
   const setCurrentScheme = () => {
@@ -23,13 +22,14 @@ const FloorComponent = props => {
     <DormStyle>
       <div className="tooltip">
         <div className="first-block">
-          <span>КОМНАТА {props.currentDormId}</span>
+          <span>Общежитие № {props.currentDormId}</span>
           <span>
-            ПРОЖИВАЕТ {props.selectedRoom.amount}/{props.selectedRoom.max}
+            Проживает {props.selectedRoom.amount}/{props.selectedRoom.max}
           </span>
+          <span>Этаж № {props.selectedFloor}</span>
         </div>
         <div className="center-block">
-          <span>ВЫБРАНА КОМНАТА {props.selectedRoom.number}</span>
+          <span>Выбрана комната {props.selectedRoom.number}</span>
         </div>
         <div className="last-block">
           <div className="free">СВОБОДНАЯ</div>
@@ -85,15 +85,15 @@ class Floor extends Component {
 
   genderColor = (gender_id, amount) => {
     if (amount === 0) {
-      return '#E8F5E9';
+      return "#E8F5E9";
     }
     switch (gender_id) {
       case 1:
-        return '#E3F2FD';
+        return "#E3F2FD";
       case 2:
-        return '#FCE4EC';
+        return "#FCE4EC";
       default:
-        return '#E8F5E9';
+        return "#E8F5E9";
     }
   };
 

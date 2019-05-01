@@ -16,8 +16,8 @@ export function withoutFields(values, ...fields) {
 }
 
 export const gender = {
-  1: 'Мужской',
-  2: 'Женский'
+  1: "Мужской",
+  2: "Женский"
 };
 
 export function sortByKeys(obj) {
@@ -30,6 +30,7 @@ export function sortByKeys(obj) {
 }
 
 export const coordinatesDB = {
+  // first dorm
   1: {
     coordinates: [
       { x: 120, y: 556 },
@@ -57,7 +58,7 @@ export const coordinatesDB = {
       { x: 916.78, width: 77.598, y: 444.01, height: 191.57 }
     ]
   },
-
+  // second dorm
   2: {
     coordinates: [
       { x: 23, y: 348 },
@@ -109,6 +110,38 @@ export const coordinatesDB = {
       { x: 792.48, y: 266.15, width: 64.975, height: 120.23 },
       { x: 863.28, y: 266.15, width: 64.975, height: 119.68 },
       { x: 932.15, y: 266.43, width: 63.865, height: 119.4 }
+    ]
+  },
+  // third dorm
+  3: {
+    coordinates: [
+      { x: 130.02473, y: 649.37097 },
+      { x: 217.33463, y: 649.65887 },
+      { x: 302.42239, y: 649.40277 },
+      { x: 386.65302, y: 649.4502 },
+      { x: 478.79669, y: 649.74628 },
+      { x: 560.43793, y: 649.45428 },
+      { x: 638.92249, y: 649.40686 },
+      { x: 989.43994, y: 422.2587 },
+      { x: 989.5376, y: 337.53336 },
+      { x: 825.94354, y: 211.84669 },
+      { x: 826.45355, y: 270.3833 },
+      { x: 989.51501, y: 247.94127 }
+    ],
+
+    recCoordinates: [
+      { x: 94.986, y: 576.37, width: 79.351, height: 119.22 },
+      { x: 181.7, y: 576.37, width: 79.351, height: 119.22 },
+      { x: 268.48, y: 576.37, width: 79.351, height: 119.22 },
+      { x: 355.54, y: 576.37, width: 73.546, height: 119.22 },
+      { x: 446.08, y: 576.37, width: 71.888, height: 119.22 },
+      { x: 526.22, y: 576.37, width: 77.692, height: 119.22 },
+      { x: 612.06, y: 576.37, width: 77.139, height: 119.22 },
+      { x: 930.08, y: 377.09, width: 125.22, height: 72.111 },
+      { x: 930.08, y: 288.66, width: 125.22, height: 80.679 },
+      { x: 930.08, y: 203.64, width: 125.22, height: 77.363 },
+      { x: 796.3, y: 185.12, width: 78.784, height: 40.878 },
+      { x: 796.3, y: 234.02, width: 78.784, height: 67.136 }
     ]
   }
 };

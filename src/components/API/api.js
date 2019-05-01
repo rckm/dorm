@@ -6,7 +6,7 @@ import axios from "axios";
 import qs from "qs";
 
 const instance = axios.create({
-  baseURL: "https://www.keu.kz:5555/api",
+  baseURL: "https://dorm-keu.herokuapp.com/api",
   headers: {
     "content-type": "application/x-www-form-urlencoded"
   }
@@ -28,10 +28,9 @@ class API {
 
   /**
    * Posting request to the server
-   * @param {} reqValues The Request data that will be sended
+   * @param {Object} reqValues The Request data that will be sended
    */
   postRequest = reqValues => {
-    console.log(reqValues);
     const reqOptions = {
       headers: {
         "content-type": "application/x-www-form-urlencoded" //x-www-form-urlencoded
@@ -41,8 +40,10 @@ class API {
   };
 
   /**
-   * Posting reports to the serverz
-   * @param {} repValues The Report data that will be sended
+   * Posting reports to the server
+   * @param mother
+   * @param father
+   * @param repValues The Report data that will be sended
    */
   postReport = ({ mother, father, ...repValues }) => {
     const repOptions = {
@@ -101,17 +102,20 @@ class API {
   };
 
   /**
-   * Get autocompleted word document of request
-   * @param {string} name_f Firstname of student
-   * @param {string} name_l Lastname of student
+   * Get autocomplete word document of request
+   * @param {string} name_f First name of student
+   * @param {string} name_l Last name of student
    * @param {string} patronymic Patronymic of student
    * @param {string} gender_id Gender
    * @param {string} address Address of living of student
    * @param {string} phone Phone of student
    * @param {number} room_id Which room he selected
-   * @param {number} children How many childrens he has in family
+   * @param {number} children How many children he has in family
    * @param {date} date_residence On which date he reserved a room
    * @param {string} group In which group he joined
+   * @param mother mother of student
+   * @param father father of student
+   * @param id i dont know for what is this
    */
   getRequestDocument = (
     name_f,

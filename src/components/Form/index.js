@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import {
   Button,
-  Grid,
   Form,
-  Segment,
+  Grid,
   Icon,
+  Input,
   Message,
-  Input
+  Segment
 } from "semantic-ui-react";
 import { findName } from "../../utils/util";
 import WithForm from "../hoc/withForm";
@@ -82,7 +82,7 @@ const FormComponent = props => {
             props.state.responseStatus === 200 ||
             props.state.responseStatus === 201
           }
-          error={props.state.error ? true : false}
+          error={!!props.state.error}
           loading={props.state.loading}
           onSubmit={props.handleSubmit}
           className="mainForm"
@@ -245,7 +245,7 @@ const FormComponent = props => {
                 <Form.Group>
                   <Form.Field width="14" required>
                     <Input
-                      type="number"
+                      type="text"
                       name="phone"
                       maxLength="11"
                       onChange={props.handleChange}
@@ -330,7 +330,6 @@ const FormComponent = props => {
                 </Form.Group>
                 <Form.Group>
                   <Form.Field required>
-                    <label className="form-label">Номер комнаты</label>
                     <input
                       readOnly
                       required
@@ -342,7 +341,6 @@ const FormComponent = props => {
                     />
                   </Form.Field>
                   <Form.Field required>
-                    <label className="form-label">Номер общежития</label>
                     <input
                       readOnly
                       required

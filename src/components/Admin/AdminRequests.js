@@ -34,6 +34,7 @@ class AdminRequests extends Component {
     foundedRequest: []
   };
 
+
   handleSubmitReport = e => {
     const room_id = this.state.room_id;
     const state = { ...this.state.openCurrentField, room_id };
@@ -47,9 +48,11 @@ class AdminRequests extends Component {
 
   handleChange = e => {
     this.setState({
-      openCurrentField: {
+      openCurrentField:
+          {
         ...this.state.openCurrentField,
-        [e.target.name]: e.target.value
+        [e.target.name]:
+        e.target.value
       }
     });
   };
@@ -387,7 +390,7 @@ class AdminRequests extends Component {
               </Segment>
             ) : (
               <Segment
-                loading={this.state.requests.length ? false : true}
+                loading={!this.state.requests.length}
                 placeholder
               >
                 <Header icon>

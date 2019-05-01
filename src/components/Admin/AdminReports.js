@@ -82,7 +82,7 @@ class AdminReports extends Component {
   };
 
   render() {
-    const loaded = this.state.reports.length ? false : true;
+    const loaded = !this.state.reports.length;
     return (
       <AdminReportsStyle>
         <Grid.Row centered>
@@ -169,7 +169,7 @@ class AdminReports extends Component {
               </Segment>
             ) : (
               <Segment
-                loading={this.state.reports.length ? false : true}
+                loading={!this.state.reports.length}
                 placeholder
               >
                 <Header icon>

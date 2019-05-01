@@ -1,9 +1,9 @@
-import React from 'react';
-import { Grid, Segment, Form, Button } from 'semantic-ui-react';
-import { useField, useGetRooms } from './FirstForm.hooks';
-import { FirstDormStyle } from './style';
-import { withAPI } from '../../API';
-import Floors from '../Floors';
+import React from "react";
+import { Grid, Segment, Form, Button } from "semantic-ui-react";
+import { useField, useGetRooms } from "./FirstForm.hooks";
+import { FirstDormStyle } from "./style";
+import { withAPI } from "../../API";
+import Floors from "../Floors";
 
 const FirstDorm = props => {
   const floors = props.dormDb.floors
@@ -12,7 +12,7 @@ const FirstDorm = props => {
       })
     : [{}];
 
-  const [currentFloor, setCurrentFloor] = useField('');
+  const [currentFloor, setCurrentFloor] = useField("");
   const [rooms, isLoading] = useGetRooms(
     currentFloor || floors[0].id,
     props.api.getRooms

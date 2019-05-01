@@ -2,17 +2,17 @@
  * @file This HOC is for authorization for admin
  */
 
-import React, { Component } from 'react';
-import { withAPI } from '../API';
+import React, { Component } from "react";
+import { withAPI } from "../API";
 
 const WithAdmin = WrappedComponent => {
   class WithAdmin extends Component {
     state = {
-      login: '',
-      password: '',
+      login: "",
+      password: "",
       user:
-        localStorage.getItem('sessionUser') &&
-        localStorage.getItem('sessionUser')
+        localStorage.getItem("sessionUser") &&
+        localStorage.getItem("sessionUser")
     };
 
     /**
@@ -25,15 +25,18 @@ const WithAdmin = WrappedComponent => {
           this.setState({
             user: res.data.token
           });
-          localStorage.setItem('sessionUser', res.data.token);
+          localStorage.setItem("sessionUser", res.data.token);
+        })
+        .catch(error => {
+          throw error;
         });
     };
 
     /**
-     * Function for loggingout of administrator
+     * Function for logging out of administrator
      */
     handleLogout = () => {
-      localStorage.removeItem('sessionUser');
+      localStorage.removeItem("sessionUser");
       this.setState({
         user: null
       });

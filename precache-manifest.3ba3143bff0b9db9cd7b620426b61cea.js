@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
-    "url": "/dorm/static/media/outline-icons.ad97afd3.ttf"
+    "revision": "701ae6abd4719e9c2ada3535a497b341",
+    "url": "/dorm/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "7a9dd3f477bd099c7345",
-    "url": "/dorm/static/css/main.141ab6cf.chunk.css"
+    "revision": "4259bfa9009ee3cb24ab",
+    "url": "/dorm/static/css/main.cdee98d4.chunk.css"
   },
   {
     "revision": "a1a749e89f578a49306ec2b055c073da",
     "url": "/dorm/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "ff5543413b8a6d906179",
-    "url": "/dorm/static/js/1.ff554341.chunk.js"
+    "revision": "6389e3dde0e3174e8e8b",
+    "url": "/dorm/static/js/1.6389e3dd.chunk.js"
   },
   {
     "revision": "47ba6fab703354e846c3",
@@ -36,6 +36,18 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/1.05912791.webp"
   },
   {
+    "revision": "e4cf62c157ae5267f8b46141330a6b8e",
+    "url": "/dorm/static/media/2.e4cf62c1.webp"
+  },
+  {
+    "revision": "52bd366739af693531494d1c45a84982",
+    "url": "/dorm/static/media/3.52bd3667.webp"
+  },
+  {
+    "revision": "3a63aff21b995e0c4457ccf571f6de89",
+    "url": "/dorm/static/media/OverlayBg.3a63aff2.webp"
+  },
+  {
     "revision": "cd6c777f1945164224dee082abaea03a",
     "url": "/dorm/static/media/outline-icons.cd6c777f.woff2"
   },
@@ -44,16 +56,12 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/dorm/static/media/flags.9c74e172.png"
+    "revision": "4259bfa9009ee3cb24ab",
+    "url": "/dorm/static/js/main.4259bfa9.chunk.js"
   },
   {
-    "revision": "701ae6abd4719e9c2ada3535a497b341",
-    "url": "/dorm/static/media/outline-icons.701ae6ab.eot"
-  },
-  {
-    "revision": "7a9dd3f477bd099c7345",
-    "url": "/dorm/static/js/main.7a9dd3f4.chunk.js"
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "/dorm/static/media/outline-icons.ad97afd3.ttf"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
@@ -70,6 +78,10 @@ self.__precacheManifest = [
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
     "url": "/dorm/static/media/brand-icons.a046592b.woff"
+  },
+  {
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/dorm/static/media/flags.9c74e172.png"
   },
   {
     "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
@@ -96,11 +108,11 @@ self.__precacheManifest = [
     "url": "/dorm/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "ff5543413b8a6d906179",
-    "url": "/dorm/static/css/1.8735cd1c.chunk.css"
+    "revision": "6389e3dde0e3174e8e8b",
+    "url": "/dorm/static/css/1.389afc62.chunk.css"
   },
   {
-    "revision": "87c7ad8fccc2796028e1041bb79363cf",
+    "revision": "b12f10ffca9fc980659272e84de56cae",
     "url": "/dorm/index.html"
   }
 ];

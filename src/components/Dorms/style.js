@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const RoomWrapper = styled.div`
   height: 100vh;
@@ -19,7 +19,7 @@ export const RoomWrapper = styled.div`
   .desc {
     text-align: center;
     font-size: 24px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: #000;
   }
 
@@ -96,6 +96,7 @@ export const DormStyle = styled.div`
     padding: 10px 10px;
     background-color: #fff;
     justify-content: space-between;
+    box-shadow: #000000 1px 0 10px;
 
     span {
       margin-right: 10px;
@@ -113,7 +114,7 @@ export const DormStyle = styled.div`
         position: relative;
         font-weight: bold;
         &::before {
-          content: '';
+          content: "";
           width: 18px;
           height: 18px;
           display: inline-block;
@@ -146,12 +147,12 @@ export const DormStyle = styled.div`
     }
   }
 
-  .select-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
+  //.select-wrapper {
+  //  display: flex;
+  //  justify-content: center;
+  //  align-items: center;
+  //  width: 400px;
+  //  height: 400px;
+  //  margin: 0 auto;
+  //}
 `;

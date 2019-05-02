@@ -24,16 +24,16 @@ export const FormStyle = styled.div`
   }
   .form-label,
   .gender label {
-    padding: 15px 10px 15px 0px;
+    padding: 15px 10px 15px 0;
     font-family: "Roboto", sans-serif;
   }
   .ui.segment {
-    border: 0px;
+    border: 0;
     box-shadow: none;
     height: 100%;
   }
   .button {
-    margin: 10px 10px 10px 0px;
+    margin: 10px 10px 10px 0;
     padding: 15px;
   }
   .ui.raised.segment,
@@ -44,6 +44,7 @@ export const FormStyle = styled.div`
   .ui.primary.button,
   .ui.primary.buttons .button {
     padding: 15px;
+    background-color: #0f5185;
   }
 
   .firstCol {
@@ -53,5 +54,14 @@ export const FormStyle = styled.div`
 
   .questionnaire {
     font-size: 36px;
+  }
+  .lastGroup {
+    display: none !important;
+  }
+  .parentsCol {
+    padding-top: 10px;
+  }
+  .parents {
+    padding-top: 20px !important;
   }
 `;

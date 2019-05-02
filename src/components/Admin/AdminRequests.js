@@ -34,7 +34,6 @@ class AdminRequests extends Component {
     foundedRequest: []
   };
 
-
   handleSubmitReport = e => {
     const room_id = this.state.room_id;
     const state = { ...this.state.openCurrentField, room_id };
@@ -48,11 +47,9 @@ class AdminRequests extends Component {
 
   handleChange = e => {
     this.setState({
-      openCurrentField:
-          {
+      openCurrentField: {
         ...this.state.openCurrentField,
-        [e.target.name]:
-        e.target.value
+        [e.target.name]: e.target.value
       }
     });
   };
@@ -137,6 +134,7 @@ class AdminRequests extends Component {
   };
 
   render() {
+    console.log(this.state.requests);
     return (
       <AdminRequestsStyle>
         <Grid.Row centered>
@@ -154,6 +152,7 @@ class AdminRequests extends Component {
                       value={this.state.searchValue}
                       type="text"
                       name="searchValue"
+                      className="searchInput"
                     />
                     <Button primary type="submit">
                       Найти
@@ -389,10 +388,7 @@ class AdminRequests extends Component {
                 </Table>
               </Segment>
             ) : (
-              <Segment
-                loading={!this.state.requests.length}
-                placeholder
-              >
+              <Segment loading={!this.state.requests.length} placeholder>
                 <Header icon>
                   <Icon name="file outline" />
                   <br />

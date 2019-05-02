@@ -7,6 +7,11 @@ export const AdminComponent = styled.div`
   .form {
     padding-top: 50%;
   }
+  .header {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px;
+  }
 `;
 
 export const AdminPanelStyle = styled.div`
@@ -38,6 +43,9 @@ export const AdminReportsStyle = styled.div`
 
 export const AdminRequestsStyle = styled.div`
   background-color: inherit;
+  .searchInput {
+    margin-right: 20px !important;
+  }
 `;
 
 export const AdminDirectionStyle = styled.div`

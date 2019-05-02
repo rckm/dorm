@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withAPI } from "../API";
 import { RoomWrapper } from "./style";
-import { Grid, Card } from "semantic-ui-react";
+import { Grid, Card, Image } from "semantic-ui-react";
 import FirstDorm from "../../static/firstDorm.webp";
 import SecondDorm from "../../static/secondDorm.webp";
 import ThirdDorm from "../../static/thirdDorm.webp";
@@ -31,24 +31,33 @@ class Dorms extends Component {
                 <Card
                   raised
                   color="yellow"
-                  image={FirstDorm}
                   onClick={() => this.props.setCurrentDorm(1)}
-                  meta="г. Караганда, ул. Академическая 5/1"
-                />
+                >
+                  <Image alt="First Dorm" src={FirstDorm} />
+                  <Card.Content>
+                    <Card.Meta>г. Караганда, ул. Академическая 5/1</Card.Meta>
+                  </Card.Content>
+                </Card>
                 <Card
                   raised
                   color="yellow"
-                  image={SecondDorm}
                   onClick={() => this.props.setCurrentDorm(2)}
-                  meta="г. Караганда, ул. Академическая 5"
-                />
+                >
+                  <Image alt="Second Dorm" src={SecondDorm} />
+                  <Card.Content>
+                    <Card.Meta>г. Караганда, ул. Академическая 5</Card.Meta>
+                  </Card.Content>
+                </Card>
                 <Card
                   raised
                   color="yellow"
-                  image={ThirdDorm}
                   onClick={() => this.props.setCurrentDorm(3)}
-                  meta="г. Караганда, ул. Комиссарова 32"
-                />
+                >
+                  <Image alt="Third Dorm" src={ThirdDorm} />
+                  <Card.Content>
+                    <Card.Meta>г. Караганда, ул. Комиссарова 32</Card.Meta>
+                  </Card.Content>
+                </Card>
               </Card.Group>
             </Grid.Column>
           </Grid.Row>

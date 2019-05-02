@@ -17,8 +17,9 @@ const Admin = props => {
           <Grid.Column width={8}>
             <Form className="form" onSubmit={props.handleLogin}>
               <Segment>
+                <h2 className="header">Панель администратора</h2>
                 <Form.Field>
-                  <label htmlFor="login">Login</label>
+                  <label htmlFor="login">Логин</label>
                   <Input
                     value={props.state.login}
                     onChange={props.handleChange}
@@ -27,7 +28,7 @@ const Admin = props => {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Пароль</label>
                   <Input
                     value={props.state.password}
                     onChange={props.handleChange}

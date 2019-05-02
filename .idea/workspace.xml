@@ -2,16 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12496f5e-07a6-4a58-9a81-edd29b6de641" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dorm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/API/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/API/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminReports.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminReports.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imagemin.js" beforeDir="false" afterPath="$PROJECT_DIR$/imagemin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminRequests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminRequests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dorms/FirstDorm/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/FirstDorm/style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Dorms/Floors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/Floors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dorms/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dorms/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/style.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Form/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hoc/withAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hoc/withAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/hoc/withForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hoc/withForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/util.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/firstDorm.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/firstDorm.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/secondDorm.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/secondDorm.webp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,21 +29,27 @@
     <favorites_list name="dorm" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/utils/util.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Admin/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="132" column="62" lean-forward="true" selection-start-line="132" selection-start-column="62" selection-end-line="132" selection-end-column="62" />
+            <state relative-caret-position="85">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Downloads/Telegram Desktop/Версия 1/Комиссарова 32 Этаж 1/index.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminRequests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="11" column="81" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="81" />
+            <state relative-caret-position="487">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -48,6 +57,10 @@
     </leaf>
   </component>
   <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Button</find>
+      <find>parents</find>
+    </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
@@ -59,20 +72,26 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/components/App/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Admin/AdminRequests.js" />
         <option value="$PROJECT_DIR$/src/components/Overlay/index.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/AdminDirection.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/AdminReports.js" />
-        <option value="$PROJECT_DIR$/imagemin.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/Dorms/Floors.js" />
-        <option value="$PROJECT_DIR$/src/components/Form/index.js" />
         <option value="$PROJECT_DIR$/src/components/API/api.js" />
         <option value="$PROJECT_DIR$/src/components/hoc/withForm.js" />
         <option value="$PROJECT_DIR$/src/components/hoc/withAdmin.js" />
         <option value="$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js" />
         <option value="$USER_HOME$/Downloads/Telegram Desktop/Версия 1/Комиссарова 32 Этаж 1/index.html" />
         <option value="$PROJECT_DIR$/src/utils/util.js" />
+        <option value="$PROJECT_DIR$/imagemin.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Form/style.js" />
+        <option value="$PROJECT_DIR$/src/components/Dorms/style.js" />
+        <option value="$PROJECT_DIR$/src/components/Dorms/FirstDorm/style.js" />
+        <option value="$PROJECT_DIR$/src/components/Dorms/Floors.js" />
+        <option value="$PROJECT_DIR$/src/components/Dorms/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/index.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/style.js" />
+        <option value="$PROJECT_DIR$/src/components/Admin/AdminRequests.js" />
       </list>
     </option>
   </component>
@@ -95,7 +114,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="x" value="260" />
     <option name="y" value="60" />
     <option name="width" value="1400" />
@@ -130,21 +149,7 @@
               <item name="dorm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Dorms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dorm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Dorms" type="462c0819:PsiDirectoryNode" />
-              <item name="FirstDorm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dorm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -155,6 +160,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
@@ -169,7 +175,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\l33tpr09\Desktop\dorm\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -182,6 +188,34 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="npm.deploy">
+    <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="deploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="predeploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="predeploy" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.predeploy" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -199,25 +233,26 @@
       <workItem from="1556715143622" duration="8010000" />
       <workItem from="1556723770333" duration="450000" />
       <workItem from="1556724237749" duration="205000" />
-      <workItem from="1556724463509" duration="5640000" />
+      <workItem from="1556724463509" duration="6349000" />
+      <workItem from="1556815231742" duration="2135000" />
+      <workItem from="1556817893319" duration="8964000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18426000" />
+    <option name="totallyTimeSpent" value="30234000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5011111" side_tool="true" weight="0.1790416" />
-      <window_info id="npm" order="1" sideWeight="0.5011111" side_tool="true" weight="0.1790416" />
+      <window_info id="npm" order="1" sideWeight="0.50332224" side_tool="true" weight="0.15903106" />
       <window_info id="Favorites" order="2" sideWeight="0.50222224" side_tool="true" weight="0.1790416" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.4977778" weight="0.15903106" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49667773" visible="true" weight="0.15903106" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2512563" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,33 +260,12 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002633" side_tool="true" weight="0.23385301" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4997367" weight="0.23385301" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4997367" visible="true" weight="0.24623115" />
       <window_info anchor="bottom" id="REST Client" order="11" weight="0.40423164" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Structure" order="0" sideWeight="0.5011111" side_tool="true" weight="0.1790416" />
-      <window_info id="npm" order="1" sideWeight="0.5011111" side_tool="true" weight="0.1790416" />
-      <window_info id="Favorites" order="2" sideWeight="0.50222224" side_tool="true" weight="0.1790416" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.4977778" visible="true" weight="0.15903106" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002633" side_tool="true" weight="0.23385301" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4997367" weight="0.23385301" />
-      <window_info anchor="bottom" id="REST Client" order="11" weight="0.40423164" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -259,15 +273,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/App/style.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dorms/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-720">
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminDirection.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -319,43 +324,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminPanel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminRequests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12183">
-          <caret line="393" column="27" selection-start-line="393" selection-start-column="27" selection-end-line="393" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imagemin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Admin/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -402,24 +372,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/query-string/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Form/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="198" column="33" lean-forward="true" selection-start-line="198" selection-start-column="33" selection-end-line="198" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -429,16 +385,6 @@
           <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
           <folding>
             <element signature="e#77#103#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -457,24 +403,128 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Dorms/Floors.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="4515">
+          <caret line="129" column="6" selection-start-line="129" selection-start-column="6" selection-end-line="129" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Downloads/Telegram Desktop/Версия 1/Комиссарова 32 Этаж 1/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="385">
           <caret line="11" column="81" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="81" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/util.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imagemin.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="132" column="62" lean-forward="true" selection-start-line="132" selection-start-column="62" selection-end-line="132" selection-end-column="62" />
+        <state relative-caret-position="124">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dorms/style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="148" selection-start-line="148" selection-end-line="148" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dorms/Floors.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-790">
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="46" column="17" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dorms/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Form/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4390">
+          <caret line="197" column="48" selection-start-line="197" selection-start-column="38" selection-end-line="197" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Dorms/FirstDorm/style.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Admin/AdminRequests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

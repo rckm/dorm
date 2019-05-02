@@ -37,7 +37,7 @@ const FloorComponent = props => {
           <div className="female">ЖЕНСКАЯ</div>
         </div>
       </div>
-      <img src={setCurrentScheme()} alt="Dorm" />
+      <img alt="Dorm Schemes" src={setCurrentScheme()} />
       <div className="svgwrapper">
         <svg className="svg">
           {props.rooms.map((room, index) => {

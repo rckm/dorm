@@ -16,7 +16,23 @@ const FloorComponent = props => {
     }
   };
 
-  const coordinatesByDormID = coordinatesDB[props.currentDormId];
+  const coordinatesByDormID = coordinatesDB[
+    props.currentDormId
+  ].coordinates.find(data => {
+    return Array.isArray(data.floor)
+      ? data.floor.includes(Number(props.selectedFloor.number))
+      : data.floor === Number(props.selectedFloor.number);
+  });
+  const recCoordinatesByDormID = coordinatesDB[
+    props.currentDormId
+  ].recCoordinates.find(data => {
+    return Array.isArray(data.floor)
+      ? data.floor.includes(Number(props.selectedFloor.number))
+      : data.floor === Number(props.selectedFloor.number);
+  });
+
+  // console.log(coordinatesByDormID, recCoordinatesByDormID);
+  // console.log(props.selectedFloor);
 
   return (
     <DormStyle>
@@ -26,7 +42,7 @@ const FloorComponent = props => {
           <span>
             Проживает {props.selectedRoom.amount}/{props.selectedRoom.max}
           </span>
-          <span>Этаж № {props.selectedFloor}</span>
+          <span>Этаж № {props.selectedFloor.number}</span>
         </div>
         <div className="center-block">
           <span>Выбрана комната {props.selectedRoom.number}</span>
@@ -41,14 +57,19 @@ const FloorComponent = props => {
       <div className="svgwrapper">
         <svg className="svg">
           {props.rooms.map((room, index) => {
+            console.log(index);
             return (
               <SvgRect
                 key={room.id}
                 onClick={() => props.handleSelectedRoom(room)}
-                x={`${coordinatesByDormID.recCoordinates[index].x}`}
-                y={`${coordinatesByDormID.recCoordinates[index].y}`}
-                width={`${coordinatesByDormID.recCoordinates[index].width}`}
-                height={`${coordinatesByDormID.recCoordinates[index].height}`}
+                x={`${recCoordinatesByDormID.data[index] &&
+                  recCoordinatesByDormID.data[index].x}`}
+                y={`${recCoordinatesByDormID.data[index] &&
+                  recCoordinatesByDormID.data[index].y}`}
+                width={`${recCoordinatesByDormID.data[index] &&
+                  recCoordinatesByDormID.data[index].width}`}
+                height={`${recCoordinatesByDormID.data[index] &&
+                  recCoordinatesByDormID.data[index].height}`}
                 gender={props.genderColor(room.gender_id, room.amount)}
               />
             );
@@ -58,9 +79,12 @@ const FloorComponent = props => {
               key={room.id}
               onClick={() => props.handleSelectedRoom(room)}
               className="text"
-              height={`${coordinatesByDormID.recCoordinates[index].height}`}
-              x={`${coordinatesByDormID.coordinates[index].x}`}
-              y={`${coordinatesByDormID.coordinates[index].y}`}
+              height={`${recCoordinatesByDormID.data[index] &&
+                recCoordinatesByDormID.data[index].height}`}
+              x={`${coordinatesByDormID.data[index] &&
+                coordinatesByDormID.data[index].x}`}
+              y={`${coordinatesByDormID.data[index] &&
+                coordinatesByDormID.data[index].y}`}
             >
               {room.number}
             </text>

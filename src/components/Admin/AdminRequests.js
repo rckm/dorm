@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import {
   Grid,
   Table,
@@ -7,7 +7,8 @@ import {
   Button,
   Header,
   Icon,
-  Form
+  Form,
+  Input
 } from "semantic-ui-react";
 import { withAPI } from "../API";
 import { gender } from "../../utils/util";
@@ -22,6 +23,117 @@ const DownloadDoc = props => {
   );
 };
 
+class FoundedRequestTable extends PureComponent {
+  render() {
+    if (this.props.foundError && this.props.searchValue) {
+      return <div>Ничего не найдено</div>;
+    }
+    return (
+      <Table size="small" compact celled>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell>Фамилия</Table.HeaderCell>
+            <Table.HeaderCell>Имя</Table.HeaderCell>
+            <Table.HeaderCell>Отчество</Table.HeaderCell>
+            <Table.HeaderCell>Группа</Table.HeaderCell>
+            <Table.HeaderCell>Пол</Table.HeaderCell>
+            <Table.HeaderCell>ИИН</Table.HeaderCell>
+            <Table.HeaderCell>Адрес проживания</Table.HeaderCell>
+            <Table.HeaderCell>Телефон</Table.HeaderCell>
+            <Table.HeaderCell>Сколько детей в семье</Table.HeaderCell>
+            <Table.HeaderCell>Дата начала проживания</Table.HeaderCell>
+            <Table.HeaderCell>Номер комнаты</Table.HeaderCell>
+            <Table.HeaderCell>Направление</Table.HeaderCell>
+            <Table.HeaderCell>Скачать</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {this.props.foundedRequest.map((value, index) => {
+            return (
+              <Table.Row key={index}>
+                <Table.Cell>{value.name_l}</Table.Cell>
+                <Table.Cell>{value.name_f}</Table.Cell>
+                <Table.Cell>{value.patronymic}</Table.Cell>
+                <Table.Cell>{value.group}</Table.Cell>
+                <Table.Cell>{gender[value.gender_id]}</Table.Cell>
+                <Table.Cell>{value.uin}</Table.Cell>
+                <Table.Cell>{value.address}</Table.Cell>
+                <Table.Cell>{value.phone}</Table.Cell>
+                <Table.Cell>{value.children}</Table.Cell>
+                <Table.Cell>{value.date_residence}</Table.Cell>
+                <Table.Cell>{value.rooms.number}</Table.Cell>
+                <Table.Cell>
+                  <Modal
+                    open={this.props.openModal}
+                    onClose={this.props.toggleModal}
+                    dimmer="blurring"
+                    size="fullscreen"
+                    trigger={
+                      <Button
+                        onClick={() => this.props.handleTriggerButton(value)}
+                      >
+                        Создать направление
+                      </Button>
+                    }
+                    closeIcon
+                  >
+                    <Header icon="archive" content="Создание направления" />
+                    <Modal.Content>
+                      <AdminDirection
+                        openCurrentField={this.props.openCurrentField}
+                        room_id={this.props.room_id}
+                        handleCurrentFieldChange={this.props.handleChange}
+                        handleCurrentFieldSelect={this.props.handleSelect}
+                        handleCurrentFieldSubmitReport={
+                          this.props.handleSubmitReport
+                        }
+                      />
+                    </Modal.Content>
+                  </Modal>
+                </Table.Cell>
+                <Table.Cell>
+                  <Modal
+                    dimmer="blurring"
+                    size="mini"
+                    trigger={
+                      <Button onClick={this.props.currentDataToDocument}>
+                        Открыть направление
+                      </Button>
+                    }
+                  >
+                    <Header icon="file outline" content="Скачать направление" />
+                    <Modal.Content>
+                      <DownloadDoc
+                        getRequestDocument={this.props.getRequestDocument}
+                      />
+                    </Modal.Content>
+                  </Modal>
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
+        </Table.Body>
+      </Table>
+    );
+  }
+}
+
+const FindRequest = props => {
+  return (
+    <Form onSubmit={props.handleSearch}>
+      <Input
+        label="Найти"
+        size="large"
+        onChange={props.handleSearchInput}
+        value={props.searchValue}
+        type="text"
+        name="searchValue"
+        placeholder={"Введите номер документа"}
+      />
+    </Form>
+  );
+};
+
 class AdminRequests extends Component {
   state = {
     requests: [],
@@ -31,7 +143,8 @@ class AdminRequests extends Component {
     openModal: false,
     loading: true,
     searchValue: "",
-    foundedRequest: []
+    foundedRequest: [],
+    foundError: null
   };
 
   handleSubmitReport = e => {
@@ -45,6 +158,20 @@ class AdminRequests extends Component {
     });
   };
 
+  toggleModal = () => {
+    this.setState({
+      openModal: false
+    });
+  };
+
+  handleTriggerButton = value => {
+    this.setState({
+      openCurrentField: value,
+      room_id: value.rooms.id,
+      openModal: true
+    });
+  };
+
   handleChange = e => {
     this.setState({
       openCurrentField: {
@@ -55,26 +182,33 @@ class AdminRequests extends Component {
   };
 
   handleSearchInput = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      this.handleSearch
+    );
   };
 
   handleSearch = e => {
     this.props.api
       .getRequestById(this.state.searchValue)
       .then(res => {
-        if (this.state.foundedRequest) {
+        if (!this.state.foundedRequest.length) {
           this.setState({
             foundedRequest: []
           });
         }
         this.setState(prevState => ({
-          foundedRequest: [...prevState.foundedRequest, res.data]
+          foundedRequest: [...prevState.foundedRequest, res.data],
+          foundError: null
         }));
       })
       .catch(error => {
-        throw error;
+        this.setState({
+          foundedRequest: [],
+          foundError: true
+        });
       });
   };
 
@@ -134,7 +268,6 @@ class AdminRequests extends Component {
   };
 
   render() {
-    console.log(this.state.requests);
     return (
       <AdminRequestsStyle>
         <Grid.Row centered>
@@ -142,250 +275,32 @@ class AdminRequests extends Component {
             {!this.state.loading ? (
               <Segment loading={this.state.loading}>
                 <h1 style={{ textAlign: "center" }}>Заявления</h1>
-                <Form onSubmit={this.handleSearch}>
-                  <Form.Field inline>
-                    <label>
-                      <Icon corner="bottom left" name="search" />
-                    </label>
-                    <input
-                      onChange={this.handleSearchInput}
-                      value={this.state.searchValue}
-                      type="text"
-                      name="searchValue"
-                      className="searchInput"
-                    />
-                    <Button primary type="submit">
-                      Найти
-                    </Button>
-                  </Form.Field>
-                </Form>
-                {this.state.foundedRequest.length ? (
-                  <Table size="small" compact celled>
-                    <Table.Header>
-                      <Table.Row>
-                        <Table.HeaderCell>Фамилия</Table.HeaderCell>
-                        <Table.HeaderCell>Имя</Table.HeaderCell>
-                        <Table.HeaderCell>Отчество</Table.HeaderCell>
-                        <Table.HeaderCell>Группа</Table.HeaderCell>
-                        <Table.HeaderCell>Пол</Table.HeaderCell>
-                        <Table.HeaderCell>ИИН</Table.HeaderCell>
-                        <Table.HeaderCell>Адрес проживания</Table.HeaderCell>
-                        <Table.HeaderCell>Телефон</Table.HeaderCell>
-                        <Table.HeaderCell>
-                          Сколько детей в семье
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>
-                          Дата начала проживания
-                        </Table.HeaderCell>
-                        <Table.HeaderCell>Номер комнаты</Table.HeaderCell>
-                        <Table.HeaderCell>Направление</Table.HeaderCell>
-                        <Table.HeaderCell>Скачать</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                      {this.state.foundedRequest.map((value, index) => {
-                        return (
-                          <Table.Row key={index}>
-                            <Table.Cell>{value.name_l}</Table.Cell>
-                            <Table.Cell>{value.name_f}</Table.Cell>
-                            <Table.Cell>{value.patronymic}</Table.Cell>
-                            <Table.Cell>{value.group}</Table.Cell>
-                            <Table.Cell>{gender[value.gender_id]}</Table.Cell>
-                            <Table.Cell>{value.uin}</Table.Cell>
-                            <Table.Cell>{value.address}</Table.Cell>
-                            <Table.Cell>{value.phone}</Table.Cell>
-                            <Table.Cell>{value.children}</Table.Cell>
-                            <Table.Cell>{value.date_residence}</Table.Cell>
-                            <Table.Cell>{value.rooms.number}</Table.Cell>
-                            <Table.Cell>
-                              <Modal
-                                open={this.state.openModal}
-                                onClose={() =>
-                                  this.setState({
-                                    openModal: false
-                                  })
-                                }
-                                dimmer="blurring"
-                                size="fullscreen"
-                                trigger={
-                                  <Button
-                                    onClick={() =>
-                                      this.setState({
-                                        openCurrentField: value,
-                                        room_id: value.rooms.id,
-                                        openModal: true
-                                      })
-                                    }
-                                  >
-                                    Создать направление
-                                  </Button>
-                                }
-                                closeIcon
-                              >
-                                <Header
-                                  icon="archive"
-                                  content="Создание направления"
-                                />
-                                <Modal.Content>
-                                  <AdminDirection
-                                    openCurrentField={
-                                      this.state.openCurrentField
-                                    }
-                                    room_id={this.state.room_id}
-                                    handleCurrentFieldChange={this.handleChange}
-                                    handleCurrentFieldSelect={this.handleSelect}
-                                    handleCurrentFieldSubmitReport={
-                                      this.handleSubmitReport
-                                    }
-                                  />
-                                </Modal.Content>
-                              </Modal>
-                            </Table.Cell>
-                            <Table.Cell>
-                              <Modal
-                                dimmer="blurring"
-                                size="mini"
-                                trigger={
-                                  <Button
-                                    onClick={() => {
-                                      this.setState({
-                                        currentDataToDocument: value
-                                      });
-                                    }}
-                                  >
-                                    Открыть направление
-                                  </Button>
-                                }
-                              >
-                                <Header
-                                  icon="file outline"
-                                  content="Скачать направление"
-                                />
-                                <Modal.Content>
-                                  <DownloadDoc
-                                    getRequestDocument={this.getRequestDocument}
-                                  />
-                                </Modal.Content>
-                              </Modal>
-                            </Table.Cell>
-                          </Table.Row>
-                        );
-                      })}
-                    </Table.Body>
-                  </Table>
-                ) : (
-                  <p />
-                )}
-                <hr />
-                <Table compact={true} size="small" celled>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell>Фамилия</Table.HeaderCell>
-                      <Table.HeaderCell>Имя</Table.HeaderCell>
-                      <Table.HeaderCell>Отчество</Table.HeaderCell>
-                      <Table.HeaderCell>Группа</Table.HeaderCell>
-                      <Table.HeaderCell>Пол</Table.HeaderCell>
-                      <Table.HeaderCell>ИИН</Table.HeaderCell>
-                      <Table.HeaderCell>Адрес проживания</Table.HeaderCell>
-                      <Table.HeaderCell>Телефон</Table.HeaderCell>
-                      <Table.HeaderCell>Сколько детей в семье</Table.HeaderCell>
-                      <Table.HeaderCell>
-                        Дата начала проживания
-                      </Table.HeaderCell>
-                      <Table.HeaderCell>Номер комнаты</Table.HeaderCell>
-                      <Table.HeaderCell>Направление</Table.HeaderCell>
-                      <Table.HeaderCell>Скачать</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {this.state.requests.map((value, index) => {
-                      return (
-                        <Table.Row key={index}>
-                          <Table.Cell>{value.name_l}</Table.Cell>
-                          <Table.Cell>{value.name_f}</Table.Cell>
-                          <Table.Cell>{value.patronymic}</Table.Cell>
-                          <Table.Cell>{value.group}</Table.Cell>
-                          <Table.Cell>{gender[value.gender_id]}</Table.Cell>
-                          <Table.Cell>{value.uin}</Table.Cell>
-                          <Table.Cell>{value.address}</Table.Cell>
-                          <Table.Cell>{value.phone}</Table.Cell>
-                          <Table.Cell>{value.children}</Table.Cell>
-                          <Table.Cell>{value.date_residence}</Table.Cell>
-                          <Table.Cell>{value.rooms.number}</Table.Cell>
-                          <Table.Cell>
-                            <Modal
-                              open={this.state.openModal}
-                              onClose={() =>
-                                this.setState({
-                                  openModal: false
-                                })
-                              }
-                              dimmer="blurring"
-                              size="fullscreen"
-                              trigger={
-                                <Button
-                                  onClick={() =>
-                                    this.setState({
-                                      openCurrentField: value,
-                                      room_id: value.rooms.id,
-                                      openModal: true
-                                    })
-                                  }
-                                >
-                                  Создать направление
-                                </Button>
-                              }
-                              closeIcon
-                            >
-                              <Header
-                                icon="archive"
-                                content="Создание направления"
-                              />
-                              <Modal.Content>
-                                <AdminDirection
-                                  openCurrentField={this.state.openCurrentField}
-                                  room_id={this.state.room_id}
-                                  handleCurrentFieldChange={this.handleChange}
-                                  handleCurrentFieldSelect={this.handleSelect}
-                                  handleCurrentFieldSubmitReport={
-                                    this.handleSubmitReport
-                                  }
-                                />
-                              </Modal.Content>
-                            </Modal>
-                          </Table.Cell>
-                          <Table.Cell>
-                            <Modal
-                              dimmer="blurring"
-                              size="mini"
-                              trigger={
-                                <Button
-                                  onClick={() => {
-                                    this.setState({
-                                      currentDataToDocument: value
-                                    });
-                                  }}
-                                >
-                                  Открыть направление
-                                </Button>
-                              }
-                            >
-                              <Header
-                                icon="file outline"
-                                content="Скачать направление"
-                              />
-                              <Modal.Content>
-                                <DownloadDoc
-                                  getRequestDocument={this.getRequestDocument}
-                                />
-                              </Modal.Content>
-                            </Modal>
-                          </Table.Cell>
-                        </Table.Row>
-                      );
-                    })}
-                  </Table.Body>
-                </Table>
+
+                {/* Search input */}
+                <FindRequest
+                  handleSearchInput={this.handleSearchInput}
+                  handleSearch={this.handleSearch}
+                  searchValue={this.state.searchValue}
+                />
+                {/* Search input */}
+                <FoundedRequestTable
+                  foundedRequest={
+                    this.state.foundedRequest.length
+                      ? this.state.foundedRequest
+                      : this.state.requests
+                  }
+                  searchValue={this.state.searchValue}
+                  foundError={this.state.foundError}
+                  openModal={this.state.openModal}
+                  toggleModal={this.toggleModal}
+                  handleTriggerButton={this.handleTriggerButton}
+                  openCurrentField={this.state.openCurrentField}
+                  room_id={this.state.room_id}
+                  handleChange={this.handleChange}
+                  handleSelect={this.handleSelect}
+                  handleSubmitReport={this.handleSubmitReport}
+                  getRequestDocument={this.getRequestDocument}
+                />
               </Segment>
             ) : (
               <Segment loading={!this.state.requests.length} placeholder>

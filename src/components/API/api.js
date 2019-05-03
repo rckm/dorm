@@ -6,7 +6,7 @@ import axios from "axios";
 import qs from "qs";
 
 const instance = axios.create({
-  baseURL: "https://dorm-keu.herokuapp.com/api",
+  baseURL: "https://www.keu.kz:5555/api",
   headers: {
     "content-type": "application/x-www-form-urlencoded"
   }

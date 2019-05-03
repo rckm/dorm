@@ -44,7 +44,7 @@ export const AdminReportsStyle = styled.div`
 export const AdminRequestsStyle = styled.div`
   background-color: inherit;
   .searchInput {
-    margin-right: 20px !important;
+    display: inline-block;
   }
 `;
 

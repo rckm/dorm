@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import { DormStyle, SvgRect } from "../Dorms/style";
+import { coordinatesDB } from "../../utils/util";
 import FirstDormScheme from "../../static/dormSchemes/1.webp";
 import SecondDormScheme from "../../static/dormSchemes/2.webp";
 import ThirdDormScheme from "../../static/dormSchemes/3.webp";
-import { DormStyle, SvgRect } from "../Dorms/style";
-import { coordinatesDB } from "../../utils/util";
 
 const FloorComponent = props => {
   const setCurrentScheme = () => {
@@ -30,10 +30,6 @@ const FloorComponent = props => {
       ? data.floor.includes(Number(props.selectedFloor.number))
       : data.floor === Number(props.selectedFloor.number);
   });
-
-  // console.log(coordinatesByDormID, recCoordinatesByDormID);
-  // console.log(props.selectedFloor);
-
   return (
     <DormStyle>
       <div className="tooltip">
@@ -57,7 +53,6 @@ const FloorComponent = props => {
       <div className="svgwrapper">
         <svg className="svg">
           {props.rooms.map((room, index) => {
-            console.log(index);
             return (
               <SvgRect
                 key={room.id}

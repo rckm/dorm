@@ -14,14 +14,12 @@
   font-weight: 500;
 }
 
-/* .auth-button {
-  position: relative;
-  top: 0px;
-  bottom: 0;
-  left: 0px;
-  right: 0;
+.auth-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
   padding: 20px 50px 20px 50px !important;
-} */
+}
 
 .auth-text {
   text-transform: uppercase;

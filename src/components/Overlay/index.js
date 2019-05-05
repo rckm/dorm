@@ -6,24 +6,22 @@ import "./index.css";
 
 const Overlay = () => (
   <ReactFullpage
-    navigation
-    scrollingSpeed="800"
     render={({ state, fullpageApi }) => {
       return (
         <ReactFullpage.Wrapper>
           <div className="section section-1">
+            <Button
+              inverted
+              circular
+              basic
+              color="grey"
+              className="auth-button"
+              as={Link}
+              to="/admin"
+            >
+              <span className="auth-text">Авторизация</span>
+            </Button>
             <Grid container>
-              {/* <Button
-                inverted
-                circular
-                basic
-                color="grey"
-                className="auth-button"
-                as={Link}
-                to="/admin"
-              >
-                <span className="auth-text">Авторизация</span>
-              </Button> */}
               <Grid.Row centered>
                 <Grid.Column width={12}>
                   <h1 className="logo">Dorm</h1>
@@ -101,12 +99,6 @@ const Overlay = () => (
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-          </div>
-          <div className="section section2">
-            <div className="slide section2text"> Slide 1 </div>
-            <div className="slide section2text"> Slide 2 </div>
-            <div className="slide section2text"> Slide 3 </div>
-            <div className="slide section2text"> Slide 4 </div>
           </div>
         </ReactFullpage.Wrapper>
       );

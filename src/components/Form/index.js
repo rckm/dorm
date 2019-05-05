@@ -18,7 +18,7 @@ const FormComponent = props => {
   const [currentDorm, setCurrentDorm] = useState(null);
 
   /**
-   * This is for setting min date that student can reserve a room
+   * This is for setting the min date that student can reserve a room
    */
   const date = new Date();
   let year = date.getFullYear();
@@ -26,7 +26,7 @@ const FormComponent = props => {
   let day = date.getDate();
   let currDate = `${year}-0${month}-${day}`;
 
-  function handleParentsChange(e) {
+  function handleShelterChange(e) {
     const { value } = e.target;
     const [shelter, parentType, name] = e.target.name.split(".");
     props.handleParentsChange(state => ({
@@ -69,7 +69,7 @@ const FormComponent = props => {
                 dormDb={props.state.dormDb}
                 setCurrentDorm={setCurrentDorm}
                 currentDorm={currentDorm}
-                setSelectedRoom={props.handleParentsChange}
+                setSelectedRoom={props.handleShelterChange}
               />
             )}
           </Segment>
@@ -213,23 +213,23 @@ const FormComponent = props => {
                   {(props.state.parents === "mother" || props.state.parents === "both") && <React.Fragment>
                       <Form.Field>
                         <label htmlFor="parent_mother.name_l">Фамилия</label>
-                        <input aria-label="Фамилия" aria-required={true} id="parent_mother.name_l" name="shelter.parent_mother.name_l" value={props.state.shelter.parent_mother.name_l || ""} onChange={handleParentsChange} placeholder="Фамилия матери" type="text" />
+                        <input aria-label="Фамилия" aria-required={true} id="parent_mother.name_l" name="shelter.parent_mother.name_l" value={props.state.shelter.parent_mother.name_l || ""} onChange={handleShelterChange} placeholder="Фамилия матери" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_mother.name_f">Имя</label>
-                        <input aria-label="Имя" aria-required={true} id="parent_mother.name_f" name="shelter.parent_mother.name_f" value={props.state.shelter.parent_mother.name_f || ""} onChange={handleParentsChange} placeholder="Имя матери" type="text" />
+                        <input aria-label="Имя" aria-required={true} id="parent_mother.name_f" name="shelter.parent_mother.name_f" value={props.state.shelter.parent_mother.name_f || ""} onChange={handleShelterChange} placeholder="Имя матери" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_mother.patronymic">
                           Отчество
                         </label>
-                        <input aria-label="Отчество" aria-required={true} id="parent_mother.patronymic" name="shelter.parent_mother.patronymic" value={props.state.shelter.parent_mother.patronymic || ""} onChange={handleParentsChange} placeholder="Отчество матери" type="text" />
+                        <input aria-label="Отчество" aria-required={true} id="parent_mother.patronymic" name="shelter.parent_mother.patronymic" value={props.state.shelter.parent_mother.patronymic || ""} onChange={handleShelterChange} placeholder="Отчество матери" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_mother.phone">
                           Номер телефона
                         </label>
-                        <input aria-label="Номер телефона" aria-required={true} id="parent_mother.phone" name="shelter.parent_mother.phone" value={props.state.shelter.parent_mother.phone || ""} onChange={handleParentsChange} placeholder="Номер телефона матери" type="text" />
+                        <input aria-label="Номер телефона" aria-required={true} id="parent_mother.phone" name="shelter.parent_mother.phone" value={props.state.shelter.parent_mother.phone || ""} onChange={handleShelterChange} placeholder="Номер телефона матери" type="text" />
                       </Form.Field>
                     </React.Fragment>}
                 </Form.Group>
@@ -237,51 +237,51 @@ const FormComponent = props => {
                   {(props.state.parents === "father" || props.state.parents === "both") && <React.Fragment>
                       <Form.Field>
                         <label htmlFor="parent_father.name_l">Фамилия</label>
-                        <input aria-label="Фамилия" aria-required={true} id="parent_father.name_l" name="shelter.parent_father.name_l" value={props.state.shelter.parent_father.name_l || ""} onChange={handleParentsChange} placeholder="Фамилия отца" type="text" />
+                        <input aria-label="Фамилия" aria-required={true} id="parent_father.name_l" name="shelter.parent_father.name_l" value={props.state.shelter.parent_father.name_l || ""} onChange={handleShelterChange} placeholder="Фамилия отца" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_father.name_f">Имя</label>
-                        <input aria-label="Имя" aria-required={true} id="parent_father.name_f" name="shelter.parent_father.name_f" value={props.state.shelter.parent_father.name_f || ""} onChange={handleParentsChange} placeholder="Имя отца" type="text" />
+                        <input aria-label="Имя" aria-required={true} id="parent_father.name_f" name="shelter.parent_father.name_f" value={props.state.shelter.parent_father.name_f || ""} onChange={handleShelterChange} placeholder="Имя отца" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_father.patronymic">
                           Отчество
                         </label>
-                        <input aria-label="Отчество" aria-required={true} id="parent_father.patronymic" name="shelter.parent_father.patronymic" value={props.state.shelter.parent_father.patronymic || ""} onChange={handleParentsChange} placeholder="Отчество отца" type="text" />
+                        <input aria-label="Отчество" aria-required={true} id="parent_father.patronymic" name="shelter.parent_father.patronymic" value={props.state.shelter.parent_father.patronymic || ""} onChange={handleShelterChange} placeholder="Отчество отца" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="parent_father.phone">
                           Номер телефона
                         </label>
-                        <input aria-label="Номер телефона" aria-required={true} id="parent_father.phone" name="shelter.parent_father.phone" value={props.state.shelter.parent_father.phone || ""} onChange={handleParentsChange} placeholder="Номер телефона отца" type="text" />
+                        <input aria-label="Номер телефона" aria-required={true} id="parent_father.phone" name="shelter.parent_father.phone" value={props.state.shelter.parent_father.phone || ""} onChange={handleShelterChange} placeholder="Номер телефона отца" type="text" />
                       </Form.Field>
                     </React.Fragment>}
                   {props.state.parents === "orphanage" && <React.Fragment>
                       <Form.Field>
                         <label htmlFor="orphanage.address">Адресс</label>
-                        <input aria-label="Адрес" aria-required={true} id="orphanage.address" name="shelter.orphanage.address" value={props.state.shelter.orphanage.address || ""} onChange={handleParentsChange} placeholder="Адрес" type="text" />
+                        <input aria-label="Адрес" aria-required={true} id="orphanage.address" name="shelter.orphanage.address" value={props.state.shelter.orphanage.address || ""} onChange={handleShelterChange} placeholder="Адрес" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="orphanage.phone">Имя</label>
-                        <input aria-label="Имя" aria-required={true} id="orphanage.phone" name="shelter.orphanage.phone" value={props.state.shelter.orphanage.phone || ""} onChange={handleParentsChange} placeholder="Телефон" type="text" />
+                        <input aria-label="Имя" aria-required={true} id="orphanage.phone" name="shelter.orphanage.phone" value={props.state.shelter.orphanage.phone || ""} onChange={handleShelterChange} placeholder="Телефон" type="text" />
                       </Form.Field>
                     </React.Fragment>}
                   {props.state.parents === "guardian" && <React.Fragment>
                       <Form.Field>
                         <label htmlFor="guardian.name_l">Фамилия</label>
-                        <input aria-label="Фамилия" aria-required={true} id="guardian.name_l" name="shelter.guardian.name_l" value={props.state.shelter.guardian.name_l || ""} onChange={handleParentsChange} placeholder="Фамилия" type="text" />
+                        <input aria-label="Фамилия" aria-required={true} id="guardian.name_l" name="shelter.guardian.name_l" value={props.state.shelter.guardian.name_l || ""} onChange={handleShelterChange} placeholder="Фамилия" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="guardian.name_f">Имя</label>
-                        <input aria-label="Имя" aria-required={true} id="guardian.name_f" name="shelter.guardian.name_f" value={props.state.shelter.guardian.name_f || ""} onChange={handleParentsChange} placeholder="Имя" type="text" />
+                        <input aria-label="Имя" aria-required={true} id="guardian.name_f" name="shelter.guardian.name_f" value={props.state.shelter.guardian.name_f || ""} onChange={handleShelterChange} placeholder="Имя" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="guardian.patronymic">Отчество</label>
-                        <input aria-label="Отчество" aria-required={true} id="guardian.patronymic" name="shelter.guardian.patronymic" value={props.state.shelter.guardian.patronymic || ""} onChange={handleParentsChange} placeholder="Отчество" type="text" />
+                        <input aria-label="Отчество" aria-required={true} id="guardian.patronymic" name="shelter.guardian.patronymic" value={props.state.shelter.guardian.patronymic || ""} onChange={handleShelterChange} placeholder="Отчество" type="text" />
                       </Form.Field>
                       <Form.Field>
                         <label htmlFor="guardian.phone">Номер телефона</label>
-                        <input aria-label="Номер телефона" aria-required={true} id="guardian.phone" name="shelter.guardian.phone" value={props.state.shelter.guardian.phone || ""} onChange={handleParentsChange} placeholder="Номер телефона" type="text" />
+                        <input aria-label="Номер телефона" aria-required={true} id="guardian.phone" name="shelter.guardian.phone" value={props.state.shelter.guardian.phone || ""} onChange={handleShelterChange} placeholder="Номер телефона" type="text" />
                       </Form.Field>
                     </React.Fragment>}
                 </Form.Group>

@@ -1,15 +1,9 @@
-import firstFloor from "../static/dormSchemes/1.webp";
-import secondFloor from "../static/dormSchemes/2.webp";
-import thirdFloor from "../static/dormSchemes/3.webp";
-import thirdFloor2 from "../static/dormSchemes/3.2.webp";
-import thirdFloor3 from "../static/dormSchemes/3.3.webp";
-
 export function findName(names, id) {
   return names.find(name => id === name.id);
 }
 
 /**
- * @param {} values state that will be sended
+ * @param {object} values state that will be send
  * @param  {...any} fields state that will be deleted
  */
 export function withoutFields(values, ...fields) {

@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12496f5e-07a6-4a58-9a81-edd29b6de641" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imagemin.js" beforeDir="false" afterPath="$PROJECT_DIR$/imagemin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dorms/Floors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dorms/Floors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Overlay/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Overlay/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/dormSchemes/2.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/dormSchemes/2.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/dormSchemes/3.webp" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/dormSchemes/3.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hoc/withForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hoc/withForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/util.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,28 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/util.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-                <element signature="e#4661#12861#0" />
-                <element signature="e#4688#5243#0" />
-                <element signature="e#5251#6519#0" />
-                <element signature="e#6526#7835#0" />
-                <element signature="e#7947#12857#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/Dorms/Floors.js">
+        <entry file="file://$PROJECT_DIR$/src/components/hoc/withForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="806">
-              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="-1616">
+              <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
             </state>
           </provider>
         </entry>
@@ -109,7 +83,6 @@
         <option value="$PROJECT_DIR$/src/components/Admin/AdminDirection.js" />
         <option value="$PROJECT_DIR$/src/components/Admin/AdminReports.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/components/hoc/withForm.js" />
         <option value="$PROJECT_DIR$/src/components/hoc/withAdmin.js" />
         <option value="$USER_HOME$/Downloads/Telegram Desktop/Версия 1/Комиссарова 32 Этаж 1/index.html" />
         <option value="$PROJECT_DIR$/src/components/Form/index.js" />
@@ -135,6 +108,7 @@
         <option value="$PROJECT_DIR$/src/components/Overlay/index.css" />
         <option value="$PROJECT_DIR$/src/components/Dorms/Floors.js" />
         <option value="$PROJECT_DIR$/src/utils/util.js" />
+        <option value="$PROJECT_DIR$/src/components/hoc/withForm.js" />
       </list>
     </option>
   </component>
@@ -172,19 +146,6 @@
               <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
               <item name="dorm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dorm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dorm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -192,13 +153,7 @@
               <item name="dorm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Dorms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dorm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="hoc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -225,7 +180,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\l33tpr09\Desktop\dorm\node_modules\prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -244,7 +199,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.deploy">
+  <component name="RunManager" selected="npm.predeploy">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -277,8 +232,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.predeploy" />
+        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.surge-deploy" />
       </list>
     </recent_temporary>
@@ -305,13 +260,13 @@
       <workItem from="1556875046451" duration="2257000" />
       <workItem from="1556903462815" duration="13769000" />
       <workItem from="1557066464616" duration="3635000" />
-      <workItem from="1557070296974" duration="4552000" />
+      <workItem from="1557070296974" duration="4867000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55446000" />
+    <option name="totallyTimeSpent" value="55761000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -331,7 +286,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32964823" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007899" side_tool="true" weight="0.24610245" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49921012" weight="0.24610245" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49921012" visible="true" weight="0.24610245" />
       <window_info anchor="bottom" id="REST Client" order="11" weight="0.40423164" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -408,9 +363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react/cjs/react.development.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -441,20 +393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/hoc/withForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2227">
-          <caret line="95" column="25" lean-forward="true" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/hoc/withAdmin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="999">
-          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -563,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dorms/FirstDorm/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -659,16 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Overlay/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -686,25 +607,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-            <element signature="e#4661#12861#0" />
-            <element signature="e#4688#5243#0" />
-            <element signature="e#5251#6519#0" />
-            <element signature="e#6526#7835#0" />
-            <element signature="e#7947#12857#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Dorms/Floors.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="806">
           <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="21" column="11" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/hoc/withAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-406">
+          <caret line="39" column="21" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Overlay/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2716">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#927#2091#0" />
+            <element signature="e#2115#4528#0" />
+            <element signature="e#4551#12668#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-432" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/hoc/withForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1616">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>

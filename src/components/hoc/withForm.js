@@ -106,7 +106,7 @@ const WithForm = WrappedComponent => {
         "error"
       );
 
-      /* This is for send nested objects, because library 'qs' requires to stringify stringified object  */
+      /* This is for send nested objects, because library 'qs' requires to stringify the object  */
 
       values.shelter = JSON.stringify(values.shelter);
       values.residence_permit = JSON.stringify(values.residence_permit);
@@ -115,8 +115,6 @@ const WithForm = WrappedComponent => {
         /""/g,
         resPer.country_id
       );
-
-      console.log(values);
 
       this.setState({
         loading: true

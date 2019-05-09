@@ -12,8 +12,8 @@ const FirstDorm = props => {
       })
     : [{}];
 
-  const [currentFloor, setCurrentFloor] = useField(floors[0]);
-  const [rooms, isLoading] = useGetRooms(currentFloor.id, props.api.getRooms);
+  let [currentFloor, setCurrentFloor] = useField(floors[0]);
+  let [rooms, isLoading] = useGetRooms(currentFloor.id, props.api.getRooms);
 
   const handleChange = e => {
     const { value } = e.target;

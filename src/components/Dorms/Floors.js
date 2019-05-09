@@ -16,20 +16,19 @@ const FloorComponent = props => {
     }
   };
 
-  const coordinatesByDormID = coordinatesDB[
-    props.currentDormId
-  ].coordinates.find(data => {
-    return Array.isArray(data.floor)
-      ? data.floor.includes(Number(props.selectedFloor.number))
-      : data.floor === Number(props.selectedFloor.number);
-  });
-  const recCoordinatesByDormID = coordinatesDB[
-    props.currentDormId
-  ].recCoordinates.find(data => {
-    return Array.isArray(data.floor)
-      ? data.floor.includes(Number(props.selectedFloor.number))
-      : data.floor === Number(props.selectedFloor.number);
-  });
+  const coordinatesByDormID =
+    coordinatesDB[props.currentDormId].Floors[props.selectedFloor.number];
+
+  const findMatchRoom = (room_number, room_symbol) => {
+    var num =
+      room_symbol === undefined
+        ? String(room_number)
+        : room_number + room_symbol;
+    return coordinatesByDormID.filter(value => {
+      return value.num === num;
+    })[0];
+  };
+
   return (
     <DormStyle>
       <div className="tooltip">
@@ -52,38 +51,45 @@ const FloorComponent = props => {
       <img alt="Dorm Schemes" src={setCurrentScheme()} />
       <div className="svgwrapper">
         <svg className="svg">
-          {props.rooms.map((room, index) => {
-            return (
-              <SvgRect
-                key={room.id}
-                onClick={() => props.handleSelectedRoom(room)}
-                x={`${recCoordinatesByDormID.data[index] &&
-                  recCoordinatesByDormID.data[index].x}`}
-                y={`${recCoordinatesByDormID.data[index] &&
-                  recCoordinatesByDormID.data[index].y}`}
-                width={`${recCoordinatesByDormID.data[index] &&
-                  recCoordinatesByDormID.data[index].width}`}
-                height={`${recCoordinatesByDormID.data[index] &&
-                  recCoordinatesByDormID.data[index].height}`}
-                gender={props.genderColor(room.gender_id, room.amount)}
-              />
-            );
+          {props.rooms.map(room => {
+            // TODO: При переключении на другой этаж в props.rooms остаются
+            // комнаты другого этажа. Необходимо найти способ очистки комнат не относящихся к текущему этажу.
+            // после очистки пропадет необходимость использовать здесь проверку на undefined
+            // и уменьшится кол-во циклов при поиске комнат
+            var r = findMatchRoom(room.number, room.symbol);
+            if (r !== undefined) {
+              return (
+                <SvgRect
+                  key={room.id}
+                  onClick={() => props.handleSelectedRoom(room)}
+                  x={r.x_r}
+                  y={r.y_r}
+                  width={r.width}
+                  height={r.height}
+                  gender={props.genderColor(room.gender_id, room.amount)}
+                />
+              );
+            }
+            return "";
           })}
-          {props.rooms.map((room, index) => (
-            <text
-              key={room.id}
-              onClick={() => props.handleSelectedRoom(room)}
-              className="text"
-              height={`${recCoordinatesByDormID.data[index] &&
-                recCoordinatesByDormID.data[index].height}`}
-              x={`${coordinatesByDormID.data[index] &&
-                coordinatesByDormID.data[index].x}`}
-              y={`${coordinatesByDormID.data[index] &&
-                coordinatesByDormID.data[index].y}`}
-            >
-              {room.number}
-            </text>
-          ))}
+          {props.rooms.map(room => {
+            var r = findMatchRoom(room.number, room.symbol);
+            if (r !== undefined) {
+              return (
+                <text
+                  key={room.id}
+                  onClick={() => props.handleSelectedRoom(room)}
+                  className="text"
+                  height={r.height}
+                  x={r.x_t}
+                  y={r.y_t}
+                >
+                  {r.num}
+                </text>
+              );
+            }
+            return "";
+          })}
         </svg>
       </div>
     </DormStyle>

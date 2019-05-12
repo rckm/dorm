@@ -5,10 +5,13 @@ export const FirstDormStyle = styled.div`
   .select-wrapper {
     display: flex;
     justify-content: center;
-    //margin-bottom: 20px;
+    margin-bottom: 20px;
     align-items: center;
     width: 400px;
     margin: 10px auto;
+  }
+  .select-box {
+    align-self: center;
   }
   .firstDorm {
     border: 0 !important;

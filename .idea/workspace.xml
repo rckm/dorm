@@ -129,6 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,11 +137,15 @@
               <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
               <item name="dorm" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dorm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dorm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -151,7 +156,7 @@
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.0" />
     <property name="js.last.introduce.type" value="LET" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Telegram Desktop/Комисарова 32/Комиссарова 32 Этаж 2/index.html" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../switz" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -242,12 +247,13 @@
       <workItem from="1556903462815" duration="13769000" />
       <workItem from="1557066464616" duration="3635000" />
       <workItem from="1557070296974" duration="5664000" />
+      <workItem from="1557423534883" duration="45000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56558000" />
+    <option name="totallyTimeSpent" value="56603000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />

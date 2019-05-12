@@ -25,7 +25,7 @@ const FirstDorm = props => {
       <div className="select-wrapper">
         <Form>
           <Form.Group>
-            <Form.Field>
+            <Form.Field className="select-box">
               <select onChange={handleChange} name="selectedFloor">
                 <option disabled value="0">
                   Выберите этаж
